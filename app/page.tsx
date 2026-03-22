@@ -193,7 +193,89 @@ export default function Home() {
           </p>
         </div>
       </section>
+<section className="bg-green-600 text-white py-20">
+  <div className="max-w-6xl mx-auto px-6 text-center">
+    <h2 className="text-2xl md:text-3xl font-bold mb-6">
+      Hi, I’m Jazz. Nice to meet you.
+    </h2>
 
+    <p className="max-w-3xl mx-auto text-green-100 leading-8 text-lg">
+      I love being a technical support engineer. I enjoy solving problems,
+      helping people, and working through complex systems. Every problem has
+      a solution — and I enjoy finding it. I’m also deeply curious about AI
+      and how it can improve the way we troubleshoot and support others.
+    </p>
+  </div>
+
+  <div className="max-w-6xl mx-auto px-6 mt-16">
+    <div className="grid md:grid-cols-3 gap-0 bg-white text-black rounded-3xl overflow-hidden shadow-xl">
+
+      <div className="p-8 text-center border-r border-gray-200">
+        <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-green-500 flex items-center justify-center text-white text-xl">
+          ⚙️
+        </div>
+
+        <h3 className="font-semibold text-lg mb-3">
+          Technical Support Engineer
+        </h3>
+
+        <p className="text-gray-600 mb-6">
+          I help customers solve technical issues, understand systems, and feel supported through complex problems.
+        </p>
+
+        <p className="text-green-600 text-sm font-medium mb-2">
+          What I focus on:
+        </p>
+        <p className="text-gray-500 text-sm">
+          SaaS support, troubleshooting, customer experience
+        </p>
+      </div>
+
+      <div className="p-8 text-center border-r border-gray-200">
+        <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-green-500 flex items-center justify-center text-white text-xl">
+          🧠
+        </div>
+
+        <h3 className="font-semibold text-lg mb-3">
+          Problem Solver
+        </h3>
+
+        <p className="text-gray-600 mb-6">
+          I enjoy breaking down complex problems and turning them into clear, actionable solutions.
+        </p>
+
+        <p className="text-green-600 text-sm font-medium mb-2">
+          My mindset:
+        </p>
+        <p className="text-gray-500 text-sm">
+          Every problem has a solution
+        </p>
+      </div>
+
+      <div className="p-8 text-center">
+        <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-green-500 flex items-center justify-center text-white text-xl">
+          🤖
+        </div>
+
+        <h3 className="font-semibold text-lg mb-3">
+          AI Enthusiast
+        </h3>
+
+        <p className="text-gray-600 mb-6">
+          I’m curious about AI and how it can improve support workflows and the way humans solve problems.
+        </p>
+
+        <p className="text-green-600 text-sm font-medium mb-2">
+          What I explore:
+        </p>
+        <p className="text-gray-500 text-sm">
+          AI tools, automation, smarter support systems
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
       <section id="about" className="mx-auto max-w-6xl px-6 py-20 md:py-24">
         <div className="grid gap-8 md:grid-cols-3">
           {focusCards.map((card) => (
