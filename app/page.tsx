@@ -1,20 +1,47 @@
 import Image from "next/image";
 
-const focusCards = [
+const showcaseCards = [
   {
-    title: "Technical Support",
+    icon: "⚙️",
+    title: "Technical Support Engineer",
     description:
-      "I enjoy helping people through technical issues with patience, clarity, and real problem solving.",
+      "I help customers solve technical issues, understand systems, and feel supported through complex problems.",
+    label: "What I focus on",
+    items: ["SaaS support", "Troubleshooting", "Customer experience"],
   },
   {
-    title: "Problem Solving",
+    icon: "🧠",
+    title: "Problem Solver",
     description:
-      "Every problem has a solution. I like breaking complex issues into something clear, simple, and fixable.",
+      "I enjoy breaking down complex problems and turning them into clear, actionable solutions.",
+    label: "My mindset",
+    items: ["Every problem has a solution", "Clarity", "Ownership"],
   },
   {
-    title: "AI Curiosity",
+    icon: "🤖",
+    title: "AI Enthusiast",
     description:
-      "I love learning how AI can improve workflows, support operations, and the way humans solve problems.",
+      "I’m curious about AI and how it can improve support workflows and the way humans solve problems.",
+    label: "What I explore",
+    items: ["AI tools", "Automation", "Smarter support systems"],
+  },
+];
+
+const proofPoints = [
+  {
+    number: "01",
+    title: "SaaS Support Experience",
+    text: "Worked in fast-moving support environments where clear communication, ownership, and strong troubleshooting mattered.",
+  },
+  {
+    number: "02",
+    title: "API and Workflow Troubleshooting",
+    text: "Used tools like SQL, Postman, Jira, Datadog, and AWS to investigate issues and support technical workflows.",
+  },
+  {
+    number: "03",
+    title: "Operations and Documentation",
+    text: "Helped improve support workflows, reduce confusion, and create clearer internal knowledge for teams.",
   },
 ];
 
@@ -83,8 +110,8 @@ function MailIcon() {
 
 export default function Home() {
   return (
-    <main className="bg-white text-zinc-900 selection:bg-green-400 selection:text-black">
-      <header className="sticky top-0 z-50 border-b border-zinc-200/80 bg-white/90 backdrop-blur">
+    <main className="bg-[#f6f6f6] text-zinc-900 selection:bg-green-500 selection:text-white">
+      <header className="sticky top-0 z-50 border-b border-zinc-200/80 bg-white/85 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <a href="#home" className="text-sm font-semibold tracking-wide text-zinc-900">
             Jazz
@@ -135,22 +162,31 @@ export default function Home() {
         </div>
       </header>
 
-      <section id="home" className="mx-auto max-w-6xl px-6 pt-16 pb-24 md:pt-24 md:pb-32">
+      <section id="home" className="mx-auto max-w-6xl px-6 pt-16 pb-24 md:pt-24 md:pb-28">
         <div className="flex flex-col items-center text-center">
-          <div className="mb-8 overflow-hidden rounded-full border-4 border-white shadow-xl">
-            <Image
-              src="/profile.jpg"
-              alt="Jawad Jazz Alhussein"
-              width={160}
-              height={160}
-              className="h-40 w-40 object-cover"
-              priority
-            />
+          <div className="relative mb-8">
+            <div className="absolute inset-0 rounded-full bg-green-500/20 blur-2xl" />
+            <div className="relative overflow-hidden rounded-full border-4 border-white shadow-xl">
+              <Image
+                src="/profile.jpg"
+                alt="Jawad Jazz Alhussein"
+                width={168}
+                height={168}
+                className="h-40 w-40 object-cover md:h-44 md:w-44"
+                priority
+              />
+            </div>
           </div>
 
-          <h1 className="max-w-4xl text-4xl font-bold leading-tight md:text-6xl">
+          <p className="mb-3 text-sm uppercase tracking-[0.35em] text-green-600">
             Technical Support Engineer
-            <span className="block text-green-600">turning problems into solutions.</span>
+          </p>
+
+          <h1 className="max-w-4xl text-4xl font-bold leading-tight md:text-6xl">
+            Every problem has a solution.
+            <span className="mt-2 block text-green-600">
+              I turn confusion into clarity.
+            </span>
           </h1>
 
           <p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-600 md:text-xl">
@@ -160,9 +196,8 @@ export default function Home() {
           </p>
 
           <p className="mt-4 max-w-3xl text-base leading-8 text-zinc-500 md:text-lg">
-            Every problem has a solution. That mindset drives how I work, how I think,
-            and why I also love learning about AI and its potential to improve support,
-            workflows, and human problem solving.
+            I also love AI and how it can improve support, workflows, and the way humans
+            solve problems without losing the human side of the work.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -184,7 +219,7 @@ export default function Home() {
 
       <section className="bg-green-600 text-white">
         <div className="mx-auto max-w-5xl px-6 py-16 text-center md:py-20">
-          <h2 className="text-2xl font-bold md:text-3xl">
+          <h2 className="text-2xl font-bold md:text-4xl">
             I love solving technical problems and making support feel human.
           </h2>
           <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-green-50 md:text-lg">
@@ -192,109 +227,87 @@ export default function Home() {
             people feel like they are talking to a real person who genuinely wants to help.
           </p>
         </div>
+
+        <div className="mx-auto max-w-6xl px-6 pb-20">
+          <div className="grid overflow-hidden rounded-[2rem] bg-white text-zinc-900 shadow-2xl md:grid-cols-3">
+            {showcaseCards.map((card, index) => (
+              <div
+                key={card.title}
+                className={`p-8 text-center transition hover:-translate-y-1 hover:shadow-xl ${
+                  index < 2 ? "border-b border-zinc-200 md:border-b-0 md:border-r" : ""
+                }`}
+              >
+                <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-xl text-white shadow-md">
+                  {card.icon}
+                </div>
+
+                <h3 className="mb-4 text-2xl font-semibold">{card.title}</h3>
+
+                <p className="mb-6 leading-8 text-zinc-600">{card.description}</p>
+
+                <p className="mb-3 text-sm font-semibold text-green-600">{card.label}</p>
+
+                <div className="space-y-2 text-sm text-zinc-500">
+                  {card.items.map((item) => (
+                    <p key={item}>{item}</p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
-<section className="bg-green-600 text-white py-20">
-  <div className="max-w-6xl mx-auto px-6 text-center">
-    <h2 className="text-2xl md:text-3xl font-bold mb-6">
-      Hi, I’m Jazz. Nice to meet you.
-    </h2>
 
-    <p className="max-w-3xl mx-auto text-green-100 leading-8 text-lg">
-      I love being a technical support engineer. I enjoy solving problems,
-      helping people, and working through complex systems. Every problem has
-      a solution — and I enjoy finding it. I’m also deeply curious about AI
-      and how it can improve the way we troubleshoot and support others.
-    </p>
-  </div>
-
-  <div className="max-w-6xl mx-auto px-6 mt-16">
-    <div className="grid md:grid-cols-3 gap-0 bg-white text-black rounded-3xl overflow-hidden shadow-xl">
-
-      <div className="p-8 text-center border-r border-gray-200">
-        <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-green-500 flex items-center justify-center text-white text-xl">
-          ⚙️
-        </div>
-
-        <h3 className="font-semibold text-lg mb-3">
-          Technical Support Engineer
-        </h3>
-
-        <p className="text-gray-600 mb-6">
-          I help customers solve technical issues, understand systems, and feel supported through complex problems.
-        </p>
-
-        <p className="text-green-600 text-sm font-medium mb-2">
-          What I focus on:
-        </p>
-        <p className="text-gray-500 text-sm">
-          SaaS support, troubleshooting, customer experience
-        </p>
-      </div>
-
-      <div className="p-8 text-center border-r border-gray-200">
-        <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-green-500 flex items-center justify-center text-white text-xl">
-          🧠
-        </div>
-
-        <h3 className="font-semibold text-lg mb-3">
-          Problem Solver
-        </h3>
-
-        <p className="text-gray-600 mb-6">
-          I enjoy breaking down complex problems and turning them into clear, actionable solutions.
-        </p>
-
-        <p className="text-green-600 text-sm font-medium mb-2">
-          My mindset:
-        </p>
-        <p className="text-gray-500 text-sm">
-          Every problem has a solution
-        </p>
-      </div>
-
-      <div className="p-8 text-center">
-        <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-green-500 flex items-center justify-center text-white text-xl">
-          🤖
-        </div>
-
-        <h3 className="font-semibold text-lg mb-3">
-          AI Enthusiast
-        </h3>
-
-        <p className="text-gray-600 mb-6">
-          I’m curious about AI and how it can improve support workflows and the way humans solve problems.
-        </p>
-
-        <p className="text-green-600 text-sm font-medium mb-2">
-          What I explore:
-        </p>
-        <p className="text-gray-500 text-sm">
-          AI tools, automation, smarter support systems
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
       <section id="about" className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-        <div className="grid gap-8 md:grid-cols-3">
-          {focusCards.map((card) => (
+        <div className="grid gap-6 md:grid-cols-3">
+          {[
+            {
+              title: "Technical Support",
+              description:
+                "I enjoy helping people through technical issues with patience, clarity, and real problem solving.",
+            },
+            {
+              title: "Problem Solving",
+              description:
+                "Every problem has a solution. I like breaking complex issues into something clear, simple, and fixable.",
+            },
+            {
+              title: "AI Curiosity",
+              description:
+                "I love learning how AI can improve workflows, support operations, and the way humans solve problems.",
+            },
+          ].map((card) => (
             <div
               key={card.title}
               className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
             >
-              <h3 className="mb-4 text-xl font-semibold text-zinc-900">{card.title}</h3>
+              <h3 className="mb-4 text-2xl font-semibold text-zinc-900">{card.title}</h3>
               <p className="leading-8 text-zinc-600">{card.description}</p>
             </div>
           ))}
         </div>
       </section>
 
+      <section className="mx-auto max-w-6xl px-6 pb-20">
+        <div className="grid gap-5 md:grid-cols-3">
+          {proofPoints.map((item) => (
+            <div
+              key={item.number}
+              className="rounded-3xl border border-zinc-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+            >
+              <p className="mb-4 text-5xl font-bold text-green-200">{item.number}</p>
+              <h3 className="mb-4 text-xl font-semibold">{item.title}</h3>
+              <p className="leading-8 text-zinc-600">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section id="skills" className="mx-auto max-w-6xl px-6 pb-20 md:pb-24">
-        <div className="rounded-[2rem] bg-zinc-50 px-6 py-10 md:px-10 md:py-12">
+        <div className="rounded-[2rem] bg-[#efefef] px-6 py-10 md:px-10 md:py-12">
           <div className="grid gap-10 md:grid-cols-2">
             <div>
-              <h2 className="mb-5 text-2xl font-bold text-zinc-900">Skills</h2>
+              <h2 className="mb-5 text-3xl font-bold text-zinc-900">Skills</h2>
               <div className="flex flex-wrap gap-3">
                 {skills.map((skill) => (
                   <span
@@ -308,7 +321,7 @@ export default function Home() {
             </div>
 
             <div>
-              <h2 className="mb-5 text-2xl font-bold text-zinc-900">Tools</h2>
+              <h2 className="mb-5 text-3xl font-bold text-zinc-900">Tools</h2>
               <div className="flex flex-wrap gap-3">
                 {tools.map((tool) => (
                   <span
@@ -326,10 +339,10 @@ export default function Home() {
 
       <section id="human" className="mx-auto max-w-6xl px-6 pb-20 md:pb-24">
         <div className="text-center">
-          <p className="text-sm font-medium uppercase tracking-[0.25em] text-green-600">
-            I’m not a robot
+          <p className="text-sm font-medium uppercase tracking-[0.3em] text-green-600">
+            I&apos;m not a robot
           </p>
-          <h2 className="mt-4 text-3xl font-bold md:text-4xl">
+          <h2 className="mt-4 text-3xl font-bold md:text-5xl">
             You want to know what I like to do for fun?
           </h2>
           <p className="mx-auto mt-5 max-w-3xl leading-8 text-zinc-600">
@@ -342,7 +355,7 @@ export default function Home() {
           {funItems.map((item) => (
             <div
               key={item}
-              className="rounded-2xl border border-zinc-200 bg-white p-6 text-center text-zinc-700 shadow-sm"
+              className="rounded-2xl border border-zinc-200 bg-white p-6 text-center text-zinc-700 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
             >
               {item}
             </div>
@@ -350,18 +363,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="bg-zinc-900 text-white">
+      <section id="contact" className="bg-[#0f1117] text-white">
         <div className="mx-auto max-w-5xl px-6 py-20 text-center md:py-24">
-          <h2 className="text-3xl font-bold md:text-4xl">Let’s connect.</h2>
+          <h2 className="text-3xl font-bold md:text-5xl">Let&apos;s connect.</h2>
           <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-zinc-300 md:text-lg">
-            I’m open to technical support, SaaS support, and adjacent roles where I
+            I&apos;m open to technical support, SaaS support, and adjacent roles where I
             can solve problems, support people, and keep growing.
           </p>
 
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             <a
               href="mailto:youremail@example.com"
-              className="rounded-2xl border border-zinc-700 bg-zinc-800 p-6 transition hover:border-green-500 hover:bg-zinc-850"
+              className="rounded-2xl border border-zinc-700 bg-zinc-800/80 p-6 transition hover:border-green-500 hover:bg-zinc-800"
             >
               <div className="mb-3 flex items-center justify-center gap-3 text-green-400">
                 <MailIcon />
@@ -374,7 +387,7 @@ export default function Home() {
               href="https://www.linkedin.com/in/YOUR-LINKEDIN/"
               target="_blank"
               rel="noreferrer"
-              className="rounded-2xl border border-zinc-700 bg-zinc-800 p-6 transition hover:border-green-500"
+              className="rounded-2xl border border-zinc-700 bg-zinc-800/80 p-6 transition hover:border-green-500 hover:bg-zinc-800"
             >
               <div className="mb-3 flex items-center justify-center gap-3 text-green-400">
                 <LinkedinIcon />
@@ -387,7 +400,7 @@ export default function Home() {
               href="https://github.com/Jazz-1998"
               target="_blank"
               rel="noreferrer"
-              className="rounded-2xl border border-zinc-700 bg-zinc-800 p-6 transition hover:border-green-500"
+              className="rounded-2xl border border-zinc-700 bg-zinc-800/80 p-6 transition hover:border-green-500 hover:bg-zinc-800"
             >
               <div className="mb-3 flex items-center justify-center gap-3 text-green-400">
                 <GithubIcon />
