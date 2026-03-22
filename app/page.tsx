@@ -143,7 +143,7 @@ export default function Home() {
               <GithubIcon />
             </a>
             <a
-              href="https://www.linkedin.com/in/YOUR-LINKEDIN/"
+              href="https://www.linkedin.com/in/jawad-alhussein/"
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
@@ -152,7 +152,7 @@ export default function Home() {
               <LinkedinIcon />
             </a>
             <a
-              href="mailto:youremail@example.com"
+              href="mailto:alhusseinjazz@gmail.com"
               aria-label="Email"
               className="text-zinc-500 transition hover:text-green-600"
             >
@@ -304,38 +304,36 @@ export default function Home() {
       </section>
 
       <section id="skills" className="mx-auto max-w-6xl px-6 pb-20 md:pb-24">
-        <div className="rounded-[2rem] bg-[#efefef] px-6 py-10 md:px-10 md:py-12">
-          <div className="grid gap-10 md:grid-cols-2">
-            <div>
-              <h2 className="mb-5 text-3xl font-bold text-zinc-900">Skills</h2>
-              <div className="flex flex-wrap gap-3">
-                {skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-full bg-white px-4 py-2 text-sm text-zinc-700 shadow-sm ring-1 ring-zinc-200"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
+  <div className="grid gap-6 md:grid-cols-2">
+    <div className="rounded-[2rem] bg-white p-8 shadow-sm ring-1 ring-zinc-200">
+      <h2 className="mb-6 text-3xl font-bold text-zinc-900">Skills</h2>
+      <div className="flex flex-wrap gap-3">
+        {skills.map((skill) => (
+          <span
+            key={skill}
+            className="rounded-full bg-zinc-50 px-4 py-2 text-sm text-zinc-700 shadow-sm ring-1 ring-zinc-200"
+          >
+            {skill}
+          </span>
+        ))}
+      </div>
+    </div>
 
-            <div>
-              <h2 className="mb-5 text-3xl font-bold text-zinc-900">Tools</h2>
-              <div className="flex flex-wrap gap-3">
-                {tools.map((tool) => (
-                  <span
-                    key={tool}
-                    className="rounded-full bg-white px-4 py-2 text-sm text-zinc-700 shadow-sm ring-1 ring-zinc-200"
-                  >
-                    {tool}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div className="rounded-[2rem] bg-white p-8 shadow-sm ring-1 ring-zinc-200">
+      <h2 className="mb-6 text-3xl font-bold text-zinc-900">Tools</h2>
+      <div className="flex flex-wrap gap-3">
+        {tools.map((tool) => (
+          <span
+            key={tool}
+            className="rounded-full bg-zinc-50 px-4 py-2 text-sm text-zinc-700 shadow-sm ring-1 ring-zinc-200"
+          >
+            {tool}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
 
       <section id="human" className="mx-auto max-w-6xl px-6 pb-20 md:pb-24">
         <div className="text-center">
@@ -373,18 +371,18 @@ export default function Home() {
 
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             <a
-              href="mailto:youremail@example.com"
+              href="mailto:alhusseinjazz@gmail.com"
               className="rounded-2xl border border-zinc-700 bg-zinc-800/80 p-6 transition hover:border-green-500 hover:bg-zinc-800"
             >
               <div className="mb-3 flex items-center justify-center gap-3 text-green-400">
                 <MailIcon />
                 <span className="font-medium">Email</span>
               </div>
-              <p className="break-all text-zinc-300">youremail@example.com</p>
+              <p className="break-all text-zinc-300">alhusseinjazz@gmail.com</p>
             </a>
 
             <a
-              href="https://www.linkedin.com/in/YOUR-LINKEDIN/"
+              href="https://www.linkedin.com/in/jawad-alhussein/"
               target="_blank"
               rel="noreferrer"
               className="rounded-2xl border border-zinc-700 bg-zinc-800/80 p-6 transition hover:border-green-500 hover:bg-zinc-800"
