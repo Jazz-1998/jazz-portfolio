@@ -1,26 +1,32 @@
 import Image from "next/image";
 
-const skillGroups = [
+const focusCards = [
   {
-    title: "Support & Troubleshooting",
-    items: [
-      "Technical Troubleshooting",
-      "Root Cause Analysis",
-      "Customer Issue Resolution",
-      "SaaS Support",
-      "Support Operations",
-    ],
+    title: "Technical Support",
+    description:
+      "I enjoy helping people through technical issues with patience, clarity, and real problem solving.",
   },
   {
-    title: "Systems & Collaboration",
-    items: [
-      "API Debugging",
-      "Cross-Functional Collaboration",
-      "Documentation",
-      "Process Improvement",
-      "Escalation Management",
-    ],
+    title: "Problem Solving",
+    description:
+      "Every problem has a solution. I like breaking complex issues into something clear, simple, and fixable.",
   },
+  {
+    title: "AI Curiosity",
+    description:
+      "I love learning how AI can improve workflows, support operations, and the way humans solve problems.",
+  },
+];
+
+const skills = [
+  "Technical Troubleshooting",
+  "Root Cause Analysis",
+  "SaaS Support",
+  "API Debugging",
+  "Customer Issue Resolution",
+  "Cross-Functional Collaboration",
+  "Documentation",
+  "Support Operations",
 ];
 
 const tools = [
@@ -32,24 +38,6 @@ const tools = [
   "Freshdesk",
   "Notion",
   "GitHub",
-];
-
-const featuredCards = [
-  {
-    id: "01",
-    title: "Technical Support Engineer",
-    text: "I enjoy working in environments where customers need clarity, ownership, and someone who can think through real technical problems instead of giving surface-level answers.",
-  },
-  {
-    id: "02",
-    title: "Problem Solver",
-    text: "Every problem has a solution. I like breaking down messy situations, finding the real issue, and turning confusion into something clear and fixable.",
-  },
-  {
-    id: "03",
-    title: "AI Curious",
-    text: "I’m excited by AI and how it can improve support workflows, technical operations, and the way people learn, troubleshoot, and solve problems faster.",
-  },
 ];
 
 const funItems = [
@@ -79,7 +67,14 @@ function LinkedinIcon() {
 
 function MailIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      className="h-5 w-5"
+      aria-hidden="true"
+    >
       <path d="M3.75 6.75h16.5v10.5H3.75z" strokeLinecap="round" strokeLinejoin="round" />
       <path d="m4.5 7.5 7.5 6 7.5-6" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
@@ -88,21 +83,26 @@ function MailIcon() {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white selection:bg-green-400 selection:text-black">
-      <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(34,197,94,0.14),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(34,197,94,0.08),transparent_20%),radial-gradient(circle_at_bottom_right,rgba(34,197,94,0.10),transparent_30%)]" />
-      <div className="fixed inset-0 -z-10 opacity-[0.06] bg-[linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)] bg-[size:44px_44px]" />
-
-      <header className="sticky top-0 z-50 border-b border-green-500/10 bg-black/70 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <a href="#home" className="text-sm font-semibold uppercase tracking-[0.35em] text-green-400">
+    <main className="bg-white text-zinc-900 selection:bg-green-400 selection:text-black">
+      <header className="sticky top-0 z-50 border-b border-zinc-200/80 bg-white/90 backdrop-blur">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+          <a href="#home" className="text-sm font-semibold tracking-wide text-zinc-900">
             Jazz
           </a>
 
-          <nav className="hidden gap-6 text-sm text-gray-300 md:flex">
-            <a href="#about" className="transition hover:text-green-300">About</a>
-            <a href="#skills" className="transition hover:text-green-300">Skills</a>
-            <a href="#human" className="transition hover:text-green-300">Human</a>
-            <a href="#contact" className="transition hover:text-green-300">Contact</a>
+          <nav className="hidden items-center gap-8 text-sm text-zinc-600 md:flex">
+            <a href="#about" className="transition hover:text-green-600">
+              About
+            </a>
+            <a href="#skills" className="transition hover:text-green-600">
+              Skills
+            </a>
+            <a href="#human" className="transition hover:text-green-600">
+              Human
+            </a>
+            <a href="#contact" className="transition hover:text-green-600">
+              Contact
+            </a>
           </nav>
 
           <div className="flex items-center gap-3">
@@ -111,7 +111,7 @@ export default function Home() {
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub"
-              className="rounded-full border border-green-500/20 bg-white/5 p-2 text-gray-300 transition hover:border-green-400/40 hover:text-green-300"
+              className="text-zinc-500 transition hover:text-green-600"
             >
               <GithubIcon />
             </a>
@@ -120,14 +120,14 @@ export default function Home() {
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
-              className="rounded-full border border-green-500/20 bg-white/5 p-2 text-gray-300 transition hover:border-green-400/40 hover:text-green-300"
+              className="text-zinc-500 transition hover:text-green-600"
             >
               <LinkedinIcon />
             </a>
             <a
               href="mailto:youremail@example.com"
               aria-label="Email"
-              className="rounded-full border border-green-500/20 bg-white/5 p-2 text-gray-300 transition hover:border-green-400/40 hover:text-green-300"
+              className="text-zinc-500 transition hover:text-green-600"
             >
               <MailIcon />
             </a>
@@ -135,294 +135,183 @@ export default function Home() {
         </div>
       </header>
 
-      <section id="home" className="mx-auto max-w-7xl px-6 pb-24 pt-14 md:pt-24">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
-          <div>
-            <p className="mb-5 text-sm uppercase tracking-[0.35em] text-green-400">
-              Technical Support Engineer
-            </p>
-
-            <h1 className="mb-6 text-5xl font-bold leading-[0.95] md:text-7xl">
-              Every problem
-              <span className="block text-green-400">has a solution.</span>
-            </h1>
-
-            <p className="mb-4 max-w-2xl text-lg leading-8 text-gray-300 md:text-xl">
-              I love being a technical support engineer. I love turning problems into
-              solutions, helping people through technical issues, and bringing clarity
-              to moments that feel messy or overwhelming.
-            </p>
-
-            <p className="mb-8 max-w-2xl text-base leading-8 text-gray-400 md:text-lg">
-              I’m also deeply interested in AI and how it can improve support workflows,
-              troubleshooting, and the way humans solve problems without losing the
-              human side of the work.
-            </p>
-
-            <div className="mb-10 flex flex-wrap gap-4">
-              <a
-                href="#contact"
-                className="rounded-2xl bg-green-500 px-6 py-3 font-semibold text-black transition hover:bg-green-400 hover:shadow-[0_0_30px_rgba(34,197,94,0.35)]"
-              >
-                Let&apos;s Connect
-              </a>
-              <a
-                href="#about"
-                className="rounded-2xl border border-green-500/30 px-6 py-3 font-semibold text-white transition hover:border-green-400 hover:bg-green-500/10"
-              >
-                Learn More
-              </a>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-3">
-              <div className="rounded-2xl border border-green-500/15 bg-white/5 p-4">
-                <p className="mb-1 text-2xl font-bold text-green-400">SaaS</p>
-                <p className="text-sm text-gray-400">Support and troubleshooting</p>
-              </div>
-              <div className="rounded-2xl border border-green-500/15 bg-white/5 p-4">
-                <p className="mb-1 text-2xl font-bold text-green-400">APIs</p>
-                <p className="text-sm text-gray-400">Integration and workflow debugging</p>
-              </div>
-              <div className="rounded-2xl border border-green-500/15 bg-white/5 p-4">
-                <p className="mb-1 text-2xl font-bold text-green-400">AI</p>
-                <p className="text-sm text-gray-400">Curiosity and future-facing thinking</p>
-              </div>
-            </div>
+      <section id="home" className="mx-auto max-w-6xl px-6 pt-16 pb-24 md:pt-24 md:pb-32">
+        <div className="flex flex-col items-center text-center">
+          <div className="mb-8 overflow-hidden rounded-full border-4 border-white shadow-xl">
+            <Image
+              src="/profile.jpg"
+              alt="Jawad Jazz Alhussein"
+              width={160}
+              height={160}
+              className="h-40 w-40 object-cover"
+              priority
+            />
           </div>
 
-          <div className="relative">
-            <div className="absolute -inset-6 rounded-[2rem] bg-green-500/10 blur-3xl" />
-            <div className="relative overflow-hidden rounded-[2rem] border border-green-500/15 bg-zinc-950/95 shadow-[0_0_40px_rgba(34,197,94,0.10)]">
-              <div className="flex items-center gap-2 border-b border-green-500/10 px-5 py-4">
-                <span className="h-3 w-3 rounded-full bg-green-500/70" />
-                <span className="h-3 w-3 rounded-full bg-white/20" />
-                <span className="h-3 w-3 rounded-full bg-white/10" />
-                <p className="ml-3 text-xs uppercase tracking-[0.35em] text-gray-500">
-                  Human + Tech
-                </p>
-              </div>
+          <h1 className="max-w-4xl text-4xl font-bold leading-tight md:text-6xl">
+            Technical Support Engineer
+            <span className="block text-green-600">turning problems into solutions.</span>
+          </h1>
 
-              <div className="p-6">
-                <div className="overflow-hidden rounded-[1.5rem] border border-green-500/10">
-                  <Image
-                    src="/profile.jpg"
-                    alt="Jawad Jazz Alhussein"
-                    width={900}
-                    height={1100}
-                    className="h-[430px] w-full object-cover"
-                    priority
-                  />
-                </div>
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-600 md:text-xl">
+            I love being a technical support engineer. I enjoy helping people, solving
+            technical issues, working through complex systems, and bringing clarity to
+            problems that feel overwhelming at first.
+          </p>
 
-                <div className="mt-4 grid grid-cols-2 gap-4">
-                  <div className="rounded-2xl border border-green-500/10 bg-white/5 p-4">
-                    <p className="mb-2 text-xs uppercase tracking-[0.3em] text-gray-500">
-                      Mindset
-                    </p>
-                    <p className="text-sm leading-6 text-gray-300">
-                      Calm under pressure. Solution focused.
-                    </p>
-                  </div>
-                  <div className="rounded-2xl border border-green-500/10 bg-white/5 p-4">
-                    <p className="mb-2 text-xs uppercase tracking-[0.3em] text-gray-500">
-                      Identity
-                    </p>
-                    <p className="text-sm leading-6 text-gray-300">
-                      Human first. Technical when needed. Both matter.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+          <p className="mt-4 max-w-3xl text-base leading-8 text-zinc-500 md:text-lg">
+            Every problem has a solution. That mindset drives how I work, how I think,
+            and why I also love learning about AI and its potential to improve support,
+            workflows, and human problem solving.
+          </p>
 
-      <section id="about" className="mx-auto max-w-7xl px-6 pb-20">
-        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-          <div>
-            <p className="mb-4 text-sm uppercase tracking-[0.35em] text-green-400">
-              About Me
-            </p>
-            <h2 className="text-3xl font-semibold leading-tight md:text-4xl">
-              Not just support.
-              <span className="block text-green-400">Support with thought.</span>
-            </h2>
-          </div>
-
-          <div className="rounded-[2rem] border border-green-500/15 bg-white/5 p-8">
-            <p className="mb-5 leading-8 text-gray-300">
-              My background is in technical support across SaaS environments where
-              customers need more than quick replies. They need someone who can
-              understand the issue, think clearly, communicate well, and help move
-              toward a real solution.
-            </p>
-            <p className="mb-5 leading-8 text-gray-400">
-              I enjoy the intersection of technology, communication, and problem
-              solving. That means troubleshooting product behavior, understanding
-              workflows, improving support processes, and helping people feel less
-              stuck when something goes wrong.
-            </p>
-            <p className="leading-8 text-gray-400">
-              I want my work to feel useful, sharp, and human. That’s the kind of
-              professional I’m building myself into.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-6 pb-20">
-        <div className="grid gap-5 lg:grid-cols-3">
-          {featuredCards.map((card) => (
-            <div
-              key={card.id}
-              className="group rounded-[2rem] border border-green-500/15 bg-white/5 p-7 transition hover:-translate-y-1 hover:border-green-400/35 hover:bg-green-500/[0.06]"
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="#contact"
+              className="rounded-full bg-green-600 px-6 py-3 font-medium text-white transition hover:bg-green-700"
             >
-              <p className="mb-5 text-5xl font-bold text-green-500/20">{card.id}</p>
-              <h3 className="mb-4 text-xl font-semibold transition group-hover:text-green-300">
-                {card.title}
-              </h3>
-              <p className="leading-8 text-gray-400">{card.text}</p>
+              Say Hello
+            </a>
+            <a
+              href="#about"
+              className="rounded-full border border-zinc-300 px-6 py-3 font-medium text-zinc-900 transition hover:border-green-600 hover:text-green-600"
+            >
+              Learn More
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-green-600 text-white">
+        <div className="mx-auto max-w-5xl px-6 py-16 text-center md:py-20">
+          <h2 className="text-2xl font-bold md:text-3xl">
+            I love solving technical problems and making support feel human.
+          </h2>
+          <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-green-50 md:text-lg">
+            I care about clear communication, thoughtful troubleshooting, and helping
+            people feel like they are talking to a real person who genuinely wants to help.
+          </p>
+        </div>
+      </section>
+
+      <section id="about" className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+        <div className="grid gap-8 md:grid-cols-3">
+          {focusCards.map((card) => (
+            <div
+              key={card.title}
+              className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+            >
+              <h3 className="mb-4 text-xl font-semibold text-zinc-900">{card.title}</h3>
+              <p className="leading-8 text-zinc-600">{card.description}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section id="skills" className="mx-auto max-w-7xl px-6 pb-20">
-        <div className="grid gap-8 lg:grid-cols-[1fr_0.8fr]">
-          <div className="rounded-[2rem] border border-green-500/15 bg-white/5 p-8">
-            <p className="mb-5 text-sm uppercase tracking-[0.35em] text-green-400">
-              Skills
-            </p>
-
-            <div className="space-y-8">
-              {skillGroups.map((group) => (
-                <div key={group.title}>
-                  <h3 className="mb-4 text-lg font-semibold">{group.title}</h3>
-                  <div className="flex flex-wrap gap-3">
-                    {group.items.map((item) => (
-                      <span
-                        key={item}
-                        className="rounded-full border border-green-500/20 bg-green-500/10 px-4 py-2 text-sm text-green-200"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-[2rem] border border-green-500/15 bg-white/5 p-8">
-            <p className="mb-5 text-sm uppercase tracking-[0.35em] text-green-400">
-              Tools
-            </p>
-
-            <div className="flex flex-wrap gap-3">
-              {tools.map((tool) => (
-                <span
-                  key={tool}
-                  className="rounded-full border border-green-500/20 bg-black px-4 py-2 text-sm text-gray-300"
-                >
-                  {tool}
-                </span>
-              ))}
+      <section id="skills" className="mx-auto max-w-6xl px-6 pb-20 md:pb-24">
+        <div className="rounded-[2rem] bg-zinc-50 px-6 py-10 md:px-10 md:py-12">
+          <div className="grid gap-10 md:grid-cols-2">
+            <div>
+              <h2 className="mb-5 text-2xl font-bold text-zinc-900">Skills</h2>
+              <div className="flex flex-wrap gap-3">
+                {skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full bg-white px-4 py-2 text-sm text-zinc-700 shadow-sm ring-1 ring-zinc-200"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
 
-            <div className="mt-8 rounded-2xl border border-green-500/10 bg-black/40 p-5">
-              <p className="mb-2 text-sm font-medium text-green-300">
-                What I care about most
-              </p>
-              <p className="leading-7 text-gray-400">
-                Solving the issue clearly, communicating like a real person, and
-                making the customer feel like they are in good hands.
-              </p>
+            <div>
+              <h2 className="mb-5 text-2xl font-bold text-zinc-900">Tools</h2>
+              <div className="flex flex-wrap gap-3">
+                {tools.map((tool) => (
+                  <span
+                    key={tool}
+                    className="rounded-full bg-white px-4 py-2 text-sm text-zinc-700 shadow-sm ring-1 ring-zinc-200"
+                  >
+                    {tool}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="human" className="mx-auto max-w-7xl px-6 pb-20">
-        <div className="rounded-[2rem] border border-green-500/15 bg-gradient-to-br from-green-500/10 to-transparent p-8 md:p-10">
-          <p className="mb-4 text-sm uppercase tracking-[0.35em] text-green-400">
+      <section id="human" className="mx-auto max-w-6xl px-6 pb-20 md:pb-24">
+        <div className="text-center">
+          <p className="text-sm font-medium uppercase tracking-[0.25em] text-green-600">
             I’m not a robot
           </p>
-
-          <h2 className="mb-4 text-3xl font-semibold md:text-4xl">
+          <h2 className="mt-4 text-3xl font-bold md:text-4xl">
             You want to know what I like to do for fun?
           </h2>
-
-          <p className="mb-8 max-w-2xl leading-8 text-gray-300">
-            Outside of work, I like staying active, being around the people I care
-            about, and actually enjoying life. I think that matters. The best
-            technical people are still human.
+          <p className="mx-auto mt-5 max-w-3xl leading-8 text-zinc-600">
+            Outside of work, I love staying active, spending time with people I care
+            about, and enjoying life. The best technical people are still human.
           </p>
+        </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {funItems.map((item) => (
-              <div
-                key={item}
-                className="rounded-2xl border border-green-500/15 bg-black/40 p-5 text-gray-300"
-              >
-                {item}
-              </div>
-            ))}
-          </div>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {funItems.map((item) => (
+            <div
+              key={item}
+              className="rounded-2xl border border-zinc-200 bg-white p-6 text-center text-zinc-700 shadow-sm"
+            >
+              {item}
+            </div>
+          ))}
         </div>
       </section>
 
-      <section id="contact" className="mx-auto max-w-7xl px-6 pb-24">
-        <div className="rounded-[2rem] border border-green-500/15 bg-white/5 p-8 md:p-10">
-          <p className="mb-4 text-sm uppercase tracking-[0.35em] text-green-400">
-            Contact
+      <section id="contact" className="bg-zinc-900 text-white">
+        <div className="mx-auto max-w-5xl px-6 py-20 text-center md:py-24">
+          <h2 className="text-3xl font-bold md:text-4xl">Let’s connect.</h2>
+          <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-zinc-300 md:text-lg">
+            I’m open to technical support, SaaS support, and adjacent roles where I
+            can solve problems, support people, and keep growing.
           </p>
 
-          <h2 className="mb-4 text-3xl font-semibold md:text-4xl">
-            Let’s connect.
-          </h2>
-
-          <p className="mb-8 max-w-2xl leading-8 text-gray-300">
-            I’m open to technical support, SaaS support, operations, and adjacent
-            roles where I can solve problems, support people, and keep growing.
-          </p>
-
-          <div className="grid gap-4 sm:grid-cols-3">
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
             <a
               href="mailto:youremail@example.com"
-              className="rounded-2xl border border-green-500/20 bg-black/40 p-5 transition hover:border-green-400/40 hover:bg-green-500/10"
+              className="rounded-2xl border border-zinc-700 bg-zinc-800 p-6 transition hover:border-green-500 hover:bg-zinc-850"
             >
-              <div className="mb-3 flex items-center gap-3 text-green-300">
+              <div className="mb-3 flex items-center justify-center gap-3 text-green-400">
                 <MailIcon />
                 <span className="font-medium">Email</span>
               </div>
-              <p className="break-all text-gray-300">youremail@example.com</p>
+              <p className="break-all text-zinc-300">youremail@example.com</p>
             </a>
 
             <a
               href="https://www.linkedin.com/in/YOUR-LINKEDIN/"
               target="_blank"
               rel="noreferrer"
-              className="rounded-2xl border border-green-500/20 bg-black/40 p-5 transition hover:border-green-400/40 hover:bg-green-500/10"
+              className="rounded-2xl border border-zinc-700 bg-zinc-800 p-6 transition hover:border-green-500"
             >
-              <div className="mb-3 flex items-center gap-3 text-green-300">
+              <div className="mb-3 flex items-center justify-center gap-3 text-green-400">
                 <LinkedinIcon />
                 <span className="font-medium">LinkedIn</span>
               </div>
-              <p className="text-gray-300">View profile</p>
+              <p className="text-zinc-300">View profile</p>
             </a>
 
             <a
               href="https://github.com/Jazz-1998"
               target="_blank"
               rel="noreferrer"
-              className="rounded-2xl border border-green-500/20 bg-black/40 p-5 transition hover:border-green-400/40 hover:bg-green-500/10"
+              className="rounded-2xl border border-zinc-700 bg-zinc-800 p-6 transition hover:border-green-500"
             >
-              <div className="mb-3 flex items-center gap-3 text-green-300">
+              <div className="mb-3 flex items-center justify-center gap-3 text-green-400">
                 <GithubIcon />
                 <span className="font-medium">GitHub</span>
               </div>
-              <p className="text-gray-300">View projects</p>
+              <p className="text-zinc-300">View projects</p>
             </a>
           </div>
         </div>
