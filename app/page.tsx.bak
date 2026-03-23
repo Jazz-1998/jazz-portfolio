@@ -1,0 +1,537 @@
+import Image from "next/image";
+import MobileMenu from "./components/MobileMenu";
+import ScrollReveal from "./components/ScrollReveal";
+
+/* ── Data ──────────────────────────────────────────────────────── */
+
+const showcaseCards = [
+  {
+    icon: "⚙️",
+    title: "Technical Support Engineer",
+    description:
+      "I help customers solve technical issues, understand systems, and feel genuinely supported through complex problems.",
+    label: "What I focus on",
+    items: ["SaaS support", "Troubleshooting", "Customer experience"],
+  },
+  {
+    icon: "🧠",
+    title: "Problem Solver",
+    description:
+      "I enjoy breaking down complex problems and turning them into clear, actionable solutions.",
+    label: "My mindset",
+    items: ["Every problem has a solution", "Clarity", "Ownership"],
+  },
+  {
+    icon: "🤖",
+    title: "AI Enthusiast",
+    description:
+      "I'm curious about AI and how it can improve support workflows and the way humans solve problems.",
+    label: "What I explore",
+    items: ["AI tools", "Automation", "Smarter support systems"],
+  },
+];
+
+
+const skills = [
+  { name: "Technical Troubleshooting", tag: "Support" },
+  { name: "Root Cause Analysis", tag: "Analytical" },
+  { name: "SaaS Support", tag: "Domain" },
+  { name: "API Debugging", tag: "Technical" },
+  { name: "Customer Issue Resolution", tag: "Support" },
+  { name: "Cross-Functional Collaboration", tag: "Teamwork" },
+  { name: "Documentation", tag: "Operations" },
+  { name: "Support Operations", tag: "Operations" },
+];
+
+const tools = ["SQL", "Postman", "Jira", "Datadog", "AWS", "Freshdesk", "Notion", "GitHub"];
+
+const funItems = [
+  { label: "Playing soccer", icon: "⚽" },
+  { label: "Playing FIFA", icon: "🎮" },
+  { label: "Traveling", icon: "✈️" },
+  { label: "Spending time with family", icon: "❤️" },
+  { label: "Walking outside", icon: "🚶" },
+  { label: "Working out", icon: "💪" },
+];
+
+const navLinks = [
+  { label: "About", href: "#about" },
+  { label: "Story", href: "#story" },
+  { label: "Skills", href: "#skills" },
+  { label: "Human", href: "#human" },
+  { label: "Contact", href: "#contact" },
+];
+
+const MARQUEE_A =
+  "EVERY PROBLEM HAS A SOLUTION  ✦  TECHNICAL SUPPORT ENGINEER  ✦  PROBLEM SOLVER  ✦  CLARITY  ✦  OWNERSHIP  ✦  ";
+
+/* ── Icons ─────────────────────────────────────────────────────── */
+
+function GithubIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden="true">
+      <path d="M12 2C6.477 2 2 6.589 2 12.248c0 4.526 2.865 8.367 6.839 9.722.5.096.682-.221.682-.492 0-.244-.009-.89-.014-1.747-2.782.617-3.369-1.37-3.369-1.37-.455-1.177-1.11-1.49-1.11-1.49-.908-.636.069-.623.069-.623 1.004.072 1.532 1.053 1.532 1.053.892 1.566 2.341 1.114 2.91.852.091-.664.35-1.114.636-1.37-2.221-.259-4.555-1.14-4.555-5.073 0-1.12.39-2.036 1.029-2.753-.103-.26-.446-1.307.097-2.724 0 0 .84-.276 2.75 1.051A9.303 9.303 0 0 1 12 6.836a9.27 9.27 0 0 1 2.504.347c1.909-1.327 2.747-1.051 2.747-1.051.545 1.417.202 2.464.1 2.724.64.717 1.027 1.633 1.027 2.753 0 3.943-2.338 4.811-4.566 5.065.359.318.679.946.679 1.907 0 1.377-.012 2.488-.012 2.826 0 .273.18.592.688.491C19.138 20.611 22 16.772 22 12.248 22 6.589 17.523 2 12 2Z" />
+    </svg>
+  );
+}
+
+function LinkedinIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden="true">
+      <path d="M6.94 8.5H3.56V19.5h3.38V8.5ZM5.25 3C4.14 3 3.25 3.91 3.25 5.03c0 1.11.89 2.02 2 2.02 1.11 0 2-.91 2-2.02C7.25 3.91 6.36 3 5.25 3Zm14.5 9.67c0-3.11-1.66-4.56-3.88-4.56-1.79 0-2.59.99-3.04 1.68V8.5H9.45c.04.85 0 11 0 11h3.38v-6.14c0-.33.02-.66.12-.9.26-.66.86-1.35 1.86-1.35 1.31 0 1.84 1.02 1.84 2.52v5.87h3.38l.02-6.83Z" />
+    </svg>
+  );
+}
+
+function ArrowUpRight() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5" aria-hidden="true">
+      <path d="M7 17L17 7M17 7H7M17 7v10" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+/* ── Page ──────────────────────────────────────────────────────── */
+
+export default function Home() {
+  return (
+    <main className="bg-[#f5f5f3] text-zinc-900 selection:bg-green-500 selection:text-white">
+
+      {/* ── Header ───────────────────────────────────── */}
+      <header className="relative sticky top-0 z-50 border-b border-zinc-900/10 bg-[#f5f5f3]/90 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+          <a href="#home" className="text-sm font-black tracking-widest uppercase text-zinc-900">
+            Jazz
+          </a>
+          <nav className="hidden items-center gap-8 text-xs font-bold uppercase tracking-widest text-zinc-400 md:flex">
+            {navLinks.map(({ label, href }) => (
+              <a key={label} href={href} className="transition hover:text-green-600">
+                {label}
+              </a>
+            ))}
+          </nav>
+          <div className="flex items-center gap-3">
+            <a href="https://github.com/Jazz-1998" target="_blank" rel="noreferrer" aria-label="GitHub" className="text-zinc-400 transition hover:text-zinc-900">
+              <GithubIcon />
+            </a>
+            <a href="https://www.linkedin.com/in/jawad-alhussein/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-zinc-400 transition hover:text-zinc-900">
+              <LinkedinIcon />
+            </a>
+            <MobileMenu />
+          </div>
+        </div>
+      </header>
+
+      {/* ── Hero ─────────────────────────────────────── */}
+      <section
+        id="home"
+        className="dot-grid relative flex min-h-[95svh] flex-col items-center justify-center overflow-hidden"
+      >
+        {/* blobs */}
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+          <div className="absolute -top-56 right-0 h-[700px] w-[700px] rounded-full bg-green-400/8 blur-3xl animate-pulse-glow" />
+          <div className="absolute -bottom-40 -left-40 h-[500px] w-[500px] rounded-full bg-green-300/6 blur-3xl animate-pulse-glow" style={{ animationDelay: "2.5s" }} />
+        </div>
+
+        {/* giant watermark */}
+        <span
+          className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 select-none whitespace-nowrap font-black uppercase leading-none text-zinc-900/[0.035]"
+          style={{ fontSize: "clamp(7rem, 28vw, 30rem)" }}
+          aria-hidden="true"
+        >
+          JAZZ
+        </span>
+
+        <div className="relative mx-auto flex max-w-5xl flex-col items-center px-6 py-20 text-center">
+
+          {/* photo */}
+          <div className="animate-fade-in-up mb-10">
+            <div className="relative inline-block">
+              <div
+                className="absolute inset-0 scale-125 rounded-full animate-pulse-glow"
+                style={{ background: "radial-gradient(circle, rgba(34,197,94,0.22) 0%, transparent 70%)" }}
+              />
+              <div className="relative overflow-hidden rounded-full border-[5px] border-white shadow-2xl ring-4 ring-green-500/15">
+                <Image
+                  src="/profile.jpg"
+                  alt="Jawad Jazz Alhussein"
+                  width={256}
+                  height={256}
+                  className="h-52 w-52 object-cover md:h-60 md:w-60"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* badge */}
+          <div className="animate-fade-in-up-1 mb-8">
+            <span className="inline-flex items-center gap-2.5 rounded-full border border-green-200 bg-green-50 px-5 py-2 text-xs font-black uppercase tracking-[0.3em] text-green-700">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-green-500" />
+              Technical Support Engineer
+            </span>
+          </div>
+
+          {/* headline */}
+          <div className="animate-fade-in-up-2">
+            <h1
+              className="font-black leading-[1.0] tracking-tight text-zinc-950"
+              style={{ fontSize: "clamp(3.2rem, 9vw, 8rem)" }}
+            >
+              Every problem
+              <span className="block bg-gradient-to-br from-green-500 via-green-600 to-green-800 bg-clip-text text-transparent">
+                has a solution.
+              </span>
+            </h1>
+          </div>
+
+          {/* body + CTAs */}
+          <div className="animate-fade-in-up-3">
+            <p className="mx-auto mt-8 max-w-lg text-lg leading-8 text-zinc-500 md:text-xl">
+              I love helping people, solving technical problems, and bringing
+              clarity to things that feel overwhelming. That smile when it
+              finally clicks — that&apos;s everything.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+              <a
+                href="#contact"
+                className="rounded-full bg-zinc-950 px-8 py-4 text-sm font-bold uppercase tracking-widest text-white shadow-xl transition hover:-translate-y-0.5 hover:bg-zinc-800 hover:shadow-2xl"
+              >
+                Say Hello
+              </a>
+              <a
+                href="#story"
+                className="rounded-full border border-zinc-300 bg-white px-8 py-4 text-sm font-bold uppercase tracking-widest text-zinc-700 shadow-sm transition hover:-translate-y-0.5 hover:border-green-400 hover:text-green-600"
+              >
+                My Story ↓
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── Dual marquee ─────────────────────────────── */}
+      <div className="overflow-hidden border-y border-zinc-900 bg-zinc-950 py-4" aria-hidden="true">
+        <div className="marquee-track">
+          {[0, 1].map((i) => (
+            <span key={i} className="pr-4 text-[11px] font-black uppercase tracking-[0.3em] text-zinc-500">
+              {MARQUEE_A.repeat(4)}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Story ─────────────────────────────────────── */}
+      <section id="story" className="bg-zinc-950 text-white">
+        <div className="mx-auto max-w-6xl px-6 py-24 md:py-36">
+          <div className="grid gap-20 md:grid-cols-2 md:items-start">
+
+            {/* left */}
+            <div>
+              <ScrollReveal>
+                <p className="mb-5 text-[10px] font-black uppercase tracking-[0.4em] text-green-500">
+                  My Story
+                </p>
+                <h2
+                  className="font-black leading-[1.0] tracking-tight text-white"
+                  style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)" }}
+                >
+                  Where it all
+                  <br />
+                  <span className="text-green-500">started.</span>
+                </h2>
+              </ScrollReveal>
+
+              <ScrollReveal delay={1}>
+                <div className="mt-10 space-y-6 text-base leading-9 text-zinc-400 md:text-[17px]">
+                  <p>
+                    &ldquo;Every problem has a solution&rdquo; — this isn&apos;t just
+                    a career motto. It&apos;s how I&apos;ve lived my whole life.
+                  </p>
+                  <p>
+                    When I was a kid, my dad would always ask for my help. Painting,
+                    cutting the grass, fixing things around the house. And whenever I
+                    ran into a problem, I never stopped — I found a way through it.
+                    Every. Single. Time.
+                  </p>
+                  <p>
+                    That instinct never left me. The belief that no matter what you
+                    face, there is always a solution on the other side. Without
+                    solutions, everything would collapse — and that&apos;s not something
+                    I&apos;m willing to accept.
+                  </p>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            {/* right — stacked raw quote */}
+            <ScrollReveal delay={2}>
+              <div className="md:pt-16">
+                <div className="mb-8 h-px w-10 bg-green-500" />
+                <p
+                  className="font-black leading-[1.15] tracking-tight"
+                  style={{ fontSize: "clamp(1.8rem, 3.5vw, 3.2rem)" }}
+                >
+                  <span className="text-white">I love helping people.</span>
+                  <br />
+                  <span className="text-zinc-600">And when I see their smile —</span>
+                  <br />
+                  <span className="text-zinc-600">when I know their problem</span>
+                  <br />
+                  <span className="text-zinc-600">is solved —</span>
+                  <br />
+                  <span className="text-green-400">it makes me feel alive.</span>
+                </p>
+                <div className="mt-10 h-px w-full bg-zinc-800" />
+                <p className="mt-6 text-sm leading-8 text-zinc-500">
+                  That feeling is why I became a technical support engineer. Not to
+                  fix bugs or read logs — but to genuinely care, stay until the
+                  problem is gone, and make sure every person feels heard.
+                </p>
+              </div>
+            </ScrollReveal>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ── What I do ────────────────────────────────── */}
+      <section className="bg-[#f5f5f3] py-20 md:py-28">
+        <div className="mx-auto max-w-6xl px-6">
+          <ScrollReveal>
+            <div className="mb-14">
+              <p className="mb-3 text-[10px] font-black uppercase tracking-[0.4em] text-green-600">
+                What I do
+              </p>
+              <h2
+                className="font-black leading-tight tracking-tight text-zinc-950"
+                style={{ fontSize: "clamp(2rem, 4.5vw, 4rem)" }}
+              >
+                How I show up.
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid gap-5 md:grid-cols-3">
+            {showcaseCards.map((card, i) => (
+              <ScrollReveal key={card.title} delay={((i + 1) as 1 | 2 | 3)}>
+                <div className="group flex h-full flex-col rounded-3xl border border-zinc-200/80 bg-white p-8 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:shadow-2xl">
+                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-zinc-950 text-lg text-white transition duration-300 group-hover:bg-green-600">
+                    {card.icon}
+                  </div>
+                  <h3 className="mb-3 text-lg font-black tracking-tight">{card.title}</h3>
+                  <p className="mb-6 flex-1 text-sm leading-7 text-zinc-500">{card.description}</p>
+                  <div className="border-t border-zinc-100 pt-5">
+                    <p className="mb-3 text-[10px] font-black uppercase tracking-[0.3em] text-green-600">{card.label}</p>
+                    <div className="space-y-2 text-xs text-zinc-400">
+                      {card.items.map((item) => (
+                        <p key={item} className="flex items-center gap-2">
+                          <span className="h-px w-3 bg-green-400 inline-block shrink-0" />
+                          {item}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+
+      {/* ── Skills & Tools ────────────────────────────── */}
+      <section id="skills" className="py-20 md:py-28">
+        <div className="mx-auto max-w-6xl px-6">
+          <ScrollReveal>
+            <div className="mb-16">
+              <p className="mb-3 text-[10px] font-black uppercase tracking-[0.4em] text-green-600">
+                Skills & Tools
+              </p>
+              <h2
+                className="font-black leading-tight tracking-tight text-zinc-950"
+                style={{ fontSize: "clamp(2rem, 4.5vw, 4rem)" }}
+              >
+                What I work with.
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid gap-14 md:grid-cols-[1.5fr_1fr] md:gap-20">
+
+            {/* Skills — indexed list */}
+            <ScrollReveal delay={1}>
+              <div>
+                <p className="mb-6 text-[10px] font-black uppercase tracking-[0.35em] text-zinc-400">
+                  Skills
+                </p>
+                <div className="divide-y divide-zinc-100">
+                  {skills.map((skill, i) => (
+                    <div
+                      key={skill.name}
+                      className="group -mx-4 flex cursor-default items-center gap-5 rounded-xl px-4 py-4 transition duration-200 hover:bg-zinc-50"
+                    >
+                      <span className="w-7 shrink-0 text-xs font-black tabular-nums text-zinc-200 transition duration-200 group-hover:text-green-500">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="flex-1 text-sm font-semibold text-zinc-900 transition duration-200 group-hover:text-green-700 md:text-[15px]">
+                        {skill.name}
+                      </span>
+                      <span className="shrink-0 rounded-full bg-zinc-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-zinc-400 transition duration-200 group-hover:bg-green-100 group-hover:text-green-700">
+                        {skill.tag}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Tools */}
+            <ScrollReveal delay={2}>
+              <div>
+                <p className="mb-6 text-[10px] font-black uppercase tracking-[0.35em] text-zinc-400">
+                  Tools
+                </p>
+
+                <div className="grid grid-cols-2 gap-2.5">
+                  {tools.map((tool) => (
+                    <div
+                      key={tool}
+                      className="group flex cursor-default items-center gap-3 rounded-2xl border border-zinc-200 bg-white px-4 py-3.5 transition duration-200 hover:border-green-300 hover:bg-green-50"
+                    >
+                      <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-green-500 transition duration-200 group-hover:scale-125" />
+                      <span className="text-sm font-bold text-zinc-800 transition duration-200 group-hover:text-green-800">{tool}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* stack line */}
+                <div className="mt-5 overflow-hidden rounded-2xl bg-zinc-950 px-5 py-4">
+                  <p className="mb-1.5 text-[9px] font-black uppercase tracking-[0.35em] text-zinc-600">
+                    Stack
+                  </p>
+                  <p className="font-mono text-[11px] leading-7 text-zinc-500">
+                    {tools.join("  ·  ")}
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ── Human ─────────────────────────────────────── */}
+      <section id="human" className="border-t border-zinc-200 bg-white py-20 md:py-28">
+        <div className="mx-auto max-w-6xl px-6">
+          <ScrollReveal>
+            <div className="mb-16 grid md:grid-cols-2 md:items-end md:gap-12">
+              <div>
+                <p className="mb-3 text-[10px] font-black uppercase tracking-[0.4em] text-green-600">
+                  I&apos;m not a robot
+                </p>
+                <h2
+                  className="font-black leading-tight tracking-tight text-zinc-950"
+                  style={{ fontSize: "clamp(2rem, 4.5vw, 4rem)" }}
+                >
+                  Outside of work.
+                </h2>
+              </div>
+              <p className="mt-4 text-sm leading-8 text-zinc-500 md:mt-0 md:text-base">
+                The best technical people are still fully human. Here&apos;s what keeps
+                me grounded, energized, and alive outside the terminal.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {funItems.map((item, i) => (
+              <ScrollReveal key={item.label} delay={((i % 3) + 1) as 1 | 2 | 3}>
+                <div className="group flex h-full items-center gap-4 rounded-2xl border border-zinc-100 bg-[#f5f5f3] p-6 transition duration-200 hover:-translate-y-1 hover:border-green-200 hover:bg-white hover:shadow-lg">
+                  <span className="text-2xl transition duration-200 group-hover:scale-110">{item.icon}</span>
+                  <span className="text-sm font-semibold text-zinc-700 transition duration-200 group-hover:text-green-700">
+                    {item.label}
+                  </span>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Contact ───────────────────────────────────── */}
+      <section id="contact" className="relative overflow-hidden bg-zinc-950 text-white">
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+          <div className="absolute bottom-0 left-1/2 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-green-500/4 blur-3xl" />
+          <div className="absolute top-0 right-0 h-64 w-64 rounded-full bg-green-500/3 blur-3xl" />
+        </div>
+
+        <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-40">
+          <ScrollReveal>
+            <p className="mb-6 text-[10px] font-black uppercase tracking-[0.4em] text-green-500">
+              Get in touch
+            </p>
+            <h2
+              className="font-black leading-tight tracking-tight text-white"
+              style={{ fontSize: "clamp(2.5rem, 6vw, 6rem)" }}
+            >
+              Let&apos;s connect.
+            </h2>
+            <p className="mt-6 max-w-md text-base leading-8 text-zinc-500">
+              Open to technical support, SaaS support, and adjacent roles
+              where I can solve problems, support people, and keep growing.
+            </p>
+          </ScrollReveal>
+
+          {/* Big email CTA */}
+          <ScrollReveal delay={1}>
+            <div className="mt-16 border-t border-zinc-800 pt-10">
+              <a
+                href="mailto:alhusseinjazz@gmail.com"
+                className="group flex items-center justify-between gap-6 transition"
+              >
+                <span
+                  className="font-black leading-none text-zinc-400 transition duration-300 group-hover:text-white"
+                  style={{ fontSize: "clamp(1rem, 3vw, 2.8rem)" }}
+                >
+                  alhusseinjazz@gmail.com
+                </span>
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-zinc-700 text-zinc-600 transition duration-300 group-hover:border-green-500 group-hover:bg-green-500 group-hover:text-white md:h-16 md:w-16">
+                  <ArrowUpRight />
+                </div>
+              </a>
+              <div className="mt-5 h-px w-full bg-zinc-800" />
+            </div>
+          </ScrollReveal>
+
+          {/* Secondary links */}
+          <ScrollReveal delay={2}>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="https://www.linkedin.com/in/jawad-alhussein/"
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-center gap-2.5 rounded-full border border-zinc-800 px-5 py-3 text-xs font-bold uppercase tracking-widest text-zinc-500 transition duration-200 hover:border-zinc-600 hover:text-white"
+              >
+                <LinkedinIcon />
+                LinkedIn
+              </a>
+              <a
+                href="https://github.com/Jazz-1998"
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-center gap-2.5 rounded-full border border-zinc-800 px-5 py-3 text-xs font-bold uppercase tracking-widest text-zinc-500 transition duration-200 hover:border-zinc-600 hover:text-white"
+              >
+                <GithubIcon />
+                GitHub
+              </a>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+    </main>
+  );
+}

@@ -1,84 +1,98 @@
-import Image from "next/image";
+import MobileMenu from "./components/MobileMenu";
+import ScrollReveal from "./components/ScrollReveal";
+import Hero from "./components/Hero";
+
+/* ── Data ──────────────────────────────────────────────────────── */
 
 const showcaseCards = [
   {
     icon: "⚙️",
     title: "Technical Support Engineer",
     description:
-      "I help customers solve technical issues, understand systems, and feel supported through complex problems.",
-    label: "What I focus on",
+      "I help customers solve technical issues, understand complex systems, and feel genuinely supported.",
     items: ["SaaS support", "Troubleshooting", "Customer experience"],
   },
   {
     icon: "🧠",
     title: "Problem Solver",
     description:
-      "I enjoy breaking down complex problems and turning them into clear, actionable solutions.",
-    label: "My mindset",
-    items: ["Every problem has a solution", "Clarity", "Ownership"],
+      "I break down complex problems into clear, actionable solutions — every single time.",
+    items: ["Root cause analysis", "Clarity", "Ownership"],
   },
   {
     icon: "🤖",
     title: "AI Enthusiast",
     description:
-      "I’m curious about AI and how it can improve support workflows and the way humans solve problems.",
-    label: "What I explore",
-    items: ["AI tools", "Automation", "Smarter support systems"],
-  },
-];
-
-const proofPoints = [
-  {
-    number: "01",
-    title: "SaaS Support Experience",
-    text: "Worked in fast-moving support environments where clear communication, ownership, and strong troubleshooting mattered.",
-  },
-  {
-    number: "02",
-    title: "API and Workflow Troubleshooting",
-    text: "Used tools like SQL, Postman, Jira, Datadog, and AWS to investigate issues and support technical workflows.",
-  },
-  {
-    number: "03",
-    title: "Operations and Documentation",
-    text: "Helped improve support workflows, reduce confusion, and create clearer internal knowledge for teams.",
+      "I explore how AI can sharpen support workflows and make humans more effective, not less human.",
+    items: ["AI tools", "Automation", "Smarter systems"],
   },
 ];
 
 const skills = [
-  "Technical Troubleshooting",
-  "Root Cause Analysis",
-  "SaaS Support",
-  "API Debugging",
-  "Customer Issue Resolution",
-  "Cross-Functional Collaboration",
-  "Documentation",
-  "Support Operations",
+  { name: "Technical Troubleshooting", tag: "Support" },
+  { name: "Root Cause Analysis", tag: "Analytical" },
+  { name: "SaaS Support", tag: "Domain" },
+  { name: "API Debugging", tag: "Technical" },
+  { name: "Customer Issue Resolution", tag: "Support" },
+  { name: "Cross-Functional Collaboration", tag: "Teamwork" },
+  { name: "Documentation", tag: "Operations" },
+  { name: "Support Operations", tag: "Operations" },
 ];
 
-const tools = [
-  "SQL",
-  "Postman",
-  "Jira",
-  "Datadog",
-  "AWS",
-  "Freshdesk",
-  "Notion",
-  "GitHub",
+const tools = ["SQL", "Postman", "Jira", "Datadog", "AWS", "Freshdesk", "Notion", "GitHub"];
+
+const programming = [
+  {
+    name: "HTML",
+    color: "#E34F26",
+    bg: "#FFF1EC",
+    path: "M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z",
+  },
+  {
+    name: "CSS",
+    color: "#663399",
+    bg: "#F5EEFF",
+    path: "M0 0v20.16A3.84 3.84 0 0 0 3.84 24h16.32A3.84 3.84 0 0 0 24 20.16V3.84A3.84 3.84 0 0 0 20.16 0Zm14.256 13.08c1.56 0 2.28 1.08 2.304 2.64h-1.608c.024-.288-.048-.6-.144-.84-.096-.192-.288-.264-.552-.264-.456 0-.696.264-.696.84-.024.576.288.888.768 1.08.72.288 1.608.744 1.92 1.296q.432.648.432 1.656c0 1.608-.912 2.592-2.496 2.592-1.656 0-2.4-1.032-2.424-2.688h1.68c0 .792.264 1.176.792 1.176.264 0 .456-.072.552-.24.192-.312.24-1.176-.048-1.512-.312-.408-.912-.6-1.32-.816q-.828-.396-1.224-.936c-.24-.36-.36-.888-.36-1.536 0-1.44.936-2.472 2.424-2.448m5.4 0c1.584 0 2.304 1.08 2.328 2.64h-1.608c0-.288-.048-.6-.168-.84-.096-.192-.264-.264-.528-.264-.48 0-.72.264-.72.84s.288.888.792 1.08c.696.288 1.608.744 1.92 1.296.264.432.408.984.408 1.656.024 1.608-.888 2.592-2.472 2.592-1.68 0-2.424-1.056-2.448-2.688h1.68c0 .744.264 1.176.792 1.176.264 0 .456-.072.552-.24.216-.312.264-1.176-.048-1.512-.288-.408-.888-.6-1.32-.816-.552-.264-.96-.576-1.2-.936s-.36-.888-.36-1.536c-.024-1.44.912-2.472 2.4-2.448m-11.031.018c.711-.006 1.419.198 1.839.63.432.432.672 1.128.648 1.992H9.336c.024-.456-.096-.792-.432-.96-.312-.144-.768-.048-.888.24-.12.264-.192.576-.168.864v3.504c0 .744.264 1.128.768 1.128a.65.65 0 0 0 .552-.264c.168-.24.192-.552.168-.84h1.776c.096 1.632-.984 2.712-2.568 2.688-1.536 0-2.496-.864-2.472-2.472v-4.032c0-.816.24-1.44.696-1.848.432-.408 1.146-.624 1.857-.63",
+  },
+  {
+    name: "JavaScript",
+    color: "#B8860B",
+    bg: "#FFFBEA",
+    path: "M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z",
+  },
+  {
+    name: "PHP",
+    color: "#777BB4",
+    bg: "#F0F0FF",
+    path: "M7.01 10.207h-.944l-.515 2.648h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29zM12 5.688C5.373 5.688 0 8.514 0 12s5.373 6.313 12 6.313S24 15.486 24 12c0-3.486-5.373-6.312-12-6.312zm-3.26 7.451c-.261.25-.575.438-.917.551-.336.108-.765.164-1.285.164H5.357l-.327 1.681H3.652l1.23-6.326h2.65c.797 0 1.378.209 1.744.628.366.418.476 1.002.33 1.752a2.836 2.836 0 0 1-.305.847c-.143.255-.33.49-.561.703zm4.024.715l.543-2.799c.063-.318.039-.536-.068-.651-.107-.116-.336-.174-.687-.174H11.46l-.704 3.625H9.388l1.23-6.327h1.367l-.327 1.682h1.218c.767 0 1.295.134 1.586.401s.378.7.263 1.299l-.572 2.944h-1.389zm7.597-2.265a2.782 2.782 0 0 1-.305.847c-.143.255-.33.49-.561.703a2.44 2.44 0 0 1-.917.551c-.336.108-.765.164-1.286.164h-1.18l-.327 1.682h-1.378l1.23-6.326h2.649c.797 0 1.378.209 1.744.628.366.417.477 1.001.331 1.751zM17.766 10.207h-.943l-.516 2.648h.838c.557 0 .971-.105 1.242-.314.272-.21.455-.559.551-1.049.092-.47.049-.802-.125-.995s-.524-.29-1.047-.29z",
+  },
 ];
 
 const funItems = [
-  "Playing soccer",
-  "Playing FIFA",
-  "Traveling",
-  "Spending time with family",
-  "Walking outside",
-  "Working out",
+  { label: "Playing soccer", icon: "⚽" },
+  { label: "Playing FIFA", icon: "🎮" },
+  { label: "Traveling", icon: "✈️" },
+  { label: "Spending time with family", icon: "❤️" },
+  { label: "Walking outside", icon: "🚶" },
+  { label: "Working out", icon: "💪" },
 ];
+
+const navLinks = [
+  { label: "About", href: "#about" },
+  { label: "Story", href: "#story" },
+  { label: "Skills", href: "#skills" },
+  { label: "Human", href: "#human" },
+  { label: "Contact", href: "#contact" },
+];
+
+const MARQUEE =
+  "EVERY PROBLEM HAS A SOLUTION  ✦  TECHNICAL SUPPORT ENGINEER  ✦  PROBLEM SOLVER  ✦  CLARITY  ✦  OWNERSHIP  ✦  ";
+
+/* ── Icons ─────────────────────────────────────────────────────── */
 
 function GithubIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6" aria-hidden="true">
       <path d="M12 2C6.477 2 2 6.589 2 12.248c0 4.526 2.865 8.367 6.839 9.722.5.096.682-.221.682-.492 0-.244-.009-.89-.014-1.747-2.782.617-3.369-1.37-3.369-1.37-.455-1.177-1.11-1.49-1.11-1.49-.908-.636.069-.623.069-.623 1.004.072 1.532 1.053 1.532 1.053.892 1.566 2.341 1.114 2.91.852.091-.664.35-1.114.636-1.37-2.221-.259-4.555-1.14-4.555-5.073 0-1.12.39-2.036 1.029-2.753-.103-.26-.446-1.307.097-2.724 0 0 .84-.276 2.75 1.051A9.303 9.303 0 0 1 12 6.836a9.27 9.27 0 0 1 2.504.347c1.909-1.327 2.747-1.051 2.747-1.051.545 1.417.202 2.464.1 2.724.64.717 1.027 1.633 1.027 2.753 0 3.943-2.338 4.811-4.566 5.065.359.318.679.946.679 1.907 0 1.377-.012 2.488-.012 2.826 0 .273.18.592.688.491C19.138 20.611 22 16.772 22 12.248 22 6.589 17.523 2 12 2Z" />
     </svg>
   );
@@ -86,329 +100,335 @@ function GithubIcon() {
 
 function LinkedinIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6" aria-hidden="true">
       <path d="M6.94 8.5H3.56V19.5h3.38V8.5ZM5.25 3C4.14 3 3.25 3.91 3.25 5.03c0 1.11.89 2.02 2 2.02 1.11 0 2-.91 2-2.02C7.25 3.91 6.36 3 5.25 3Zm14.5 9.67c0-3.11-1.66-4.56-3.88-4.56-1.79 0-2.59.99-3.04 1.68V8.5H9.45c.04.85 0 11 0 11h3.38v-6.14c0-.33.02-.66.12-.9.26-.66.86-1.35 1.86-1.35 1.31 0 1.84 1.02 1.84 2.52v5.87h3.38l.02-6.83Z" />
     </svg>
   );
 }
 
-function MailIcon() {
+
+function Label({ children, light = false }: { children: React.ReactNode; light?: boolean }) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      className="h-5 w-5"
-      aria-hidden="true"
-    >
-      <path d="M3.75 6.75h16.5v10.5H3.75z" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="m4.5 7.5 7.5 6 7.5-6" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+    <p className={`mb-4 text-[11px] font-bold uppercase tracking-[0.25em] ${light ? "text-green-400" : "text-green-600"}`}>
+      {children}
+    </p>
   );
 }
 
+/* ── Page ──────────────────────────────────────────────────────── */
+
 export default function Home() {
   return (
-    <main className="bg-[#f6f6f6] text-zinc-900 selection:bg-green-500 selection:text-white">
-      <header className="sticky top-0 z-50 border-b border-zinc-200/80 bg-white/85 backdrop-blur-xl">
+    <main className="bg-[#f5f5f3] text-zinc-900 selection:bg-green-500 selection:text-white">
+
+      {/* ── Header ───────────────────────────────────── */}
+      <header className="relative sticky top-0 z-50 border-b border-zinc-200 bg-white/95 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a href="#home" className="text-sm font-semibold tracking-wide text-zinc-900">
+          <a href="#home" className="text-base font-black uppercase tracking-widest text-zinc-900 transition hover:text-green-600">
             Jazz
           </a>
-
-          <nav className="hidden items-center gap-8 text-sm text-zinc-600 md:flex">
-            <a href="#about" className="transition hover:text-green-600">
-              About
-            </a>
-            <a href="#skills" className="transition hover:text-green-600">
-              Skills
-            </a>
-            <a href="#human" className="transition hover:text-green-600">
-              Human
-            </a>
-            <a href="#contact" className="transition hover:text-green-600">
-              Contact
-            </a>
+          <nav className="hidden items-center gap-8 md:flex">
+            {navLinks.map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                className="text-base font-bold uppercase tracking-widest text-zinc-900 transition hover:text-green-600"
+              >
+                {label}
+              </a>
+            ))}
           </nav>
-
-          <div className="flex items-center gap-3">
-            <a
-              href="https://github.com/Jazz-1998"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub"
-              className="text-zinc-500 transition hover:text-green-600"
-            >
+          <div className="flex items-center gap-4">
+            <a href="https://github.com/Jazz-1998" target="_blank" rel="noreferrer" aria-label="GitHub" className="text-zinc-900 transition hover:text-green-600">
               <GithubIcon />
             </a>
-            <a
-              href="https://www.linkedin.com/in/jawad-alhussein/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              className="text-zinc-500 transition hover:text-green-600"
-            >
+            <a href="https://www.linkedin.com/in/jawad-alhussein/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-zinc-900 transition hover:text-green-600">
               <LinkedinIcon />
             </a>
-            <a
-              href="mailto:alhusseinjazz@gmail.com"
-              aria-label="Email"
-              className="text-zinc-500 transition hover:text-green-600"
-            >
-              <MailIcon />
-            </a>
+            <MobileMenu />
           </div>
         </div>
       </header>
 
-      <section id="home" className="mx-auto max-w-6xl px-6 pt-16 pb-24 md:pt-24 md:pb-28">
-        <div className="flex flex-col items-center text-center">
-          <div className="relative mb-8">
-            <div className="absolute inset-0 rounded-full bg-green-500/20 blur-2xl" />
-            <div className="relative overflow-hidden rounded-full border-4 border-white shadow-xl">
-              <Image
-                src="/profile.jpg"
-                alt="Jawad Jazz Alhussein"
-                width={168}
-                height={168}
-                className="h-40 w-40 object-cover md:h-44 md:w-44"
-                priority
-              />
-            </div>
-          </div>
+      {/* ── Hero ─────────────────────────────────────── */}
+      <Hero />
 
-          <p className="mb-3 text-sm uppercase tracking-[0.35em] text-green-600">
-            Technical Support Engineer
-          </p>
-
-          <h1 className="max-w-4xl text-4xl font-bold leading-tight md:text-6xl">
-            Every problem has a solution.
-            <span className="mt-2 block text-green-600">
-              I turn confusion into clarity.
+      {/* ── Marquee ──────────────────────────────────── */}
+      <div className="overflow-hidden border-y border-[#1c1c1c] bg-[#0c0c0c] py-4" aria-hidden="true">
+        <div className="marquee-track">
+          {[0, 1].map((i) => (
+            <span key={i} className="pr-6 text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-600">
+              {MARQUEE.repeat(4)}
             </span>
-          </h1>
+          ))}
+        </div>
+      </div>
 
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-600 md:text-xl">
-            I love being a technical support engineer. I enjoy helping people, solving
-            technical issues, working through complex systems, and bringing clarity to
-            problems that feel overwhelming at first.
-          </p>
+      {/* ── Story ─────────────────────────────────────── */}
+      <section id="story" className="bg-[#0c0c0c] text-white">
+        <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+          <div className="grid gap-16 md:grid-cols-2 md:gap-24">
 
-          <p className="mt-4 max-w-3xl text-base leading-8 text-zinc-500 md:text-lg">
-            I also love AI and how it can improve support, workflows, and the way humans
-            solve problems without losing the human side of the work.
-          </p>
+            {/* left */}
+            <div>
+              <ScrollReveal>
+                <Label light>My Story</Label>
+                <h2 className="text-4xl font-black leading-tight tracking-tight text-white md:text-5xl">
+                  Where it all<br />
+                  <span className="text-green-500">started.</span>
+                </h2>
+              </ScrollReveal>
+              <ScrollReveal delay={1}>
+                <div className="mt-10 space-y-5 text-base leading-9 text-zinc-400">
+                  <p>
+                    &ldquo;Every problem has a solution&rdquo; — this isn&apos;t just a
+                    career motto. It&apos;s how I&apos;ve lived my whole life.
+                  </p>
+                  <p>
+                    When I was a kid, my dad would always ask for my help. Painting,
+                    cutting the grass, fixing things around the house. And whenever I
+                    ran into a problem, I never stopped — I found a way through it.
+                    Every single time.
+                  </p>
+                  <p>
+                    That instinct never left me. The belief that no matter what you
+                    face, there is always a solution on the other side. Without
+                    solutions, everything collapses — and I won&apos;t let that happen.
+                  </p>
+                </div>
+              </ScrollReveal>
+            </div>
 
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="#contact"
-              className="rounded-full bg-green-600 px-6 py-3 font-medium text-white transition hover:bg-green-700"
-            >
-              Say Hello
-            </a>
-            <a
-              href="#about"
-              className="rounded-full border border-zinc-300 px-6 py-3 font-medium text-zinc-900 transition hover:border-green-600 hover:text-green-600"
-            >
-              Learn More
-            </a>
+            {/* right — quote */}
+            <ScrollReveal delay={2}>
+              <div className="flex h-full flex-col justify-center md:pt-20">
+                <div className="mb-8 h-px w-8 bg-green-500" />
+                <blockquote className="space-y-1 text-2xl font-black leading-snug tracking-tight md:text-3xl">
+                  <p className="text-white">I love helping people.</p>
+                  <p className="text-zinc-600">And when I see their smile —</p>
+                  <p className="text-zinc-600">when I know their problem</p>
+                  <p className="text-zinc-600">is solved —</p>
+                  <p className="text-green-400">it makes me feel alive.</p>
+                </blockquote>
+                <div className="mt-10 h-px bg-zinc-800" />
+                <p className="mt-6 text-sm leading-8 text-zinc-500">
+                  That feeling is why I became a technical support engineer. Not to fix
+                  bugs or read logs — but to genuinely care, stay until the problem is
+                  gone, and make sure every person feels heard.
+                </p>
+              </div>
+            </ScrollReveal>
+
           </div>
         </div>
       </section>
 
-      <section className="bg-green-600 text-white">
-        <div className="mx-auto max-w-5xl px-6 py-16 text-center md:py-20">
-          <h2 className="text-2xl font-bold md:text-4xl">
-            I love solving technical problems and making support feel human.
-          </h2>
-          <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-green-50 md:text-lg">
-            I care about clear communication, thoughtful troubleshooting, and helping
-            people feel like they are talking to a real person who genuinely wants to help.
-          </p>
-        </div>
+      {/* ── What I do ────────────────────────────────── */}
+      <section id="about" className="bg-white py-24 md:py-32">
+        <div className="mx-auto max-w-6xl px-6">
+          <ScrollReveal>
+            <Label>What I do</Label>
+            <h2 className="mb-14 text-4xl font-black tracking-tight text-zinc-950 md:text-5xl">
+              How I show up.
+            </h2>
+          </ScrollReveal>
 
-        <div className="mx-auto max-w-6xl px-6 pb-20">
-          <div className="grid overflow-hidden rounded-[2rem] bg-white text-zinc-900 shadow-2xl md:grid-cols-3">
-            {showcaseCards.map((card, index) => (
-              <div
-                key={card.title}
-                className={`p-8 text-center transition hover:-translate-y-1 hover:shadow-xl ${
-                  index < 2 ? "border-b border-zinc-200 md:border-b-0 md:border-r" : ""
-                }`}
-              >
-                <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-xl text-white shadow-md">
-                  {card.icon}
+          <div className="grid gap-5 md:grid-cols-3">
+            {showcaseCards.map((card, i) => (
+              <ScrollReveal key={card.title} delay={((i + 1) as 1 | 2 | 3)}>
+                <div className="group flex h-full flex-col rounded-2xl border border-zinc-100 bg-[#f9f9f7] p-8 transition duration-300 hover:-translate-y-1 hover:border-zinc-200 hover:shadow-lg">
+                  <div className="mb-5 text-3xl">{card.icon}</div>
+                  <h3 className="mb-3 text-lg font-bold tracking-tight text-zinc-900">{card.title}</h3>
+                  <p className="mb-6 flex-1 text-sm leading-7 text-zinc-500">{card.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {card.items.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full bg-white px-3 py-1 text-xs font-medium text-zinc-500 ring-1 ring-zinc-200"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-
-                <h3 className="mb-4 text-2xl font-semibold">{card.title}</h3>
-
-                <p className="mb-6 leading-8 text-zinc-600">{card.description}</p>
-
-                <p className="mb-3 text-sm font-semibold text-green-600">{card.label}</p>
-
-                <div className="space-y-2 text-sm text-zinc-500">
-                  {card.items.map((item) => (
-                    <p key={item}>{item}</p>
-                  ))}
-                </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="about" className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-        <div className="grid gap-6 md:grid-cols-3">
-          {[
-            {
-              title: "Technical Support",
-              description:
-                "I enjoy helping people through technical issues with patience, clarity, and real problem solving.",
-            },
-            {
-              title: "Problem Solving",
-              description:
-                "Every problem has a solution. I like breaking complex issues into something clear, simple, and fixable.",
-            },
-            {
-              title: "AI Curiosity",
-              description:
-                "I love learning how AI can improve workflows, support operations, and the way humans solve problems.",
-            },
-          ].map((card) => (
-            <div
-              key={card.title}
-              className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-            >
-              <h3 className="mb-4 text-2xl font-semibold text-zinc-900">{card.title}</h3>
-              <p className="leading-8 text-zinc-600">{card.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* ── Skills & Tools ────────────────────────────── */}
+      <section id="skills" className="bg-[#f5f5f3] py-24 md:py-32">
+        <div className="mx-auto max-w-6xl px-6">
+          <ScrollReveal>
+            <Label>Skills & Tools</Label>
+            <h2 className="mb-14 text-4xl font-black tracking-tight text-zinc-950 md:text-5xl">
+              What I work with.
+            </h2>
+          </ScrollReveal>
 
-      <section className="mx-auto max-w-6xl px-6 pb-20">
-        <div className="grid gap-5 md:grid-cols-3">
-          {proofPoints.map((item) => (
-            <div
-              key={item.number}
-              className="rounded-3xl border border-zinc-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-            >
-              <p className="mb-4 text-5xl font-bold text-green-200">{item.number}</p>
-              <h3 className="mb-4 text-xl font-semibold">{item.title}</h3>
-              <p className="leading-8 text-zinc-600">{item.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+          <div className="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr] md:gap-20">
 
-      <section id="skills" className="mx-auto max-w-6xl px-6 pb-20 md:pb-24">
-  <div className="grid gap-6 md:grid-cols-2">
-    <div className="rounded-[2rem] bg-white p-8 shadow-sm ring-1 ring-zinc-200">
-      <h2 className="mb-6 text-3xl font-bold text-zinc-900">Skills</h2>
-      <div className="flex flex-wrap gap-3">
-        {skills.map((skill) => (
-          <span
-            key={skill}
-            className="rounded-full bg-zinc-50 px-4 py-2 text-sm text-zinc-700 shadow-sm ring-1 ring-zinc-200"
-          >
-            {skill}
-          </span>
-        ))}
-      </div>
-    </div>
-
-    <div className="rounded-[2rem] bg-white p-8 shadow-sm ring-1 ring-zinc-200">
-      <h2 className="mb-6 text-3xl font-bold text-zinc-900">Tools</h2>
-      <div className="flex flex-wrap gap-3">
-        {tools.map((tool) => (
-          <span
-            key={tool}
-            className="rounded-full bg-zinc-50 px-4 py-2 text-sm text-zinc-700 shadow-sm ring-1 ring-zinc-200"
-          >
-            {tool}
-          </span>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
-
-      <section id="human" className="mx-auto max-w-6xl px-6 pb-20 md:pb-24">
-        <div className="text-center">
-          <p className="text-sm font-medium uppercase tracking-[0.3em] text-green-600">
-            I&apos;m not a robot
-          </p>
-          <h2 className="mt-4 text-3xl font-bold md:text-5xl">
-            You want to know what I like to do for fun?
-          </h2>
-          <p className="mx-auto mt-5 max-w-3xl leading-8 text-zinc-600">
-            Outside of work, I love staying active, spending time with people I care
-            about, and enjoying life. The best technical people are still human.
-          </p>
-        </div>
-
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {funItems.map((item) => (
-            <div
-              key={item}
-              className="rounded-2xl border border-zinc-200 bg-white p-6 text-center text-zinc-700 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
-            >
-              {item}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="contact" className="bg-[#0f1117] text-white">
-        <div className="mx-auto max-w-5xl px-6 py-20 text-center md:py-24">
-          <h2 className="text-3xl font-bold md:text-5xl">Let&apos;s connect.</h2>
-          <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-zinc-300 md:text-lg">
-            I&apos;m open to technical support, SaaS support, and adjacent roles where I
-            can solve problems, support people, and keep growing.
-          </p>
-
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            <a
-              href="mailto:alhusseinjazz@gmail.com"
-              className="rounded-2xl border border-zinc-700 bg-zinc-800/80 p-6 transition hover:border-green-500 hover:bg-zinc-800"
-            >
-              <div className="mb-3 flex items-center justify-center gap-3 text-green-400">
-                <MailIcon />
-                <span className="font-medium">Email</span>
+            {/* Skills */}
+            <ScrollReveal delay={1}>
+              <p className="mb-5 text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-400">Skills</p>
+              <div className="divide-y divide-zinc-200">
+                {skills.map((skill, i) => (
+                  <div
+                    key={skill.name}
+                    className="group -mx-3 flex items-center gap-5 rounded-xl px-3 py-4 transition duration-150 hover:bg-white"
+                  >
+                    <span className="w-7 shrink-0 text-xs font-bold tabular-nums text-zinc-300 transition duration-150 group-hover:text-green-500">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="flex-1 text-sm font-semibold text-zinc-800 transition duration-150 group-hover:text-green-700">
+                      {skill.name}
+                    </span>
+                    <span className="shrink-0 rounded-full bg-zinc-100 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-zinc-400 transition duration-150 group-hover:bg-green-100 group-hover:text-green-700">
+                      {skill.tag}
+                    </span>
+                  </div>
+                ))}
               </div>
-              <p className="break-all text-zinc-300">alhusseinjazz@gmail.com</p>
-            </a>
+            </ScrollReveal>
 
-            <a
-              href="https://www.linkedin.com/in/jawad-alhussein/"
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-2xl border border-zinc-700 bg-zinc-800/80 p-6 transition hover:border-green-500 hover:bg-zinc-800"
-            >
-              <div className="mb-3 flex items-center justify-center gap-3 text-green-400">
-                <LinkedinIcon />
-                <span className="font-medium">LinkedIn</span>
+            {/* Tools */}
+            <ScrollReveal delay={2}>
+              <p className="mb-5 text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-400">Tools</p>
+              <div className="grid grid-cols-2 gap-2.5">
+                {tools.map((tool) => (
+                  <div
+                    key={tool}
+                    className="group flex items-center gap-3 rounded-xl border border-zinc-200 bg-white px-4 py-3.5 transition duration-150 hover:border-green-200 hover:bg-green-50"
+                  >
+                    <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-green-500" />
+                    <span className="text-sm font-semibold text-zinc-700 transition duration-150 group-hover:text-green-800">
+                      {tool}
+                    </span>
+                  </div>
+                ))}
               </div>
-              <p className="text-zinc-300">View profile</p>
-            </a>
+            </ScrollReveal>
 
-            <a
-              href="https://github.com/Jazz-1998"
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-2xl border border-zinc-700 bg-zinc-800/80 p-6 transition hover:border-green-500 hover:bg-zinc-800"
-            >
-              <div className="mb-3 flex items-center justify-center gap-3 text-green-400">
-                <GithubIcon />
-                <span className="font-medium">GitHub</span>
+            {/* Programming */}
+            <ScrollReveal delay={3}>
+              <p className="mb-5 text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-400">Programming</p>
+              <div className="grid grid-cols-2 gap-3">
+                {programming.map((lang) => (
+                  <div
+                    key={lang.name}
+                    className="group flex flex-col items-center gap-3 rounded-2xl border border-zinc-100 bg-white p-5 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-md"
+                    style={{ borderTopColor: lang.color, borderTopWidth: 3 }}
+                  >
+                    <div
+                      className="flex h-12 w-12 items-center justify-center rounded-xl"
+                      style={{ backgroundColor: lang.bg }}
+                    >
+                      <svg viewBox="0 0 24 24" className="h-7 w-7" style={{ fill: lang.color }} aria-hidden="true">
+                        <path d={lang.path} />
+                      </svg>
+                    </div>
+                    <span className="text-xs font-bold tracking-wide text-zinc-700">{lang.name}</span>
+                  </div>
+                ))}
               </div>
-              <p className="text-zinc-300">View projects</p>
-            </a>
+            </ScrollReveal>
+
           </div>
         </div>
       </section>
+
+      {/* ── Human ─────────────────────────────────────── */}
+      <section id="human" className="bg-white py-24 md:py-32">
+        <div className="mx-auto max-w-6xl px-6">
+          <ScrollReveal>
+            <div className="mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+              <div>
+                <Label>I&apos;m not a robot</Label>
+                <h2 className="text-4xl font-black tracking-tight text-zinc-950 md:text-5xl">
+                  Outside of work.
+                </h2>
+              </div>
+              <p className="max-w-xs text-sm leading-7 text-zinc-500">
+                The best technical people are still fully human. Here&apos;s what keeps
+                me grounded and alive outside the terminal.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {funItems.map((item, i) => (
+              <ScrollReveal key={item.label} delay={((i % 3) + 1) as 1 | 2 | 3}>
+                <div className="group flex items-center gap-4 rounded-xl border border-zinc-100 bg-[#f9f9f7] px-6 py-5 transition duration-150 hover:-translate-y-px hover:border-zinc-200 hover:bg-white hover:shadow-md">
+                  <span className="text-xl">{item.icon}</span>
+                  <span className="text-sm font-semibold text-zinc-700 transition duration-150 group-hover:text-green-700">
+                    {item.label}
+                  </span>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Contact ───────────────────────────────────── */}
+      <section id="contact" className="bg-[#0c0c0c] text-white">
+        <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+          <ScrollReveal>
+            <Label light>Get in touch</Label>
+            <h2 className="text-4xl font-black tracking-tight text-white md:text-6xl">
+              Let&apos;s connect.
+            </h2>
+            <p className="mt-5 max-w-sm text-sm leading-8 text-zinc-500">
+              Open to technical support, SaaS support, and adjacent roles where I can
+              solve problems, support people, and keep growing.
+            </p>
+          </ScrollReveal>
+
+
+          <ScrollReveal delay={2}>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="https://www.linkedin.com/in/jawad-alhussein/"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 rounded-full border border-zinc-800 px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-zinc-500 transition duration-150 hover:border-zinc-600 hover:text-white"
+              >
+                <LinkedinIcon />
+                LinkedIn
+              </a>
+              <a
+                href="https://github.com/Jazz-1998"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 rounded-full border border-zinc-800 px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-zinc-500 transition duration-150 hover:border-zinc-600 hover:text-white"
+              >
+                <GithubIcon />
+                GitHub
+              </a>
+              <a
+                href="mailto:alhusseinjazz@gmail.com"
+                className="flex items-center gap-2 rounded-full border border-zinc-800 px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-zinc-500 transition duration-150 hover:border-zinc-600 hover:text-white"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" strokeLinecap="round" strokeLinejoin="round" />
+                  <polyline points="22,6 12,13 2,6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                Mail
+              </a>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+
+{/* ── Footer ───────────────────────────────────── */}
+      <footer className="border-t border-zinc-900 bg-[#0c0c0c] px-6 py-6">
+        <div className="mx-auto flex max-w-6xl items-center justify-center">
+          <p className="text-xs text-zinc-700">© 2026 Jawad Alhussein</p>
+        </div>
+      </footer>
+
     </main>
   );
 }
