@@ -1,6 +1,8 @@
 import MobileMenu from "./components/MobileMenu";
 import ScrollReveal from "./components/ScrollReveal";
 import Hero from "./components/Hero";
+import ContactForm from "./components/ContactForm";
+import ProblemSolver from "./components/ProblemSolver";
 
 /* ── Data ──────────────────────────────────────────────────────── */
 
@@ -9,21 +11,21 @@ const showcaseCards = [
     icon: "⚙️",
     title: "Technical Support Engineer",
     description:
-      "I help customers solve technical issues, understand complex systems, and feel genuinely supported.",
+      "When something breaks, I'm the person you actually want to talk to. I stay calm, dig deep, and don't quit until it's solved — for real.",
     items: ["SaaS support", "Troubleshooting", "Customer experience"],
   },
   {
     icon: "🧠",
     title: "Problem Solver",
     description:
-      "I break down complex problems into clear, actionable solutions — every single time.",
+      "I treat every issue like a puzzle. Not in a nerdy-obsessive way — okay, maybe a little. But I find the root cause every time.",
     items: ["Root cause analysis", "Clarity", "Ownership"],
   },
   {
     icon: "🤖",
     title: "AI Enthusiast",
     description:
-      "I explore how AI can sharpen support workflows and make humans more effective, not less human.",
+      "I genuinely love exploring how AI makes support smarter. Not to replace humans — just to make us ridiculously good at our jobs.",
     items: ["AI tools", "Automation", "Smarter systems"],
   },
 ];
@@ -86,7 +88,7 @@ const navLinks = [
 ];
 
 const MARQUEE =
-  "EVERY PROBLEM HAS A SOLUTION  ✦  TECHNICAL SUPPORT ENGINEER  ✦  PROBLEM SOLVER  ✦  CLARITY  ✦  OWNERSHIP  ✦  ";
+  "EVERY PROBLEM HAS A SOLUTION  ✦  LET'S FIX IT TOGETHER  ✦  JAZZ ALHUSSEIN  ✦  TECHNICAL SUPPORT ENGINEER  ✦  CALM UNDER PRESSURE  ✦  REAL HUMAN  ✦  ";
 
 /* ── Icons ─────────────────────────────────────────────────────── */
 
@@ -145,6 +147,12 @@ export default function Home() {
             <a href="https://www.linkedin.com/in/jawad-alhussein/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-zinc-900 transition hover:text-green-600">
               <LinkedinIcon />
             </a>
+            <a href="mailto:alhusseinjazz@gmail.com" aria-label="Email" className="text-zinc-900 transition hover:text-green-600">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" strokeLinecap="round" strokeLinejoin="round" />
+                <polyline points="22,6 12,13 2,6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
             <MobileMenu />
           </div>
         </div>
@@ -181,19 +189,19 @@ export default function Home() {
               <ScrollReveal delay={1}>
                 <div className="mt-10 space-y-5 text-base leading-9 text-zinc-400">
                   <p>
-                    &ldquo;Every problem has a solution&rdquo; — this isn&apos;t just a
-                    career motto. It&apos;s how I&apos;ve lived my whole life.
+                    &ldquo;Every problem has a solution&rdquo; — I didn&apos;t read that
+                    in a book. I lived it. Growing up, my dad always pulled me in to help:
+                    painting, cutting grass, fixing random stuff around the house.
                   </p>
                   <p>
-                    When I was a kid, my dad would always ask for my help. Painting,
-                    cutting the grass, fixing things around the house. And whenever I
-                    ran into a problem, I never stopped — I found a way through it.
-                    Every single time.
+                    And every time something went wrong — because it always did —
+                    I didn&apos;t walk away. I figured it out. Every. Single. Time.
+                    That became who I am.
                   </p>
                   <p>
-                    That instinct never left me. The belief that no matter what you
-                    face, there is always a solution on the other side. Without
-                    solutions, everything collapses — and I won&apos;t let that happen.
+                    Support isn&apos;t just a job title for me. It&apos;s how I&apos;m wired.
+                    I genuinely can&apos;t leave a problem unsolved. It keeps me up at night
+                    — in the best way possible.
                   </p>
                 </div>
               </ScrollReveal>
@@ -205,16 +213,16 @@ export default function Home() {
                 <div className="mb-8 h-px w-8 bg-green-500" />
                 <blockquote className="space-y-1 text-2xl font-black leading-snug tracking-tight md:text-3xl">
                   <p className="text-white">I love helping people.</p>
-                  <p className="text-zinc-600">And when I see their smile —</p>
-                  <p className="text-zinc-600">when I know their problem</p>
-                  <p className="text-zinc-600">is solved —</p>
-                  <p className="text-green-400">it makes me feel alive.</p>
+                  <p className="text-zinc-600">And when their problem is gone —</p>
+                  <p className="text-zinc-600">when I see that relief —</p>
+                  <p className="text-zinc-600">that smile —</p>
+                  <p className="text-green-400">that&apos;s everything to me.</p>
                 </blockquote>
                 <div className="mt-10 h-px bg-zinc-800" />
                 <p className="mt-6 text-sm leading-8 text-zinc-500">
-                  That feeling is why I became a technical support engineer. Not to fix
-                  bugs or read logs — but to genuinely care, stay until the problem is
-                  gone, and make sure every person feels heard.
+                  That&apos;s why I do this. Not for the tickets. Not for the metrics.
+                  For the moment someone says &ldquo;thank you, I was going crazy&rdquo; —
+                  and I get to say &ldquo;I know. You&apos;re good now.&rdquo;
                 </p>
               </div>
             </ScrollReveal>
@@ -229,7 +237,7 @@ export default function Home() {
           <ScrollReveal>
             <Label>What I do</Label>
             <h2 className="mb-14 text-4xl font-black tracking-tight text-zinc-950 md:text-5xl">
-              How I show up.
+              How I show up — every time.
             </h2>
           </ScrollReveal>
 
@@ -263,7 +271,7 @@ export default function Home() {
           <ScrollReveal>
             <Label>Skills & Tools</Label>
             <h2 className="mb-14 text-4xl font-black tracking-tight text-zinc-950 md:text-5xl">
-              What I work with.
+              My toolkit. Pretty solid.
             </h2>
           </ScrollReveal>
 
@@ -342,26 +350,27 @@ export default function Home() {
       <section id="human" className="bg-white py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <ScrollReveal>
-            <div className="mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-              <div>
-                <Label>I&apos;m not a robot</Label>
-                <h2 className="text-4xl font-black tracking-tight text-zinc-950 md:text-5xl">
-                  Outside of work.
-                </h2>
-              </div>
-              <p className="max-w-xs text-sm leading-7 text-zinc-500">
-                The best technical people are still fully human. Here&apos;s what keeps
-                me grounded and alive outside the terminal.
+            <Label>I&apos;m not a robot</Label>
+            <div className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+              <h2 className="text-4xl font-black tracking-tight text-zinc-950 md:text-5xl">
+                Outside of work.
+              </h2>
+              <p className="max-w-sm text-base leading-8 text-zinc-500">
+                The best technical people are still fully human. Yes, they can have a life.
+                Let me tell you what keeps me alive outside of my career.
               </p>
             </div>
           </ScrollReveal>
 
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {funItems.map((item, i) => (
               <ScrollReveal key={item.label} delay={((i % 3) + 1) as 1 | 2 | 3}>
-                <div className="group flex items-center gap-4 rounded-xl border border-zinc-100 bg-[#f9f9f7] px-6 py-5 transition duration-150 hover:-translate-y-px hover:border-zinc-200 hover:bg-white hover:shadow-md">
-                  <span className="text-xl">{item.icon}</span>
-                  <span className="text-sm font-semibold text-zinc-700 transition duration-150 group-hover:text-green-700">
+                <div className="group relative overflow-hidden rounded-2xl border border-zinc-100 bg-[#f9f9f7] p-7 transition duration-300 hover:-translate-y-1 hover:border-green-200 hover:shadow-lg">
+                  <div className="absolute -right-4 -top-4 text-6xl opacity-10 transition duration-300 group-hover:opacity-20 group-hover:scale-110">
+                    {item.icon}
+                  </div>
+                  <span className="mb-3 block text-3xl">{item.icon}</span>
+                  <span className="text-sm font-bold text-zinc-700 transition duration-150 group-hover:text-green-700">
                     {item.label}
                   </span>
                 </div>
@@ -371,53 +380,114 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Problem Solver ───────────────────────────── */}
+      <ProblemSolver />
+
       {/* ── Contact ───────────────────────────────────── */}
-      <section id="contact" className="bg-[#0c0c0c] text-white">
-        <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+      <section id="contact" className="relative overflow-hidden bg-black py-24 md:py-36">
+
+        {/* watermark — texture only */}
+        <p className="pointer-events-none absolute inset-x-0 top-0 select-none text-center text-[clamp(5rem,18vw,14rem)] font-black uppercase leading-none tracking-tighter text-white/[0.025]" aria-hidden="true">
+          Contact
+        </p>
+
+        {/* layered glows */}
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+          <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-500/10 blur-[180px]" />
+          <div className="absolute left-1/4 top-1/4 h-[300px] w-[300px] rounded-full bg-green-400/5 blur-[120px]" />
+          <div className="absolute right-1/4 bottom-1/4 h-[250px] w-[250px] rounded-full bg-green-600/5 blur-[100px]" />
+        </div>
+
+        <div className="relative mx-auto max-w-6xl px-6">
+
+          {/* heading */}
           <ScrollReveal>
-            <Label light>Get in touch</Label>
-            <h2 className="text-4xl font-black tracking-tight text-white md:text-6xl">
-              Let&apos;s connect.
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.35em] text-green-400">Get in touch</p>
+            <h2 className="relative mb-16 text-5xl font-black text-white md:text-7xl">
+              <span className="relative z-10">Don&apos;t be a stranger.</span>
+              <span className="absolute inset-0 text-green-500 opacity-[0.15] blur-2xl" aria-hidden="true">Don&apos;t be a stranger.</span>
             </h2>
-            <p className="mt-5 max-w-sm text-sm leading-8 text-zinc-500">
-              Open to technical support, SaaS support, and adjacent roles where I can
-              solve problems, support people, and keep growing.
-            </p>
           </ScrollReveal>
 
+          <div className="grid gap-16 md:grid-cols-2 md:gap-24">
 
-          <ScrollReveal delay={2}>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="https://www.linkedin.com/in/jawad-alhussein/"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-2 rounded-full border border-zinc-800 px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-zinc-500 transition duration-150 hover:border-zinc-600 hover:text-white"
-              >
-                <LinkedinIcon />
-                LinkedIn
-              </a>
-              <a
-                href="https://github.com/Jazz-1998"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-2 rounded-full border border-zinc-800 px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-zinc-500 transition duration-150 hover:border-zinc-600 hover:text-white"
-              >
-                <GithubIcon />
-                GitHub
-              </a>
-              <a
-                href="mailto:alhusseinjazz@gmail.com"
-                className="flex items-center gap-2 rounded-full border border-zinc-800 px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-zinc-500 transition duration-150 hover:border-zinc-600 hover:text-white"
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4" aria-hidden="true">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" strokeLinecap="round" strokeLinejoin="round" />
-                  <polyline points="22,6 12,13 2,6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                Mail
-              </a>
-            </div>
-          </ScrollReveal>
+            {/* left — info */}
+            <ScrollReveal delay={1}>
+              <div className="space-y-5">
+                <p className="text-xl leading-9 text-zinc-100">
+                  I&apos;ve always loved connecting with people. It doesn&apos;t matter where you&apos;re from,
+                  what your background is, or what path brought you here.
+                </p>
+                <p className="text-lg font-medium leading-9 text-green-400">
+                  If you came from the moon, I&apos;d probably ask how the trip was and tell you to pull up a chair.
+                </p>
+                <p className="text-lg leading-9 text-zinc-200">
+                  And if you just want a real conversation, that works too.
+                </p>
+                <p className="text-lg leading-9 text-zinc-300">
+                  Life, opportunities, ideas, vision, or anything random — I&apos;m here. 😉 
+                </p>
+              </div>
+
+              <div className="mt-10 space-y-3 border-t border-zinc-800/60 pt-10">
+                {/* Email */}
+                <a
+                  href="mailto:alhusseinjazz@gmail.com"
+                  className="group flex items-center gap-4 rounded-xl border border-zinc-700 bg-zinc-900 p-4 transition duration-200 hover:-translate-y-px hover:border-green-500/50 hover:bg-zinc-800"
+                >
+                  <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-zinc-800 text-zinc-300 transition duration-200 group-hover:bg-green-500/10 group-hover:text-green-400">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5" aria-hidden="true">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" strokeLinecap="round" strokeLinejoin="round" />
+                      <polyline points="22,6 12,13 2,6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-[10px] uppercase tracking-widest text-zinc-500">Email</p>
+                    <p className="text-sm font-semibold text-white">alhusseinjazz@gmail.com</p>
+                  </div>
+                </a>
+
+                {/* LinkedIn */}
+                <a
+                  href="https://www.linkedin.com/in/jawad-alhussein/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex items-center gap-4 rounded-xl border border-zinc-700 bg-zinc-900 p-4 transition duration-200 hover:-translate-y-px hover:border-green-500/50 hover:bg-zinc-800"
+                >
+                  <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-zinc-800 text-zinc-300 transition duration-200 group-hover:bg-green-500/10 group-hover:text-green-400">
+                    <LinkedinIcon />
+                  </div>
+                  <div>
+                    <p className="text-[10px] uppercase tracking-widest text-zinc-500">LinkedIn</p>
+                    <p className="text-sm font-semibold text-white">jawad-alhussein</p>
+                  </div>
+                </a>
+
+                {/* GitHub */}
+                <a
+                  href="https://github.com/Jazz-1998"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex items-center gap-4 rounded-xl border border-zinc-700 bg-zinc-900 p-4 transition duration-200 hover:-translate-y-px hover:border-green-500/50 hover:bg-zinc-800"
+                >
+                  <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-zinc-800 text-zinc-300 transition duration-200 group-hover:bg-green-500/10 group-hover:text-green-400">
+                    <GithubIcon />
+                  </div>
+                  <div>
+                    <p className="text-[10px] uppercase tracking-widest text-zinc-500">GitHub</p>
+                    <p className="text-sm font-semibold text-white">Jazz-1998</p>
+                  </div>
+                </a>
+              </div>
+            </ScrollReveal>
+
+            {/* right — form */}
+            <ScrollReveal delay={2}>
+              <p className="mb-6 text-xs font-bold uppercase tracking-[0.35em] text-green-400">Contact me</p>
+              <ContactForm />
+            </ScrollReveal>
+
+          </div>
         </div>
       </section>
 
@@ -425,7 +495,7 @@ export default function Home() {
 {/* ── Footer ───────────────────────────────────── */}
       <footer className="border-t border-zinc-900 bg-[#0c0c0c] px-6 py-6">
         <div className="mx-auto flex max-w-6xl items-center justify-center">
-          <p className="text-xs text-zinc-700">© 2026 Jawad Alhussein</p>
+          <p className="text-xs text-zinc-700">Coded by Jazz Alhussein (Yes, I am also a programmer too :D)</p>
         </div>
       </footer>
 

@@ -24,8 +24,8 @@ export default function Hero() {
             <Typewriter
               options={{
                 strings: [
-                  "Hi, I'm Jazz.",
-                  "I turn problems into solutions.",
+                  "Hi, I'm Jazz 👋",
+                  "Your problem? Already half-solved.",
                 ],
                 autoStart: true,
                 loop: false,
@@ -44,14 +44,14 @@ export default function Hero() {
 
           {/* SUBTEXT */}
           <p className="mt-6 max-w-xl text-lg leading-8 text-zinc-600 md:text-xl">
-            I help people solve technical problems, bring clarity to complex systems,
-            and turn overwhelming moments into something manageable.
+            I&apos;m Jazz Alhussein — a Technical Support Engineer who actually enjoys
+            the chaos. Log errors, broken APIs, confused customers? That&apos;s my playground.
           </p>
 
           {/* PERSONAL TOUCH */}
           <p className="mt-4 max-w-xl text-base leading-8 text-zinc-500 md:text-lg">
-            My name is Jazz Alhussein. I don&apos;t just fix problems — I make things easier,
-            smoother, and sometimes even feel effortless.
+            I don&apos;t just fix things and disappear. I make sure you actually understand
+            what happened — and walk away feeling like it was never a big deal.
           </p>
 
           {/* BUTTONS */}
