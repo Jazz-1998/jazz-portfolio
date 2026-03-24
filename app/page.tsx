@@ -12,7 +12,7 @@ const showcaseCards = [
     id: "PROC_01",
     icon: "⚙️",
     title: "Technical Support Engineer",
-    description: "When something breaks, I'm the person you actually want to talk to. I stay calm, dig deep, and don't quit until it's solved — for real.",
+    description: "When something breaks, this is where I come in. I stay calm, dig deep, and don't quit until it's solved — for real.",
     items: ["SaaS support", "Troubleshooting", "Customer experience"],
     status: "RUNNING",
   },
