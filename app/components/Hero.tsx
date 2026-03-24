@@ -486,7 +486,7 @@ export default function Hero() {
                   '>> SUPPORT ENGINEER ONLINE',
                   '>> SUPPORT ENGINEER OFFLINE — SKYDIVING 🪂',
                 ],
-                autoStart: true, loop: true, delay: 55, deleteSpeed: 30, pauseFor: 2000,
+                autoStart: true, loop: true, delay: 55, deleteSpeed: 30
               }} />
             </div>
 
