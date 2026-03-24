@@ -3,98 +3,153 @@ import ScrollReveal from "./components/ScrollReveal";
 import Hero from "./components/Hero";
 import ContactForm from "./components/ContactForm";
 import ProblemSolver from "./components/ProblemSolver";
+import TypewriterText from "./components/TypewriterText";
 
 /* ── Data ──────────────────────────────────────────────────────── */
 
 const showcaseCards = [
   {
+    id: "PROC_01",
     icon: "⚙️",
     title: "Technical Support Engineer",
-    description:
-      "When something breaks, I'm the person you actually want to talk to. I stay calm, dig deep, and don't quit until it's solved — for real.",
+    description: "When something breaks, I'm the person you actually want to talk to. I stay calm, dig deep, and don't quit until it's solved — for real.",
     items: ["SaaS support", "Troubleshooting", "Customer experience"],
+    status: "RUNNING",
   },
   {
+    id: "PROC_02",
     icon: "🧠",
     title: "Problem Solver",
-    description:
-      "I treat every issue like a puzzle. Not in a nerdy-obsessive way — okay, maybe a little. But I find the root cause every time.",
+    description: "I treat every issue like a puzzle. Not in a nerdy-obsessive way — okay, maybe a little. But I find the root cause every time.",
     items: ["Root cause analysis", "Clarity", "Ownership"],
+    status: "RUNNING",
   },
   {
+    id: "PROC_03",
     icon: "🤖",
     title: "AI Enthusiast",
-    description:
-      "I genuinely love exploring how AI makes support smarter. Not to replace humans — just to make us ridiculously good at our jobs.",
+    description: "I genuinely love exploring how AI makes support smarter. Not to replace humans — just to make us ridiculously good at our jobs.",
     items: ["AI tools", "Automation", "Smarter systems"],
+    status: "RUNNING",
   },
 ];
 
-const skills = [
-  { name: "Technical Troubleshooting", tag: "Support" },
-  { name: "Root Cause Analysis", tag: "Analytical" },
-  { name: "SaaS Support", tag: "Domain" },
-  { name: "API Debugging", tag: "Technical" },
-  { name: "Customer Issue Resolution", tag: "Support" },
-  { name: "Cross-Functional Collaboration", tag: "Teamwork" },
-  { name: "Documentation", tag: "Operations" },
-  { name: "Support Operations", tag: "Operations" },
+const systems = [
+  {
+    id: 'CORE',
+    emoji: '🔍',
+    label: 'SYSTEM: CORE',
+    color: 'border-green-500/30 bg-green-500/5 text-green-400',
+    skills: ['Technical Troubleshooting', 'Root Cause Analysis', 'API Debugging', 'Log Analysis', 'Data Validation'],
+    tools: ['SQL', 'REST APIs', 'Postman', 'cURL', 'JSON / Log Parsing'],
+  },
+  {
+    id: 'OPERATIONS',
+    emoji: '⚙️',
+    label: 'SYSTEM: OPERATIONS',
+    color: 'border-sky-500/30 bg-sky-500/5 text-sky-400',
+    skills: ['Incident Management', 'Production Support', 'System Monitoring', 'Support Operations'],
+    tools: ['Datadog', 'Sentry', 'AWS', 'Docker', 'Airflow', 'Astronomer'],
+  },
+  {
+    id: 'HUMAN',
+    emoji: '🤝',
+    label: 'SYSTEM: HUMAN',
+    color: 'border-amber-500/30 bg-amber-500/5 text-amber-400',
+    skills: ['Customer Issue Resolution', 'Cross-Functional Collaboration', 'Documentation', 'Empathy-Driven Communication', 'Expectation Management'],
+    tools: ['Jira', 'Freshdesk', 'Notion', 'Microsoft 365'],
+  },
+  {
+    id: 'AI',
+    emoji: '🤖',
+    label: 'SYSTEM: AI',
+    sublabel: 'differentiator',
+    color: 'border-violet-500/30 bg-violet-500/5 text-violet-400',
+    skills: ['AI-Assisted Troubleshooting', 'Prompt Engineering', 'Context Engineering', 'LLM Output Validation', 'AI-Augmented Root Cause Analysis', 'AI-Powered Pattern Recognition', 'Intelligent Workflow Automation', 'Human-in-the-Loop AI Systems'],
+    tools: ['ChatGPT / LLM Tools', 'Prompt Engineering Workflows', 'AI Debugging Assist'],
+  },
+  {
+    id: 'SOURCE',
+    emoji: '🗂️',
+    label: 'SYSTEM: SOURCE',
+    color: 'border-zinc-700/50 bg-zinc-800/30 text-zinc-400',
+    skills: [],
+    tools: ['GitHub', 'Git'],
+  },
 ];
 
-const tools = ["SQL", "Postman", "Jira", "Datadog", "AWS", "Freshdesk", "Notion", "GitHub"];
 
 const programming = [
   {
-    name: "HTML",
-    color: "#E34F26",
-    bg: "#FFF1EC",
-    path: "M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z",
+    name: 'Python',
+    path: 'M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.007 2.752h5.814v.826H3.898S0 5.789 0 11.969c0 6.18 3.403 5.96 3.403 5.96h2.031v-2.867s-.109-3.402 3.35-3.402h5.769s3.24.052 3.24-3.13V3.13S18.326 0 11.914 0zM8.708 1.81a1.047 1.047 0 1 1 0 2.094 1.047 1.047 0 0 1 0-2.094z M20.086 5.765v2.786s.113 3.403-3.35 3.403h-5.769s-3.24-.053-3.24 3.13v5.371S7.22 24 13.63 24c6.41 0 6.17-2.656 6.17-2.656l-.007-2.752h-5.814v-.826h8.124S25.997 18.211 26 12.031c0-6.18-3.403-5.96-3.403-5.96h-2.51zm-3.41 12.414a1.047 1.047 0 1 1 0 2.094 1.047 1.047 0 0 1 0-2.094z',
+    color: '#3776AB',
+    viewBox: '0 0 26 24',
   },
   {
-    name: "CSS",
-    color: "#663399",
-    bg: "#F5EEFF",
-    path: "M0 0v20.16A3.84 3.84 0 0 0 3.84 24h16.32A3.84 3.84 0 0 0 24 20.16V3.84A3.84 3.84 0 0 0 20.16 0Zm14.256 13.08c1.56 0 2.28 1.08 2.304 2.64h-1.608c.024-.288-.048-.6-.144-.84-.096-.192-.288-.264-.552-.264-.456 0-.696.264-.696.84-.024.576.288.888.768 1.08.72.288 1.608.744 1.92 1.296q.432.648.432 1.656c0 1.608-.912 2.592-2.496 2.592-1.656 0-2.4-1.032-2.424-2.688h1.68c0 .792.264 1.176.792 1.176.264 0 .456-.072.552-.24.192-.312.24-1.176-.048-1.512-.312-.408-.912-.6-1.32-.816q-.828-.396-1.224-.936c-.24-.36-.36-.888-.36-1.536 0-1.44.936-2.472 2.424-2.448m5.4 0c1.584 0 2.304 1.08 2.328 2.64h-1.608c0-.288-.048-.6-.168-.84-.096-.192-.264-.264-.528-.264-.48 0-.72.264-.72.84s.288.888.792 1.08c.696.288 1.608.744 1.92 1.296.264.432.408.984.408 1.656.024 1.608-.888 2.592-2.472 2.592-1.68 0-2.424-1.056-2.448-2.688h1.68c0 .744.264 1.176.792 1.176.264 0 .456-.072.552-.24.216-.312.264-1.176-.048-1.512-.288-.408-.888-.6-1.32-.816-.552-.264-.96-.576-1.2-.936s-.36-.888-.36-1.536c-.024-1.44.912-2.472 2.4-2.448m-11.031.018c.711-.006 1.419.198 1.839.63.432.432.672 1.128.648 1.992H9.336c.024-.456-.096-.792-.432-.96-.312-.144-.768-.048-.888.24-.12.264-.192.576-.168.864v3.504c0 .744.264 1.128.768 1.128a.65.65 0 0 0 .552-.264c.168-.24.192-.552.168-.84h1.776c.096 1.632-.984 2.712-2.568 2.688-1.536 0-2.496-.864-2.472-2.472v-4.032c0-.816.24-1.44.696-1.848.432-.408 1.146-.624 1.857-.63",
+    name: 'JavaScript',
+    path: 'M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z',
+    color: '#F7DF1E',
+    viewBox: '0 0 24 24',
   },
   {
-    name: "JavaScript",
-    color: "#B8860B",
-    bg: "#FFFBEA",
-    path: "M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z",
+    name: 'TypeScript',
+    path: 'M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z',
+    color: '#3178C6',
+    viewBox: '0 0 24 24',
   },
   {
-    name: "PHP",
-    color: "#777BB4",
-    bg: "#F0F0FF",
-    path: "M7.01 10.207h-.944l-.515 2.648h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29zM12 5.688C5.373 5.688 0 8.514 0 12s5.373 6.313 12 6.313S24 15.486 24 12c0-3.486-5.373-6.312-12-6.312zm-3.26 7.451c-.261.25-.575.438-.917.551-.336.108-.765.164-1.285.164H5.357l-.327 1.681H3.652l1.23-6.326h2.65c.797 0 1.378.209 1.744.628.366.418.476 1.002.33 1.752a2.836 2.836 0 0 1-.305.847c-.143.255-.33.49-.561.703zm4.024.715l.543-2.799c.063-.318.039-.536-.068-.651-.107-.116-.336-.174-.687-.174H11.46l-.704 3.625H9.388l1.23-6.327h1.367l-.327 1.682h1.218c.767 0 1.295.134 1.586.401s.378.7.263 1.299l-.572 2.944h-1.389zm7.597-2.265a2.782 2.782 0 0 1-.305.847c-.143.255-.33.49-.561.703a2.44 2.44 0 0 1-.917.551c-.336.108-.765.164-1.286.164h-1.18l-.327 1.682h-1.378l1.23-6.326h2.649c.797 0 1.378.209 1.744.628.366.417.477 1.001.331 1.751zM17.766 10.207h-.943l-.516 2.648h.838c.557 0 .971-.105 1.242-.314.272-.21.455-.559.551-1.049.092-.47.049-.802-.125-.995s-.524-.29-1.047-.29z",
+    name: 'Java',
+    path: 'M8.851 18.56s-.917.534.653.714c1.902.218 2.874.187 4.969-.211 0 0 .552.346 1.321.646-4.699 2.013-10.633-.118-6.943-1.149M8.276 15.933s-1.028.761.542.924c2.032.209 3.636.227 6.413-.308 0 0 .384.389.987.602-5.679 1.661-12.007.13-7.942-1.218M13.116 11.475c1.158 1.333-.304 2.533-.304 2.533s2.939-1.518 1.589-3.418c-1.261-1.772-2.228-2.652 3.007-5.688 0-.001-8.216 2.051-4.292 6.573M19.33 20.504s.679.559-.747.991c-2.712.822-11.288 1.069-13.669.033-.856-.373.75-.89 1.254-.998.527-.114.828-.093.828-.093-.953-.671-6.156 1.317-2.643 1.887 9.58 1.553 17.462-.7 14.977-1.82M9.292 13.21s-4.362 1.036-1.544 1.412c1.189.159 3.561.123 5.77-.062 1.806-.152 3.618-.477 3.618-.477s-.637.272-1.098.587c-4.429 1.165-12.986.623-10.522-.568 2.082-1.006 3.776-.892 3.776-.892M17.116 17.584c4.503-2.34 2.421-4.589.968-4.285-.355.074-.515.138-.515.138s.132-.207.385-.297c2.875-1.011 5.086 2.981-.928 4.562 0-.001.07-.062.09-.118M14.401 0s2.494 2.494-2.365 6.33c-3.896 3.077-.888 4.832-.001 6.836-2.274-2.053-3.943-3.858-2.824-5.54 1.644-2.469 6.197-3.665 5.19-7.626M9.734 23.924c4.322.277 10.959-.153 11.116-2.198 0 0-.302.775-3.572 1.391-3.688.694-8.239.613-10.937.168 0-.001.553.457 3.393.639',
+    color: '#ED8B00',
+    viewBox: '0 0 24 24',
+  },
+  {
+    name: 'PHP',
+    path: 'M7.01 10.207h-.944l-.515 2.648h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29zM12 5.688C5.373 5.688 0 8.514 0 12s5.373 6.313 12 6.313S24 15.486 24 12c0-3.486-5.373-6.312-12-6.312zm-3.22 7.reduced.4H8.5l-.62 3.204H6.1l1.679-8.652h2.765c.97 0 1.675.227 2.113.679.439.453.57 1.13.394 2.03-.179.9-.566 1.59-1.163 2.068-.597.48-1.381.671-2.108.671zm6.737 3.204h-1.774l.688-3.55H12.71l-.689 3.55H10.24l1.679-8.652h1.78l-.627 3.246h1.741l.627-3.246h1.781l-1.68 8.652zm5.29-5.76h-.945l-.515 2.648h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29zm.962 4.13c-.597.48-1.381.671-2.108.671h-2.291l1.679-8.652h2.765c.97 0 1.675.227 2.113.679.439.453.57 1.13.394 2.03-.179.9-.566 1.59-1.163 2.068l-.389-.796z',
+    color: '#777BB4',
+    viewBox: '0 0 24 24',
+  },
+  {
+    name: 'Bash',
+    path: 'M4.595 0a8.42 8.42 0 0 0-.796.04C2.13.16.44 1.67.05 3.785c-.05.3-.05 9.61 0 10.11.24 1.371.935 2.52 2.095 3.465.255.205.865.545 1.24.695.42.17 1.24.39 1.495.415l.14.014 1.175.01c1.715.015 2.085.015 3.81-.015.7-.015 1.5-.04 1.79-.06l.525-.03.505-.005.12-.04c.08-.025.165-.07.19-.1s.09-.175.14-.32c.085-.25.1-.38.055-.46-.025-.045-.055-.055-.19-.055-.085 0-.135.01-.13.03.01.025-.035.065-.12.105-.115.055-.185.065-.655.09-.295.015-1.18.04-1.965.055-1.63.03-2.165.025-3.64.01l-1.185-.015-.11-.015c-.505-.065-1.28-.325-1.6-.545-.105-.07-.205-.135-.225-.145-.02-.01-.05-.025-.065-.035l-.025-.015.035-.02c.02-.01.065-.035.1-.055.03-.02.1-.055.15-.08.5-.235.86-.575 1.095-.99.065-.12.15-.335.19-.49.07-.255.075-.32.075-2.125V10.5l.01-2.04.015-.285c.01-.09.04-.205.07-.255.155-.27.415-.435.71-.435.285 0 .53.15.68.41.05.085.07.16.08.34L6.5 8.59v2.285l.01 2.285.02.25c.04.325.15.585.34.81.2.24.475.38.8.415.1.01.175.01.285 0 .53-.065.895-.465.935-1.025.01-.13.01-4.975 0-5.1-.025-.285-.085-.48-.2-.63-.18-.22-.415-.33-.72-.33-.25 0-.44.075-.6.24-.085.09-.14.19-.165.305l-.025.125-.01 2.44-.015 2.445-.025.2c-.04.245-.14.44-.3.57-.175.14-.42.2-.66.16-.44-.075-.7-.43-.7-.94V8.325l-.02-.345c-.045-.5-.215-.87-.525-1.11-.215-.165-.45-.235-.74-.235-.27 0-.5.07-.695.215-.3.22-.455.56-.49 1.08l-.01.19V11.8l.01 3.45.02.205c.025.2.04.27.085.38.17.395.5.665.91.735.11.02.175.02.3 0 .435-.07.74-.385.84-.87.025-.12.025-.165.03-2.44l.01-2.32.015-.22c.03-.265.11-.44.265-.545.1-.07.215-.105.345-.105.17 0 .33.065.45.185.13.125.195.295.205.52.005.075.005 4.695 0 4.77-.01.35-.085.59-.245.775-.185.215-.44.325-.75.325-.275 0-.5-.085-.68-.255-.115-.11-.185-.235-.22-.39l-.025-.13-.005-2.495-.01-2.495v-.155c-.015-.27-.115-.495-.295-.66-.165-.15-.38-.235-.615-.235-.225 0-.425.075-.59.215-.205.17-.31.41-.325.735l-.005.155V12.27l.01 2.455.015.215c.035.435.165.77.4 1.02.285.305.69.475 1.12.475.545 0 .975-.205 1.275-.61l.065-.09.045.065c.28.41.69.62 1.225.63.47.01.87-.155 1.17-.48.225-.24.355-.535.39-.885l.015-.185.005-2.47.01-2.47v-.185c-.01-.295-.085-.52-.23-.685-.195-.22-.47-.33-.79-.33-.285 0-.525.09-.715.27-.155.145-.24.325-.265.545l-.015.175L8 10.55V12.97l-.01 2.42-.015.195c-.03.285-.115.49-.265.62-.1.09-.225.135-.38.135-.22 0-.4-.09-.525-.265-.09-.125-.135-.285-.14-.48l-.005-.15V10.22l.005-.175c.03-.33.145-.57.35-.72.145-.105.315-.155.505-.155.235 0 .43.085.575.25.115.13.18.29.195.49l.01.16v4.5l.005.175c.025.31.115.53.275.67.165.145.39.21.635.19.425-.035.695-.335.725-.8l.01-.165v-4.45l-.005-.185c-.025-.33-.125-.565-.315-.72-.155-.125-.355-.185-.575-.175-.27.01-.495.12-.66.315-.12.14-.185.305-.2.5l-.01.175V14.07l-.005.195c-.025.285-.115.49-.265.63-.1.09-.235.135-.39.135-.22 0-.4-.095-.52-.275-.085-.125-.13-.285-.135-.49l-.005-.16V10.17c.005-.145.025-.26.07-.37.115-.285.37-.47.67-.49.31-.025.585.13.745.405.07.12.1.25.105.41l.005.185v4.41l.005.175c.025.315.115.535.275.675.165.145.395.21.635.185.425-.04.695-.34.73-.8l.01-.165V10.24l-.005-.195c-.03-.335-.13-.575-.32-.73-.16-.13-.365-.19-.59-.18-.265.01-.49.12-.655.315-.12.145-.185.31-.2.5l-.01.18V14.06l-.005.19c-.025.29-.115.495-.265.635-.1.09-.235.14-.39.14-.22 0-.4-.095-.52-.275-.085-.125-.13-.285-.135-.49l-.005-.165V10.16c.005-.145.025-.265.07-.375.115-.285.37-.47.67-.49.31-.025.585.13.745.41.07.12.1.25.105.415l.005.185v4.41l.005.175c.025.315.115.535.275.675.16.145.395.21.635.185.425-.04.695-.34.73-.8l.01-.165v-4.39l-.005-.19c-.025-.305-.11-.53-.295-.685-.18-.165-.42-.25-.67-.245-.245.005-.46.09-.625.255-.14.135-.22.31-.245.52l-.01.175V14.06l-.005.19c-.025.285-.115.49-.265.63-.1.09-.235.14-.39.14-.22 0-.4-.095-.52-.275-.085-.13-.13-.29-.135-.495l-.005-.165V10.15c.005-.14.025-.26.07-.37.11-.285.37-.47.665-.49.31-.02.585.135.745.41.07.12.1.255.105.415l.005.185v4.41',
+    color: '#4EAA25',
+    viewBox: '0 0 24 24',
+  },
+  {
+    name: 'PowerShell',
+    path: 'M23.813 0H.187A.186.186 0 0 0 0 .187v23.626c0 .103.084.187.187.187h23.626A.186.186 0 0 0 24 23.813V.187A.186.186 0 0 0 23.813 0zM7.505 16.605L3.9 12.9l3.605-3.705-.55 3.705.55 3.705zm1.275.495L5.1 20.4l-.615-.615 3.405-2.985-.11-.7zm5.655-9.54l-4.41 10.035-1.29.045 4.41-10.035 1.29-.045zm2.13 9.54l-3.606 3.705.55-3.705-.55-3.705 3.606 3.705z',
+    color: '#5391FE',
+    viewBox: '0 0 24 24',
   },
 ];
 
 const funItems = [
-  { label: "Playing soccer", icon: "⚽" },
-  { label: "Playing FIFA", icon: "🎮" },
-  { label: "Traveling", icon: "✈️" },
-  { label: "Spending time with family", icon: "❤️" },
-  { label: "Walking outside", icon: "🚶" },
-  { label: "Working out", icon: "💪" },
+  { label: "Playing soccer", icon: "⚽", tag: "Every weekend. No excuses.", color: "border-green-500/30 bg-green-500/5", accent: "text-green-400" },
+  { label: "Traveling", icon: "✈️", tag: "New place, new perspective.", color: "border-sky-500/30 bg-sky-500/5", accent: "text-sky-400" },
+  { label: "Spending time with family", icon: "❤️", tag: "The most important meeting of the day.", color: "border-rose-500/30 bg-rose-500/5", accent: "text-rose-400" },
+  { label: "Walking outside", icon: "🚶", tag: "Best ideas happen on foot.", color: "border-amber-500/30 bg-amber-500/5", accent: "text-amber-400" },
+  { label: "Working out", icon: "💪", tag: "Discipline off-screen, too.", color: "border-orange-500/30 bg-orange-500/5", accent: "text-orange-400" },
+  { label: "Reading books", icon: "📚", tag: "Slow down. Think deeper.", color: "border-violet-500/30 bg-violet-500/5", accent: "text-violet-400" },
+  { label: "Meditating", icon: "🧘", tag: "Quiet the noise. Find the signal.", color: "border-teal-500/30 bg-teal-500/5", accent: "text-teal-400" },
+  { label: "Racing cars", icon: "🏎️", tag: "Full speed, full focus.", color: "border-red-500/30 bg-red-500/5", accent: "text-red-400" },
+  { label: "Playing FIFA", icon: "🎮", tag: "I never lose. (I always lose.)", color: "border-blue-500/30 bg-blue-500/5", accent: "text-blue-400" },
 ];
 
 const navLinks = [
-  { label: "About", href: "#about" },
   { label: "Story", href: "#story" },
+  { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
-  { label: "Human", href: "#human" },
+  { label: "Life", href: "#human" },
+  { label: "Decode", href: "#tryme" },
   { label: "Contact", href: "#contact" },
 ];
 
-const MARQUEE =
-  "EVERY PROBLEM HAS A SOLUTION  ✦  LET'S FIX IT TOGETHER  ✦  JAZZ ALHUSSEIN  ✦  TECHNICAL SUPPORT ENGINEER  ✦  CALM UNDER PRESSURE  ✦  REAL HUMAN  ✦  ";
-
-/* ── Icons ─────────────────────────────────────────────────────── */
+/* ── Icons ──────────────────────────────────────────────────────── */
 
 function GithubIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
       <path d="M12 2C6.477 2 2 6.589 2 12.248c0 4.526 2.865 8.367 6.839 9.722.5.096.682-.221.682-.492 0-.244-.009-.89-.014-1.747-2.782.617-3.369-1.37-3.369-1.37-.455-1.177-1.11-1.49-1.11-1.49-.908-.636.069-.623.069-.623 1.004.072 1.532 1.053 1.532 1.053.892 1.566 2.341 1.114 2.91.852.091-.664.35-1.114.636-1.37-2.221-.259-4.555-1.14-4.555-5.073 0-1.12.39-2.036 1.029-2.753-.103-.26-.446-1.307.097-2.724 0 0 .84-.276 2.75 1.051A9.303 9.303 0 0 1 12 6.836a9.27 9.27 0 0 1 2.504.347c1.909-1.327 2.747-1.051 2.747-1.051.545 1.417.202 2.464.1 2.724.64.717 1.027 1.633 1.027 2.753 0 3.943-2.338 4.811-4.566 5.065.359.318.679.946.679 1.907 0 1.377-.012 2.488-.012 2.826 0 .273.18.592.688.491C19.138 20.611 22 16.772 22 12.248 22 6.589 17.523 2 12 2Z" />
     </svg>
   );
@@ -102,161 +157,157 @@ function GithubIcon() {
 
 function LinkedinIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
       <path d="M6.94 8.5H3.56V19.5h3.38V8.5ZM5.25 3C4.14 3 3.25 3.91 3.25 5.03c0 1.11.89 2.02 2 2.02 1.11 0 2-.91 2-2.02C7.25 3.91 6.36 3 5.25 3Zm14.5 9.67c0-3.11-1.66-4.56-3.88-4.56-1.79 0-2.59.99-3.04 1.68V8.5H9.45c.04.85 0 11 0 11h3.38v-6.14c0-.33.02-.66.12-.9.26-.66.86-1.35 1.86-1.35 1.31 0 1.84 1.02 1.84 2.52v5.87h3.38l.02-6.83Z" />
     </svg>
   );
 }
 
-
-function Label({ children, light = false }: { children: React.ReactNode; light?: boolean }) {
-  return (
-    <p className={`mb-4 text-[11px] font-bold uppercase tracking-[0.25em] ${light ? "text-green-400" : "text-green-600"}`}>
-      {children}
-    </p>
-  );
-}
-
-/* ── Page ──────────────────────────────────────────────────────── */
+/* ── Page ───────────────────────────────────────────────────────── */
 
 export default function Home() {
   return (
-    <main className="bg-[#f5f5f3] text-zinc-900 selection:bg-green-500 selection:text-white">
+    <main className="bg-[#0a0a0a] text-zinc-100 selection:bg-green-500 selection:text-black">
 
-      {/* ── Header ───────────────────────────────────── */}
-      <header className="relative sticky top-0 z-50 border-b border-zinc-200 bg-white/95 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a href="#home" className="text-base font-black uppercase tracking-widest text-zinc-900 transition hover:text-green-600">
-            Jazz
+      {/* ── Header ──────────────────────────────────── */}
+      <header className="sticky top-0 z-50 border-b border-green-500/10 bg-[#0a0a0a]/95 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+          <a href="#home" className="flex items-center gap-2.5 font-mono text-sm font-bold text-white transition hover:text-green-400">
+            <span className="flex h-7 w-7 items-center justify-center rounded bg-green-500 font-mono text-xs font-black text-black shadow-[0_0_12px_rgba(34,197,94,0.5)]">J</span>
+            Jazz<span className="text-green-500">.exe</span>
           </a>
-          <nav className="hidden items-center gap-8 md:flex">
+          <nav className="hidden items-center gap-1 md:flex">
             {navLinks.map(({ label, href }) => (
-              <a
-                key={label}
-                href={href}
-                className="text-base font-bold uppercase tracking-widest text-zinc-900 transition hover:text-green-600"
-              >
+              <a key={label} href={href}
+                className="rounded px-4 py-2 font-mono text-xs font-medium text-zinc-500 transition hover:bg-green-500/10 hover:text-green-400">
                 {label}
               </a>
             ))}
           </nav>
-          <div className="flex items-center gap-4">
-            <a href="https://github.com/Jazz-1998" target="_blank" rel="noreferrer" aria-label="GitHub" className="text-zinc-900 transition hover:text-green-600">
-              <GithubIcon />
-            </a>
-            <a href="https://www.linkedin.com/in/jawad-alhussein/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-zinc-900 transition hover:text-green-600">
-              <LinkedinIcon />
-            </a>
-            <a href="mailto:alhusseinjazz@gmail.com" aria-label="Email" className="text-zinc-900 transition hover:text-green-600">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6" aria-hidden="true">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" strokeLinecap="round" strokeLinejoin="round" />
-                <polyline points="22,6 12,13 2,6" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </a>
+          <div className="flex items-center gap-2">
+            {[
+              { href: "https://github.com/Jazz-1998", label: "GitHub", icon: <GithubIcon /> },
+              { href: "https://www.linkedin.com/in/jawad-alhussein/", label: "LinkedIn", icon: <LinkedinIcon /> },
+              { href: "mailto:alhusseinjazz@gmail.com", label: "Email", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" strokeLinecap="round" strokeLinejoin="round" /><polyline points="22,6 12,13 2,6" strokeLinecap="round" strokeLinejoin="round" /></svg> },
+            ].map(({ href, label, icon }) => (
+              <a key={label} href={href} target={href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" aria-label={label}
+                className="flex h-9 w-9 items-center justify-center rounded text-zinc-600 transition hover:bg-green-500/10 hover:text-green-400">
+                {icon}
+              </a>
+            ))}
             <MobileMenu />
           </div>
         </div>
       </header>
 
-      {/* ── Hero ─────────────────────────────────────── */}
+      {/* ── Hero ────────────────────────────────────── */}
       <Hero />
 
-      {/* ── Marquee ──────────────────────────────────── */}
-      <div className="overflow-hidden border-y border-[#1c1c1c] bg-[#0c0c0c] py-4" aria-hidden="true">
-        <div className="marquee-track">
-          {[0, 1].map((i) => (
-            <span key={i} className="pr-6 text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-600">
-              {MARQUEE.repeat(4)}
-            </span>
-          ))}
-        </div>
-      </div>
+      {/* ── Story ───────────────────────────────────── */}
+      <section id="story" className="border-t border-green-500/10 bg-[#0a0a0a] py-24 md:py-32">
+        <div className="mx-auto max-w-6xl px-6">
+          <ScrollReveal>
+            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-widest text-green-500">// my_story.log</p>
+            <h2 className="mb-16 text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl">
+              Where it all <span className="text-green-400">started.</span>
+            </h2>
+          </ScrollReveal>
 
-      {/* ── Story ─────────────────────────────────────── */}
-      <section id="story" className="bg-[#0c0c0c] text-white">
-        <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
-          <div className="grid gap-16 md:grid-cols-2 md:gap-24">
-
-            {/* left */}
-            <div>
-              <ScrollReveal>
-                <Label light>My Story</Label>
-                <h2 className="text-4xl font-black leading-tight tracking-tight text-white md:text-5xl">
-                  Where it all<br />
-                  <span className="text-green-500">started.</span>
-                </h2>
-              </ScrollReveal>
-              <ScrollReveal delay={1}>
-                <div className="mt-10 space-y-5 text-base leading-9 text-zinc-400">
-                  <p>
-                    &ldquo;Every problem has a solution&rdquo; — I didn&apos;t read that
-                    in a book. I lived it. Growing up, my dad always pulled me in to help:
-                    painting, cutting grass, fixing random stuff around the house.
-                  </p>
-                  <p>
-                    And every time something went wrong — because it always did —
-                    I didn&apos;t walk away. I figured it out. Every. Single. Time.
-                    That became who I am.
-                  </p>
-                  <p>
-                    Support isn&apos;t just a job title for me. It&apos;s how I&apos;m wired.
-                    I genuinely can&apos;t leave a problem unsolved. It keeps me up at night
-                    — in the best way possible.
-                  </p>
-                </div>
-              </ScrollReveal>
-            </div>
-
-            {/* right — quote */}
-            <ScrollReveal delay={2}>
-              <div className="flex h-full flex-col justify-center md:pt-20">
-                <div className="mb-8 h-px w-8 bg-green-500" />
-                <blockquote className="space-y-1 text-2xl font-black leading-snug tracking-tight md:text-3xl">
-                  <p className="text-white">I love helping people.</p>
-                  <p className="text-zinc-600">And when their problem is gone —</p>
-                  <p className="text-zinc-600">when I see that relief —</p>
-                  <p className="text-zinc-600">that smile —</p>
-                  <p className="text-green-400">that&apos;s everything to me.</p>
-                </blockquote>
-                <div className="mt-10 h-px bg-zinc-800" />
-                <p className="mt-6 text-sm leading-8 text-zinc-500">
-                  That&apos;s why I do this. Not for the tickets. Not for the metrics.
-                  For the moment someone says &ldquo;thank you, I was going crazy&rdquo; —
-                  and I get to say &ldquo;I know. You&apos;re good now.&rdquo;
+          <div className="grid gap-12 md:grid-cols-2 md:gap-20">
+            <ScrollReveal delay={1}>
+              <div className="space-y-5 text-base leading-relaxed text-zinc-400">
+                <p>
+                  &ldquo;Every problem has a solution.&rdquo; That&apos;s not something I read. That&apos;s something I lived.
+                </p>
+                <p>
+                  Growing up, my dad didn&apos;t just tell me how things worked. He pulled me into it. Painting, cutting the grass, fixing whatever needed fixing. It wasn&apos;t optional. It was just how life was.
+                </p>
+                <p>
+                  And things went wrong all the time. But walking away was never part of the process. We stayed with it. We figured it out. Every single time. That&apos;s where it all started.
+                </p>
+                <p>
+                  Somewhere in those moments, something stuck with me. Not just how to fix things, but how to face them.
+                </p>
+                <p>
+                  That mindset became who I am.
+                </p>
+                <p>
+                  Today, support isn&apos;t just a role I play. It&apos;s how I think, how I move, and how I show up. I don&apos;t sit comfortably with problems. I lean into them, break them down, and stay with them until they finally make sense.
                 </p>
               </div>
             </ScrollReveal>
 
+            <ScrollReveal delay={2}>
+              {/* Terminal window card */}
+              <div className="overflow-hidden rounded-xl border border-green-500/15 bg-black shadow-[0_0_40px_rgba(34,197,94,0.05)]">
+                <div className="flex items-center gap-2 border-b border-green-500/10 bg-zinc-900/50 px-4 py-3">
+                  <span className="h-2.5 w-2.5 rounded-full bg-red-500/70" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/70" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-green-500/70" />
+                  <span className="ml-2 font-mono text-[10px] text-zinc-600">personal.log</span>
+                </div>
+                <div className="p-7">
+                  <p className="mb-5 font-mono text-[10px] text-green-500/60">$ cat personal.log</p>
+                  <blockquote className="space-y-3 text-lg font-bold leading-snug tracking-tight md:text-xl">
+                    <p className="text-white">And honestly, I owe all of that to my dad.</p>
+                    <p className="text-zinc-500">He didn&apos;t just teach me how to fix things.</p>
+                    <p className="text-zinc-500">He taught me patience, persistence,</p>
+                    <p className="text-zinc-500">and not to leave until a problem</p>
+                    <p className="text-green-400">turns into a solution.</p>
+                  </blockquote>
+                  <div className="mt-7 border-t border-green-500/10 pt-6">
+                    <p className="text-sm leading-relaxed text-zinc-500">
+                      I love him for that. What a hero.
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+                      That&apos;s something I carry with me every single day.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* ── What I do ────────────────────────────────── */}
-      <section id="about" className="bg-white py-24 md:py-32">
+      {/* ── What I Do ───────────────────────────────── */}
+      <section id="about" className="border-t border-green-500/10 bg-[#0d0d0d] py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <ScrollReveal>
-            <Label>What I do</Label>
-            <h2 className="mb-14 text-4xl font-black tracking-tight text-zinc-950 md:text-5xl">
+            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-widest text-green-500">// about.active</p>
+            <h2 className="mb-14 text-4xl font-bold tracking-tight text-white md:text-5xl">
               How I show up — every time.
             </h2>
           </ScrollReveal>
 
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-3">
             {showcaseCards.map((card, i) => (
               <ScrollReveal key={card.title} delay={((i + 1) as 1 | 2 | 3)}>
-                <div className="group flex h-full flex-col rounded-2xl border border-zinc-100 bg-[#f9f9f7] p-8 transition duration-300 hover:-translate-y-1 hover:border-zinc-200 hover:shadow-lg">
-                  <div className="mb-5 text-3xl">{card.icon}</div>
-                  <h3 className="mb-3 text-lg font-bold tracking-tight text-zinc-900">{card.title}</h3>
-                  <p className="mb-6 flex-1 text-sm leading-7 text-zinc-500">{card.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {card.items.map((item) => (
-                      <span
-                        key={item}
-                        className="rounded-full bg-white px-3 py-1 text-xs font-medium text-zinc-500 ring-1 ring-zinc-200"
-                      >
-                        {item}
-                      </span>
-                    ))}
+                <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-green-500/10 bg-black transition duration-300 hover:border-green-500/30 hover:shadow-[0_0_30px_rgba(34,197,94,0.08)]">
+                  {/* Terminal chrome */}
+                  <div className="flex items-center justify-between border-b border-green-500/10 bg-zinc-900/40 px-4 py-2.5">
+                    <div className="flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-red-500/60" />
+                      <span className="h-2 w-2 rounded-full bg-yellow-500/60" />
+                      <span className="h-2 w-2 rounded-full bg-green-500/60" />
+                    </div>
+                    <span className="font-mono text-[9px] text-zinc-700">{card.id}</span>
+                    <div className="flex items-center gap-1">
+                      <span className="h-1 w-1 rounded-full bg-green-500 animate-pulse" />
+                      <span className="font-mono text-[9px] text-green-600">{card.status}</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <span className="mb-4 text-2xl">{card.icon}</span>
+                    <h3 className="mb-3 text-base font-semibold text-white">{card.title}</h3>
+                    <p className="mb-5 flex-1 text-sm leading-relaxed text-zinc-500">{card.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {card.items.map((item) => (
+                        <span key={item} className="rounded border border-green-500/15 px-2.5 py-1 font-mono text-[10px] text-zinc-600 transition group-hover:border-green-500/30 group-hover:text-green-500/70">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>
@@ -265,114 +316,74 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Skills & Tools ────────────────────────────── */}
-      <section id="skills" className="bg-[#f5f5f3] py-24 md:py-32">
+      {/* ── Skills & Tools ──────────────────────────── */}
+      <section id="skills" className="border-t border-green-500/10 bg-[#0a0a0a] py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <ScrollReveal>
-            <Label>Skills & Tools</Label>
-            <h2 className="mb-14 text-4xl font-black tracking-tight text-zinc-950 md:text-5xl">
-              My toolkit. Pretty solid.
+            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-widest text-green-500">// skills.config</p>
+            <h2 className="mb-14 text-4xl font-bold tracking-tight text-white md:text-5xl">
+              My toolkit. Pretty solid, huh.
             </h2>
           </ScrollReveal>
 
-          <div className="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr] md:gap-20">
-
-            {/* Skills */}
-            <ScrollReveal delay={1}>
-              <p className="mb-5 text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-400">Skills</p>
-              <div className="divide-y divide-zinc-200">
-                {skills.map((skill, i) => (
-                  <div
-                    key={skill.name}
-                    className="group -mx-3 flex items-center gap-5 rounded-xl px-3 py-4 transition duration-150 hover:bg-white"
-                  >
-                    <span className="w-7 shrink-0 text-xs font-bold tabular-nums text-zinc-300 transition duration-150 group-hover:text-green-500">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="flex-1 text-sm font-semibold text-zinc-800 transition duration-150 group-hover:text-green-700">
-                      {skill.name}
-                    </span>
-                    <span className="shrink-0 rounded-full bg-zinc-100 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-zinc-400 transition duration-150 group-hover:bg-green-100 group-hover:text-green-700">
-                      {skill.tag}
-                    </span>
+          <ScrollReveal delay={1}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+              {systems.map((s) => (
+                <div key={s.id} className={`rounded-xl border p-5 ${s.color}`}>
+                  <div className="mb-4">
+                    <span className="mb-2 block text-2xl">{s.emoji}</span>
+                    <p className="font-mono text-[9px] font-bold uppercase tracking-widest leading-snug">{s.label}</p>
+                    {s.sublabel && <p className="mt-0.5 font-mono text-[8px] text-zinc-600">— {s.sublabel}</p>}
                   </div>
-                ))}
-              </div>
-            </ScrollReveal>
-
-            {/* Tools */}
-            <ScrollReveal delay={2}>
-              <p className="mb-5 text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-400">Tools</p>
-              <div className="grid grid-cols-2 gap-2.5">
-                {tools.map((tool) => (
-                  <div
-                    key={tool}
-                    className="group flex items-center gap-3 rounded-xl border border-zinc-200 bg-white px-4 py-3.5 transition duration-150 hover:border-green-200 hover:bg-green-50"
-                  >
-                    <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-green-500" />
-                    <span className="text-sm font-semibold text-zinc-700 transition duration-150 group-hover:text-green-800">
-                      {tool}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </ScrollReveal>
-
-            {/* Programming */}
-            <ScrollReveal delay={3}>
-              <p className="mb-5 text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-400">Programming</p>
-              <div className="grid grid-cols-2 gap-3">
-                {programming.map((lang) => (
-                  <div
-                    key={lang.name}
-                    className="group flex flex-col items-center gap-3 rounded-2xl border border-zinc-100 bg-white p-5 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-md"
-                    style={{ borderTopColor: lang.color, borderTopWidth: 3 }}
-                  >
-                    <div
-                      className="flex h-12 w-12 items-center justify-center rounded-xl"
-                      style={{ backgroundColor: lang.bg }}
-                    >
-                      <svg viewBox="0 0 24 24" className="h-7 w-7" style={{ fill: lang.color }} aria-hidden="true">
-                        <path d={lang.path} />
-                      </svg>
-                    </div>
-                    <span className="text-xs font-bold tracking-wide text-zinc-700">{lang.name}</span>
-                  </div>
-                ))}
-              </div>
-            </ScrollReveal>
-
-          </div>
+                  {s.skills.length > 0 && (
+                    <>
+                      <p className="mb-1.5 font-mono text-[8px] uppercase tracking-widest opacity-40">Skills</p>
+                      <ul className="mb-4 space-y-1.5">
+                        {s.skills.map((item) => (
+                          <li key={item} className="flex items-center gap-2">
+                            <span className="font-mono text-[10px] opacity-40">›</span>
+                            <span className="text-xs text-zinc-300">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+                  <p className="mb-1.5 font-mono text-[8px] uppercase tracking-widest opacity-40">Tools</p>
+                  <ul className="space-y-1.5">
+                    {s.tools.map((item) => (
+                      <li key={item} className="flex items-center gap-2">
+                        <span className="font-mono text-[10px] opacity-40">›</span>
+                        <span className="text-xs text-zinc-300">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* ── Human ─────────────────────────────────────── */}
-      <section id="human" className="bg-white py-24 md:py-32">
+      {/* ── Life ────────────────────────────────────── */}
+      <section id="human" className="border-t border-green-500/10 bg-[#0d0d0d] py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <ScrollReveal>
-            <Label>I&apos;m not a robot</Label>
-            <div className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-              <h2 className="text-4xl font-black tracking-tight text-zinc-950 md:text-5xl">
-                Outside of work.
-              </h2>
-              <p className="max-w-sm text-base leading-8 text-zinc-500">
-                The best technical people are still fully human. Yes, they can have a life.
-                Let me tell you what keeps me alive outside of my career.
-              </p>
-            </div>
+            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-widest text-green-500">// life.exe</p>
+            <h2 className="mb-4 text-4xl font-bold tracking-tight text-white md:text-5xl">
+              Outside of work.
+            </h2>
+            <p className="mb-14 max-w-xl text-base leading-relaxed text-zinc-500">
+              The best technical people are still human. We have lives outside of work, like mine… and please tell me you do too 😄
+            </p>
           </ScrollReveal>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {funItems.map((item, i) => (
               <ScrollReveal key={item.label} delay={((i % 3) + 1) as 1 | 2 | 3}>
-                <div className="group relative overflow-hidden rounded-2xl border border-zinc-100 bg-[#f9f9f7] p-7 transition duration-300 hover:-translate-y-1 hover:border-green-200 hover:shadow-lg">
-                  <div className="absolute -right-4 -top-4 text-6xl opacity-10 transition duration-300 group-hover:opacity-20 group-hover:scale-110">
-                    {item.icon}
-                  </div>
-                  <span className="mb-3 block text-3xl">{item.icon}</span>
-                  <span className="text-sm font-bold text-zinc-700 transition duration-150 group-hover:text-green-700">
-                    {item.label}
-                  </span>
+                <div className={`group rounded-xl border ${item.color} p-6 transition duration-300 hover:-translate-y-1`}>
+                  <span className="mb-4 block text-3xl transition duration-300 group-hover:scale-110">{item.icon}</span>
+                  <p className={`mb-1 text-sm font-semibold ${item.accent}`}>{item.label}</p>
+                  <p className="text-xs leading-relaxed text-zinc-600">{item.tag}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -380,122 +391,65 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Problem Solver ───────────────────────────── */}
+      {/* ── Decode ──────────────────────────────────── */}
       <ProblemSolver />
 
-      {/* ── Contact ───────────────────────────────────── */}
-      <section id="contact" className="relative overflow-hidden bg-black py-24 md:py-36">
-
-        {/* watermark — texture only */}
-        <p className="pointer-events-none absolute inset-x-0 top-0 select-none text-center text-[clamp(5rem,18vw,14rem)] font-black uppercase leading-none tracking-tighter text-white/[0.025]" aria-hidden="true">
-          Contact
-        </p>
-
-        {/* layered glows */}
-        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-          <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-500/10 blur-[180px]" />
-          <div className="absolute left-1/4 top-1/4 h-[300px] w-[300px] rounded-full bg-green-400/5 blur-[120px]" />
-          <div className="absolute right-1/4 bottom-1/4 h-[250px] w-[250px] rounded-full bg-green-600/5 blur-[100px]" />
+      {/* ── Contact ─────────────────────────────────── */}
+      <section id="contact" className="relative overflow-hidden border-t border-green-500/10 bg-[#0a0a0a] py-24 md:py-36">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-500/5 blur-[120px]" />
         </div>
 
         <div className="relative mx-auto max-w-6xl px-6">
-
-          {/* heading */}
           <ScrollReveal>
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.35em] text-green-400">Get in touch</p>
-            <h2 className="relative mb-16 text-5xl font-black text-white md:text-7xl">
-              <span className="relative z-10">Don&apos;t be a stranger.</span>
-              <span className="absolute inset-0 text-green-500 opacity-[0.15] blur-2xl" aria-hidden="true">Don&apos;t be a stranger.</span>
-            </h2>
+            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-widest text-green-500">// contact.init()</p>
+            <TypewriterText text="Don't be a stranger." className="mb-16 text-5xl font-bold text-white md:text-6xl" />
           </ScrollReveal>
 
           <div className="grid gap-16 md:grid-cols-2 md:gap-24">
-
-            {/* left — info */}
             <ScrollReveal delay={1}>
-              <div className="space-y-5">
-                <p className="text-xl leading-9 text-zinc-100">
-                  I&apos;ve always loved connecting with people. It doesn&apos;t matter where you&apos;re from,
-                  what your background is, or what path brought you here.
+              <div className="space-y-5 text-base leading-relaxed">
+                <p className="text-zinc-300">
+                  I&apos;ve always loved connecting with people. Doesn&apos;t matter where you&apos;re from,
+                  your background, or what path brought you here.
                 </p>
-                <p className="text-lg font-medium leading-9 text-green-400">
+                <p className="font-medium text-green-400">
                   If you came from the moon, I&apos;d probably ask how the trip was and tell you to pull up a chair.
                 </p>
-                <p className="text-lg leading-9 text-zinc-200">
-                  And if you just want a real conversation, that works too.
-                </p>
-                <p className="text-lg leading-9 text-zinc-300">
-                  Life, opportunities, ideas, vision, or anything random — I&apos;m here. 😉 
+                <p className="text-zinc-500">
+                  Life, opportunities, ideas, vision, projects, or anything random — I&apos;m here. 😉
                 </p>
               </div>
-
-              <div className="mt-10 space-y-3 border-t border-zinc-800/60 pt-10">
-                {/* Email */}
-                <a
-                  href="mailto:alhusseinjazz@gmail.com"
-                  className="group flex items-center gap-4 rounded-xl border border-zinc-700 bg-zinc-900 p-4 transition duration-200 hover:-translate-y-px hover:border-green-500/50 hover:bg-zinc-800"
-                >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-zinc-800 text-zinc-300 transition duration-200 group-hover:bg-green-500/10 group-hover:text-green-400">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5" aria-hidden="true">
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" strokeLinecap="round" strokeLinejoin="round" />
-                      <polyline points="22,6 12,13 2,6" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-[10px] uppercase tracking-widest text-zinc-500">Email</p>
-                    <p className="text-sm font-semibold text-white">alhusseinjazz@gmail.com</p>
-                  </div>
-                </a>
-
-                {/* LinkedIn */}
-                <a
-                  href="https://www.linkedin.com/in/jawad-alhussein/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group flex items-center gap-4 rounded-xl border border-zinc-700 bg-zinc-900 p-4 transition duration-200 hover:-translate-y-px hover:border-green-500/50 hover:bg-zinc-800"
-                >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-zinc-800 text-zinc-300 transition duration-200 group-hover:bg-green-500/10 group-hover:text-green-400">
-                    <LinkedinIcon />
-                  </div>
-                  <div>
-                    <p className="text-[10px] uppercase tracking-widest text-zinc-500">LinkedIn</p>
-                    <p className="text-sm font-semibold text-white">jawad-alhussein</p>
-                  </div>
-                </a>
-
-                {/* GitHub */}
-                <a
-                  href="https://github.com/Jazz-1998"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group flex items-center gap-4 rounded-xl border border-zinc-700 bg-zinc-900 p-4 transition duration-200 hover:-translate-y-px hover:border-green-500/50 hover:bg-zinc-800"
-                >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-zinc-800 text-zinc-300 transition duration-200 group-hover:bg-green-500/10 group-hover:text-green-400">
-                    <GithubIcon />
-                  </div>
-                  <div>
-                    <p className="text-[10px] uppercase tracking-widest text-zinc-500">GitHub</p>
-                    <p className="text-sm font-semibold text-white">Jazz-1998</p>
-                  </div>
-                </a>
+              <div className="mt-10 flex gap-3 border-t border-green-500/10 pt-10">
+                {[
+                  { href: "mailto:alhusseinjazz@gmail.com", label: "Email", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" strokeLinecap="round" strokeLinejoin="round" /><polyline points="22,6 12,13 2,6" strokeLinecap="round" strokeLinejoin="round" /></svg> },
+                  { href: "https://www.linkedin.com/in/jawad-alhussein/", label: "LinkedIn", icon: <LinkedinIcon /> },
+                  { href: "https://github.com/Jazz-1998", label: "GitHub", icon: <GithubIcon /> },
+                ].map(({ href, label, icon }) => (
+                  <a key={label} href={href} target={href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" aria-label={label}
+                    className="flex h-12 w-12 items-center justify-center rounded-lg border border-green-500/15 text-zinc-600 transition hover:border-green-500/40 hover:bg-green-500/5 hover:text-green-400">
+                    {icon}
+                  </a>
+                ))}
               </div>
             </ScrollReveal>
 
-            {/* right — form */}
             <ScrollReveal delay={2}>
-              <p className="mb-6 text-xs font-bold uppercase tracking-[0.35em] text-green-400">Contact me</p>
               <ContactForm />
             </ScrollReveal>
-
           </div>
         </div>
       </section>
 
-
-{/* ── Footer ───────────────────────────────────── */}
-      <footer className="border-t border-zinc-900 bg-[#0c0c0c] px-6 py-6">
-        <div className="mx-auto flex max-w-6xl items-center justify-center">
-          <p className="text-xs text-zinc-700">Coded by Jazz Alhussein (Yes, I am also a programmer too :D)</p>
+      {/* ── Footer ──────────────────────────────────── */}
+      <footer className="border-t border-green-500/10 bg-[#0a0a0a] px-6 py-8">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 md:flex-row">
+          <div className="flex items-center gap-2">
+            <span className="font-mono text-xs text-green-500">$</span>
+            <span className="font-mono text-xs text-zinc-600">jazz --version 2026.1</span>
+          </div>
+          <p className="text-sm text-zinc-700">Technical Support Engineer… who also happens to code 😉</p>
+          <p className="font-mono text-xs text-zinc-800">© 2026</p>
         </div>
       </footer>
 
