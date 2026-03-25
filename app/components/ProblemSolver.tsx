@@ -71,7 +71,7 @@ export default function ProblemSolver() {
     <section id="tryme" className="relative overflow-hidden border-t border-green-500/10 bg-[#0d0d0d] py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
 
-        <p className="mb-10 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">// decode.run()</p>
+        <p className="mb-10 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">{'// decode.run()'}</p>
 
         <div className="grid gap-16 md:grid-cols-2 md:gap-24">
 
@@ -164,7 +164,7 @@ export default function ProblemSolver() {
 
                   {breakdown && (
                     <div className="mt-3 rounded-lg border border-green-500/20 bg-green-500/5 p-5">
-                      <p className="mb-1 font-mono text-xs text-green-500/60">// breakdown.output</p>
+                      <p className="mb-1 font-mono text-xs text-green-500/60">{'// breakdown.output'}</p>
                       <p className="mb-4 font-mono text-xs text-zinc-500">Hello, this is Jazz. An AI trained to think like him.</p>
                       <div className="space-y-4">
                         {[
