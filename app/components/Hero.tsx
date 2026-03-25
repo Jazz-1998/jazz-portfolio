@@ -112,7 +112,6 @@ const LOG_PREFIX: Record<LogType, string> = {
 export default function Hero() {
   const matrixRef = useRef<HTMLCanvasElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const mouseRef = useRef({ x: -9999, y: -9999 });
   const logBoxRef = useRef<HTMLDivElement>(null);
 
   const [uptime, setUptime] = useState('00:00:00');
@@ -328,58 +327,80 @@ export default function Hero() {
     return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize); };
   }, []);
 
-  // Particle network
+  // Particle network — Option D (calm ambient mesh)
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-    const resize = () => { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; };
+
+    let w = 0, h = 0;
+    const resize = () => {
+      w = canvas.width  = canvas.offsetWidth;
+      h = canvas.height = canvas.offsetHeight;
+    };
     resize();
     window.addEventListener('resize', resize);
-    const onMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+
+    type P = { x: number; y: number; vx: number; vy: number; r: number; opacity: number };
+    let particles: P[] = [];
+
+    const spawn = () => {
+      particles = Array.from({ length: 120 }, () => ({
+        x:       Math.random() * w,
+        y:       Math.random() * h,
+        vx:      (Math.random() - 0.5) * 0.25,
+        vy:      (Math.random() - 0.5) * 0.25,
+        r:       Math.random() * 1.5 + 0.5,
+        opacity: Math.random() * 0.4 + 0.3,
+      }));
     };
-    canvas.addEventListener('mousemove', onMouseMove);
-    type P = { x: number; y: number; vx: number; vy: number; r: number };
-    const particles: P[] = Array.from({ length: 80 }, () => ({
-      x: Math.random() * canvas.width, y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
-      r: Math.random() * 1.2 + 0.4,
-    }));
+    spawn();
+
     let raf: number;
+    const MAX_DIST = 120;
+
     const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const mouse = mouseRef.current;
+      ctx.clearRect(0, 0, w, h);
+
       for (const p of particles) {
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(34,197,94,0.7)'; ctx.fill();
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
       }
+
+      // lines first
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
-          const d = Math.sqrt(dx * dx + dy * dy);
-          if (d < 130) {
-            ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(34,197,94,${0.15 * (1 - d / 130)})`; ctx.lineWidth = 0.5; ctx.stroke();
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const d  = Math.sqrt(dx * dx + dy * dy);
+          if (d < MAX_DIST) {
+            const alpha = 0.25 * (1 - d / MAX_DIST);
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(34,197,94,${alpha})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
           }
         }
-        const mdx = particles[i].x - mouse.x, mdy = particles[i].y - mouse.y;
-        const md = Math.sqrt(mdx * mdx + mdy * mdy);
-        if (md < 180) {
-          ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = `rgba(34,197,94,${0.45 * (1 - md / 180)})`; ctx.lineWidth = 0.8; ctx.stroke();
-        }
       }
-      if (mouse.x > 0) { ctx.beginPath(); ctx.arc(mouse.x, mouse.y, 3, 0, Math.PI * 2); ctx.fillStyle = 'rgba(34,197,94,0.9)'; ctx.fill(); }
+
+      // dots on top
+      for (const p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(34,197,94,${p.opacity})`;
+        ctx.fill();
+      }
+
       raf = requestAnimationFrame(draw);
     };
     draw();
-    return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize); canvas.removeEventListener('mousemove', onMouseMove); };
+
+    return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize); };
   }, []);
 
   const slaMin = Math.floor(slaSeconds / 60);
@@ -413,9 +434,9 @@ export default function Hero() {
       `}</style>
 
       {/* Matrix rain */}
-      <canvas ref={matrixRef} className="absolute inset-0 h-full w-full opacity-[0.35]" style={{ zIndex: 0 }} />
+
       {/* Particle canvas */}
-      <canvas ref={canvasRef} className="absolute inset-0 h-full w-full opacity-20" style={{ zIndex: 1 }} />
+      <canvas ref={canvasRef} className="absolute inset-0 h-full w-full opacity-60" style={{ zIndex: 1 }} />
 
       {/* CRT scanline */}
       <div className="pointer-events-none absolute inset-0 crt-flicker" style={{ zIndex: 2, backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.08) 4px)' }} />
@@ -428,46 +449,46 @@ export default function Hero() {
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/95 via-[#0a0a0a]/80 to-[#0a0a0a]/40" style={{ zIndex: 3 }} />
 
-      {/* Section HUD corners */}
-      <div className="pointer-events-none absolute inset-6 z-10">
-        <div className="absolute left-0 top-0 h-12 w-12 border-l-2 border-t-2 border-green-500/30" />
-        <div className="absolute right-0 top-0 h-12 w-12 border-r-2 border-t-2 border-green-500/30" />
-        <div className="absolute bottom-0 left-0 h-12 w-12 border-b-2 border-l-2 border-green-500/30" />
-        <div className="absolute bottom-0 right-0 h-12 w-12 border-b-2 border-r-2 border-green-500/30" />
-        <span className="absolute left-14 top-1 font-mono text-[8px] text-green-500/30">SYS:ACTIVE</span>
-        <span className="absolute right-14 top-1 font-mono text-[8px] text-green-500/30">v2026.1.0</span>
-        <span className="absolute bottom-1 left-14 font-mono text-[8px] text-green-500/30">jazz.support</span>
-        <span className="absolute bottom-1 right-14 font-mono text-[8px] text-green-500/30">ENC:AES-256</span>
+      {/* Section HUD corners — desktop only */}
+      <div className="pointer-events-none absolute inset-6 z-10 hidden md:block">
+        <div className="absolute left-0 top-0 h-12 w-12 border-l-2 border-t-2 border-green-500/50" />
+        <div className="absolute right-0 top-0 h-12 w-12 border-r-2 border-t-2 border-green-500/50" />
+        <div className="absolute bottom-0 left-0 h-12 w-12 border-b-2 border-l-2 border-green-500/50" />
+        <div className="absolute bottom-0 right-0 h-12 w-12 border-b-2 border-r-2 border-green-500/50" />
+        <span className="absolute left-14 top-1 font-mono text-xs text-green-500/60">SYS:ACTIVE</span>
+        <span className="absolute right-14 top-1 font-mono text-xs text-green-500/60">v2026.1.0</span>
+        <span className="absolute bottom-1 left-14 font-mono text-xs text-green-500/60">jazz.support</span>
+        <span className="absolute bottom-1 right-14 font-mono text-xs text-green-500/60">ENC:AES-256</span>
       </div>
 
       <div className="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-green-500/60 to-transparent" style={{ zIndex: 10 }} />
 
       <div className="relative mx-auto max-w-7xl px-6" style={{ zIndex: 10 }}>
 
-        {/* ── Status Bar ── */}
-        <div className="flex items-center justify-between border-b border-green-500/10 py-5">
-          <div className="flex items-center gap-5">
+        {/* ── Status Bar — desktop only ── */}
+        <div className="hidden md:flex items-center justify-between border-b border-zinc-700 py-4">
+          <div className="flex items-center gap-6">
             <div className="relative flex items-center justify-center">
-              <div className="h-2 w-2 rounded-full bg-green-500 shadow-[0_0_6px_rgba(34,197,94,0.8)]" />
+              <div className="h-2.5 w-2.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.9)]" />
               <div className="absolute rounded-full border border-green-500/40" style={{ width: `${pingSize * 8}px`, height: `${pingSize * 8}px`, opacity: 1 / pingSize }} />
             </div>
-            <span className="font-mono text-[10px] text-zinc-600">TICKET #{ticketCount}</span>
-            <span className="hidden items-center gap-1.5 font-mono text-[10px] md:flex">
-              <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-green-500">STATUS: RESOLVED</span>
+            <span className="font-mono text-xs text-zinc-200">TICKET #{ticketCount}</span>
+            <span className="hidden items-center gap-1.5 font-mono text-xs md:flex">
+              <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-green-400 font-bold">STATUS: RESOLVED</span>
             </span>
-            <span className="hidden font-mono text-[10px] text-zinc-600 lg:block">QUEUE: {queueDepth}</span>
-            <span className="hidden font-mono text-[10px] text-zinc-600 lg:block">CLEARANCE: LEVEL 5</span>
+            <span className="hidden font-mono text-xs text-zinc-200 lg:block">QUEUE: {queueDepth}</span>
+            <span className="hidden font-mono text-xs text-zinc-200 lg:block">CLEARANCE: LEVEL 5</span>
           </div>
-          <div className="flex items-center gap-5">
-            <span className="hidden font-mono text-[9px] text-green-500/20 lg:block tracking-wider">{hexLine.match(/.{1,4}/g)?.join(' ')}</span>
-            <div className="hidden items-end gap-0.5 md:flex" style={{ height: 14 }}>
+          <div className="flex items-center gap-6">
+            <span className="hidden font-mono text-[10px] text-green-500/60 lg:block tracking-wider">{hexLine.match(/.{1,4}/g)?.join(' ')}</span>
+            <div className="hidden items-end gap-0.5 md:flex" style={{ height: 16 }}>
               {signalBars.map((h, i) => (
-                <div key={i} className="w-1 rounded-sm bg-green-500 transition-all duration-700"
-                  style={{ height: `${h}%`, opacity: 0.4 + (i / signalBars.length) * 0.6, boxShadow: '0 0 4px rgba(34,197,94,0.5)' }} />
+                <div key={i} className="w-1.5 rounded-sm bg-green-500 transition-all duration-700"
+                  style={{ height: `${h}%`, opacity: 0.5 + (i / signalBars.length) * 0.5, boxShadow: '0 0 4px rgba(34,197,94,0.7)' }} />
               ))}
             </div>
-            <span className="font-mono text-[10px] text-zinc-600">UPTIME {uptime}</span>
+            <span className="font-mono text-xs text-zinc-200">UPTIME {uptime}</span>
           </div>
         </div>
 
@@ -487,15 +508,36 @@ export default function Hero() {
                 <div className="pointer-events-none absolute inset-0 z-10" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(34,197,94,0.03) 20px)' }} />
                 <div className="pointer-events-none absolute left-0 right-0 top-0 z-10" style={{ height: `${scanPos}%`, background: 'rgba(34,197,94,0.04)' }} />
                 <div className="pointer-events-none absolute left-0 right-0 z-20" style={{ top: `${scanPos}%`, height: '2px', background: 'linear-gradient(to right, transparent, rgba(34,197,94,0.6), rgba(34,197,94,1), rgba(34,197,94,0.6), transparent)', boxShadow: '0 0 8px rgba(34,197,94,0.9)' }} />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/80 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 z-30 flex items-center justify-between">
-                  <div>
-                    <p className="font-mono text-[9px] font-semibold tracking-widest text-green-500">{scanData.id}</p>
-                    <p className="text-sm font-bold text-white">Jazz Alhussein</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/90 via-[#0a0a0a]/20 to-transparent" />
+
+                {/* Top-left ID */}
+                <div className="absolute left-3 top-3 z-30">
+                  <span className="font-mono text-[10px] font-bold tracking-widest text-green-400">{scanData.id}</span>
+                </div>
+
+                {/* Scan tag */}
+                <div className="absolute left-0 right-0 z-30 flex justify-center" style={{ top: '50%' }}>
+                  <div className="flex items-center gap-1.5 rounded border border-green-500/40 bg-black/70 px-3 py-1">
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
+                    <span className="font-mono text-[9px] font-bold tracking-widest text-green-400">SCANNING... 100% THAT GUY ✓</span>
                   </div>
-                  <div className="text-right">
-                    <p className="font-mono text-[9px] text-green-500">{scanData.match}</p>
-                    <p className="font-mono text-[8px] text-green-400/60">VERIFIED</p>
+                </div>
+
+                {/* Bottom bar */}
+                <div className="absolute bottom-0 left-0 right-0 z-30 px-3 pb-3">
+                  <div className="rounded-lg border border-green-500/20 bg-black/80 p-2.5 backdrop-blur-sm">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <p className="font-mono text-[8px] tracking-widest text-green-500/70">// subject.verified</p>
+                        <p className="mt-0.5 text-sm font-bold text-white">Jazz Alhussein</p>
+                        <p className="font-mono text-[9px] text-zinc-400">Technical Support Engineer</p>
+                      </div>
+                      <div className="text-right space-y-0.5">
+                        <p className="font-mono text-[8px] text-green-400">✓ VERY CHILL</p>
+                        <p className="font-mono text-[8px] text-green-400">✓ LIKES FOOD 🍕🍔🌮</p>
+                        <p className="font-mono text-[8px] text-green-400">✓ SUPER FUNNY</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -590,8 +632,8 @@ export default function Hero() {
             </div>
 
             <div className="mt-6 flex flex-wrap gap-2">
-              {['API Debugging', 'Root Cause Analysis', 'SaaS Support', 'Incident Response'].map((tag) => (
-                <span key={tag} className="rounded-full border border-green-500/20 px-3 py-1 font-mono text-[10px] text-zinc-500">{tag}</span>
+              {['Cool TSE 😎', 'Chill & Funny', 'Customer Translator', 'Human-Friendly Tech', 'Calm Under Pressure', 'I Like Food 🍕'].map((tag) => (
+                <span key={tag} className="rounded-full border border-green-500/40 bg-green-500/10 px-4 py-1.5 font-mono text-sm font-medium text-green-300">{tag}</span>
               ))}
             </div>
 
@@ -610,15 +652,20 @@ export default function Hero() {
               <div className="absolute -bottom-4 -right-4 z-30 h-9 w-9 border-b-2 border-r-2 border-green-500 shadow-[3px_3px_10px_rgba(34,197,94,0.4)]" />
 
               {/* Right data panel */}
-              <div className="absolute -right-28 top-1/2 z-30 -translate-y-1/2 hidden xl:block">
-                <div className="space-y-3">
-                  {[{ label: 'ID', value: scanData.id }, { label: 'MATCH', value: scanData.match }, { label: 'STATUS', value: scanData.status }, { label: 'TICKETS', value: `${ticketCount}` }, { label: 'CSAT', value: `${csat}%` }, { label: 'SLA', value: 'MET' }].map(({ label, value }) => (
-                    <div key={label} className="flex items-center gap-1.5">
-                      <div><p className="font-mono text-[8px] text-right text-zinc-700">{label}</p><p className="font-mono text-[10px] text-right text-green-500">{value}</p></div>
-                      <div className="h-px w-4 bg-green-500/40" />
-                    </div>
-                  ))}
-                </div>
+              <div className="absolute -right-36 top-1/2 z-30 -translate-y-1/2 hidden xl:flex flex-col gap-4">
+                {[
+                  { label: 'ID',      value: scanData.id },
+                  { label: 'MATCH',   value: scanData.match },
+                  { label: 'STATUS',  value: 'VERIFIED' },
+                  { label: 'TICKETS', value: `${ticketCount}` },
+                  { label: 'CSAT',    value: `${csat}%` },
+                  { label: 'SLA',     value: 'MET' },
+                ].map(({ label, value }) => (
+                  <div key={label} className="text-right">
+                    <p className="font-mono text-[10px] tracking-widest text-zinc-500">{label}</p>
+                    <p className="font-mono text-sm font-bold text-green-400">{value}</p>
+                  </div>
+                ))}
               </div>
 
               {/* Photo */}
@@ -645,15 +692,42 @@ export default function Hero() {
                     <div className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-green-500" />
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/80 via-transparent to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5 z-30 flex items-center justify-between">
-                  <div>
-                    <p className="mb-0.5 font-mono text-[10px] font-semibold tracking-widest text-green-500">{scanData.id}</p>
-                    <p className="font-bold text-white">Jazz Alhussein</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/90 via-[#0a0a0a]/20 to-transparent" />
+
+                {/* Top-left ID badge */}
+                <div className="absolute left-4 top-4 z-30">
+                  <span className="font-mono text-[10px] font-bold tracking-widest text-green-400">{scanData.id}</span>
+                </div>
+
+                {/* Top-right match */}
+                <div className="absolute right-4 top-4 z-30 text-right">
+                  <p className="font-mono text-[10px] text-green-500">{scanData.match}</p>
+                  <p className="font-mono text-[9px] text-green-400/50">MATCH</p>
+                </div>
+
+                {/* Fun scan tags — middle overlay */}
+                <div className="absolute left-0 right-0 z-30 flex flex-col items-center gap-1" style={{ top: '52%' }}>
+                  <div className="flex items-center gap-1.5 rounded border border-green-500/40 bg-black/70 px-3 py-1 backdrop-blur-sm">
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
+                    <span className="font-mono text-[10px] font-bold tracking-widest text-green-400">SCANNING... 100% THAT GUY ✓</span>
                   </div>
-                  <div className="text-right">
-                    <p className="font-mono text-[9px] text-green-500">{scanData.match}</p>
-                    <p className="font-mono text-[8px] text-green-400/60">{scanData.status}</p>
+                </div>
+
+                {/* Bottom info bar */}
+                <div className="absolute bottom-0 left-0 right-0 z-30 px-4 pb-4">
+                  <div className="rounded-lg border border-green-500/20 bg-black/80 p-3 backdrop-blur-sm">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <p className="font-mono text-[9px] tracking-widest text-green-500/70">// subject.verified</p>
+                        <p className="mt-0.5 text-base font-bold text-white">Jazz Alhussein</p>
+                        <p className="font-mono text-[10px] text-zinc-400">Technical Support Engineer</p>
+                      </div>
+                      <div className="text-right space-y-0.5">
+                        <p className="font-mono text-[9px] text-green-400">✓ VERY CHILL</p>
+                        <p className="font-mono text-[9px] text-green-400">✓ LIKES FOOD 🍕🍔🌮</p>
+                        <p className="font-mono text-[9px] text-green-400">✓ SUPER FUNNY</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -845,16 +919,16 @@ export default function Hero() {
         </div>
 
         {/* Bottom bar (desktop only) */}
-        <div className="hidden md:block border-t border-green-500/10 py-3">
+        <div className="hidden md:block border-t border-zinc-800 py-3">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-6 font-mono text-[9px] text-zinc-800">
-              {['Technical Support', 'API Debugging', 'Root Cause Analysis', 'SaaS Support', 'Incident Response'].map((t, i) => (
-                <span key={i} className="hidden shrink-0 md:block">{t} <span className="text-green-900">·</span></span>
+            <div className="flex items-center gap-6 font-mono text-xs text-zinc-400">
+              {['Cool TSE 😎', 'Chill & Funny', 'Customer Translator', 'Human-Friendly Tech', 'Calm Under Pressure', 'I Like Food 🍕'].map((t, i) => (
+                <span key={i} className="hidden shrink-0 md:block">{t} <span className="text-green-500/50">·</span></span>
               ))}
             </div>
             <div className="flex items-center gap-2">
-              <span className="h-1 w-1 rounded-full bg-green-500 animate-pulse" />
-              <span className="font-mono text-[9px] text-green-700">ALL SYSTEMS OPERATIONAL</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
+              <span className="font-mono text-xs text-green-400 font-medium">ALL SYSTEMS OPERATIONAL</span>
             </div>
           </div>
         </div>

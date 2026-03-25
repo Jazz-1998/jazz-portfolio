@@ -159,10 +159,10 @@ function LinkedinIcon() {
 
 export default function Home() {
   return (
-    <main className="bg-[#0a0a0a] text-zinc-100 selection:bg-green-500 selection:text-black pb-16 md:pb-0">
+    <main className="bg-[#0a0a0a] text-zinc-100 selection:bg-green-500 selection:text-black pb-16 md:pb-0 overflow-x-hidden">
 
       {/* ── Header ──────────────────────────────────── */}
-      <header className="sticky top-0 z-50 border-b border-green-500/10 bg-[#0a0a0a]/95 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-zinc-800 bg-[#0a0a0a]/95 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <a href="#home" className="flex items-center gap-2.5 font-mono text-sm font-bold text-white transition hover:text-green-400">
             <span className="flex h-7 w-7 items-center justify-center rounded bg-green-500 font-mono text-xs font-black text-black shadow-[0_0_12px_rgba(34,197,94,0.5)]">J</span>
@@ -183,11 +183,10 @@ export default function Home() {
               { href: "mailto:alhusseinjazz@gmail.com", label: "Email", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" strokeLinecap="round" strokeLinejoin="round" /><polyline points="22,6 12,13 2,6" strokeLinecap="round" strokeLinejoin="round" /></svg> },
             ].map(({ href, label, icon }) => (
               <a key={label} href={href} target={href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" aria-label={label}
-                className="flex h-9 w-9 items-center justify-center rounded text-zinc-600 transition hover:bg-green-500/10 hover:text-green-400">
+                className="flex h-9 w-9 items-center justify-center rounded text-zinc-400 transition hover:bg-green-500/10 hover:text-green-400">
                 {icon}
               </a>
             ))}
-            <MobileMenu />
           </div>
         </div>
       </header>
@@ -196,7 +195,7 @@ export default function Home() {
       <Hero />
 
       {/* ── Story ───────────────────────────────────── */}
-      <section id="story" className="border-t border-green-500/10 bg-[#0a0a0a] py-16 md:py-32">
+      <section id="story" className="relative overflow-hidden border-t border-zinc-800 bg-[#0a0a0a] py-16 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <ScrollReveal>
             <p className="mb-3 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">// my_story.log</p>
@@ -207,13 +206,13 @@ export default function Home() {
 
           <div className="grid gap-8 md:grid-cols-2 md:gap-20">
             <ScrollReveal delay={1}>
-              <div className="overflow-hidden rounded-xl border border-green-500/15 bg-black shadow-[0_0_40px_rgba(34,197,94,0.05)]">
-                <div className="flex items-center justify-between border-b border-green-500/10 bg-zinc-900/50 px-4 py-3">
+              <div className="overflow-hidden rounded-xl border border-zinc-800 bg-black shadow-[0_0_40px_rgba(34,197,94,0.05)]">
+                <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-900 px-4 py-3">
                   <div className="flex items-center gap-2">
                     <span className="h-2.5 w-2.5 rounded-full bg-red-500/70" />
                     <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/70" />
                     <span className="h-2.5 w-2.5 rounded-full bg-green-500/70" />
-                    <span className="ml-2 font-mono text-xs text-zinc-600">story.log</span>
+                    <span className="ml-2 font-mono text-xs text-zinc-400">story.log</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
@@ -224,27 +223,27 @@ export default function Home() {
                   <p className="mb-6 font-mono text-xs text-green-500/60">$ cat story.log</p>
                   <div className="space-y-5 text-base leading-relaxed text-zinc-300">
                     <p>
-                      <span className="mr-2 font-mono text-xs text-zinc-700">01</span>
+                      <span className="mr-2 font-mono text-xs text-zinc-500">01</span>
                       &ldquo;Every problem has a solution.&rdquo; That&apos;s not something I read. That&apos;s something I lived.
                     </p>
                     <p>
-                      <span className="mr-2 font-mono text-xs text-zinc-700">02</span>
+                      <span className="mr-2 font-mono text-xs text-zinc-500">02</span>
                       Growing up, my dad didn&apos;t just tell me how things worked. He pulled me into it. Painting, cutting the grass, fixing whatever needed fixing. It wasn&apos;t optional. It was just how life was.
                     </p>
                     <p>
-                      <span className="mr-2 font-mono text-xs text-zinc-700">03</span>
+                      <span className="mr-2 font-mono text-xs text-zinc-500">03</span>
                       And things went wrong all the time. But walking away was never part of the process. We stayed with it. We figured it out. Every single time. That&apos;s where it all started.
                     </p>
                     <p>
-                      <span className="mr-2 font-mono text-xs text-zinc-700">04</span>
+                      <span className="mr-2 font-mono text-xs text-zinc-500">04</span>
                       Somewhere in those moments, something stuck with me. Not just how to fix things, but how to face them.
                     </p>
                     <p>
-                      <span className="mr-2 font-mono text-xs text-zinc-700">05</span>
+                      <span className="mr-2 font-mono text-xs text-zinc-500">05</span>
                       That mindset became who I am.
                     </p>
                     <p>
-                      <span className="mr-2 font-mono text-xs text-zinc-700">06</span>
+                      <span className="mr-2 font-mono text-xs text-zinc-500">06</span>
                       Today, support isn&apos;t just a role I play. It&apos;s how I think, how I move, and how I show up. I don&apos;t sit comfortably with problems. I lean into them, break them down, and stay with them until they finally make sense.
                     </p>
                   </div>
@@ -254,12 +253,12 @@ export default function Home() {
 
             <ScrollReveal delay={2}>
               {/* Terminal window card */}
-              <div className="overflow-hidden rounded-xl border border-green-500/15 bg-black shadow-[0_0_40px_rgba(34,197,94,0.05)]">
-                <div className="flex items-center gap-2 border-b border-green-500/10 bg-zinc-900/50 px-4 py-3">
+              <div className="overflow-hidden rounded-xl border border-zinc-800 bg-black shadow-[0_0_40px_rgba(34,197,94,0.05)]">
+                <div className="flex items-center gap-2 border-b border-zinc-800 bg-zinc-900 px-4 py-3">
                   <span className="h-2.5 w-2.5 rounded-full bg-red-500/70" />
                   <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/70" />
                   <span className="h-2.5 w-2.5 rounded-full bg-green-500/70" />
-                  <span className="ml-2 font-mono text-[10px] text-zinc-600">personal.log</span>
+                  <span className="ml-2 font-mono text-[10px] text-zinc-400">personal.log</span>
                 </div>
                 <div className="p-7">
                   <p className="mb-5 font-mono text-xs text-green-500/70">$ cat personal.log</p>
@@ -270,7 +269,7 @@ export default function Home() {
                     <p className="text-zinc-400">and not to leave until a problem</p>
                     <p className="text-green-400">turns into a solution.</p>
                   </blockquote>
-                  <div className="mt-7 border-t border-green-500/10 pt-6">
+                  <div className="mt-7 border-t border-zinc-800 pt-6">
                     <p className="text-base leading-relaxed text-zinc-400">
                       I love him for that. What a hero.
                     </p>
@@ -283,10 +282,11 @@ export default function Home() {
             </ScrollReveal>
           </div>
         </div>
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-green-500/5" />
       </section>
 
       {/* ── What I Do ───────────────────────────────── */}
-      <section id="about" className="border-t border-green-500/10 bg-[#0d0d0d] py-16 md:py-32">
+      <section id="about" className="relative overflow-hidden border-t border-zinc-800 bg-[#111111] py-16 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <ScrollReveal>
             <p className="mb-3 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">// about.active</p>
@@ -298,15 +298,15 @@ export default function Home() {
           <div className="grid gap-4 md:grid-cols-3">
             {showcaseCards.map((card, i) => (
               <ScrollReveal key={card.title} delay={((i + 1) as 1 | 2 | 3)}>
-                <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-green-500/10 bg-black transition duration-300 hover:border-green-500/30 hover:shadow-[0_0_30px_rgba(34,197,94,0.08)]">
+                <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-zinc-800 bg-black transition duration-300 hover:border-green-500/30 hover:shadow-[0_0_30px_rgba(34,197,94,0.08)]">
                   {/* Terminal chrome */}
-                  <div className="flex items-center justify-between border-b border-green-500/10 bg-zinc-900/40 px-4 py-2.5">
+                  <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-900 px-4 py-2.5">
                     <div className="flex items-center gap-1.5">
                       <span className="h-2 w-2 rounded-full bg-red-500/60" />
                       <span className="h-2 w-2 rounded-full bg-yellow-500/60" />
                       <span className="h-2 w-2 rounded-full bg-green-500/60" />
                     </div>
-                    <span className="font-mono text-[9px] text-zinc-700">{card.id}</span>
+                    <span className="font-mono text-[9px] text-zinc-500">{card.id}</span>
                     <div className="flex items-center gap-1">
                       <span className="h-1 w-1 rounded-full bg-green-500 animate-pulse" />
                       <span className="font-mono text-[9px] text-green-600">{card.status}</span>
@@ -331,10 +331,11 @@ export default function Home() {
 
           <SupportConsole />
         </div>
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-green-500/5" />
       </section>
 
       {/* ── Skills & Tools ──────────────────────────── */}
-      <section id="skills" className="border-t border-green-500/10 bg-[#0a0a0a] py-16 md:py-32">
+      <section id="skills" className="relative overflow-hidden border-t border-zinc-800 bg-[#0a0a0a] py-16 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <ScrollReveal>
             <p className="mb-3 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">// skills.config</p>
@@ -403,10 +404,11 @@ export default function Home() {
             </div>
           </ScrollReveal>
         </div>
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-green-500/5" />
       </section>
 
       {/* ── Life ────────────────────────────────────── */}
-      <section id="human" className="border-t border-green-500/10 bg-[#0d0d0d] py-16 md:py-32">
+      <section id="human" className="relative overflow-hidden border-t border-zinc-800 bg-[#111111] py-16 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <ScrollReveal>
             <p className="mb-3 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">// life.exe</p>
@@ -421,9 +423,9 @@ export default function Home() {
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {funItems.map((item, i) => (
               <ScrollReveal key={item.label} delay={((i % 3) + 1) as 1 | 2 | 3}>
-                <div className="group flex flex-col overflow-hidden rounded-xl border border-green-500/10 bg-black transition duration-300 hover:border-green-500/25 hover:shadow-[0_0_20px_rgba(34,197,94,0.06)]">
-                  <div className="flex items-center justify-between border-b border-green-500/10 bg-zinc-900/40 px-4 py-2">
-                    <span className="font-mono text-[10px] text-zinc-700">PROC_{String(i + 1).padStart(2, '0')}</span>
+                <div className="group flex flex-col overflow-hidden rounded-xl border border-zinc-800 bg-black transition duration-300 hover:border-green-500/25 hover:shadow-[0_0_20px_rgba(34,197,94,0.06)]">
+                  <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-900 px-4 py-2">
+                    <span className="font-mono text-[10px] text-zinc-500">PROC_{String(i + 1).padStart(2, '0')}</span>
                     <div className="flex items-center gap-1">
                       <span className="h-1 w-1 rounded-full bg-green-500/60 animate-pulse" />
                       <span className="font-mono text-[10px] text-green-700">ACTIVE</span>
@@ -439,13 +441,14 @@ export default function Home() {
             ))}
           </div>
         </div>
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-green-500/5" />
       </section>
 
       {/* ── Decode ──────────────────────────────────── */}
       <ProblemSolver />
 
       {/* ── Contact ─────────────────────────────────── */}
-      <section id="contact" className="relative overflow-hidden border-t border-green-500/10 bg-[#0a0a0a] py-16 md:py-36">
+      <section id="contact" className="relative overflow-hidden border-t border-zinc-800 bg-[#0a0a0a] py-16 md:py-36">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-500/5 blur-[120px]" />
         </div>
@@ -470,14 +473,14 @@ export default function Home() {
                   Life, opportunities, ideas, vision, projects, or anything random — I&apos;m here. 😉
                 </p>
               </div>
-              <div className="mt-10 flex gap-3 border-t border-green-500/10 pt-10">
+              <div className="mt-10 flex gap-3 border-t border-zinc-800 pt-10">
                 {[
                   { href: "mailto:alhusseinjazz@gmail.com", label: "Email", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" strokeLinecap="round" strokeLinejoin="round" /><polyline points="22,6 12,13 2,6" strokeLinecap="round" strokeLinejoin="round" /></svg> },
                   { href: "https://www.linkedin.com/in/jawad-alhussein/", label: "LinkedIn", icon: <LinkedinIcon /> },
                   { href: "https://github.com/Jazz-1998", label: "GitHub", icon: <GithubIcon /> },
                 ].map(({ href, label, icon }) => (
                   <a key={label} href={href} target={href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" aria-label={label}
-                    className="flex h-12 w-12 items-center justify-center rounded-lg border border-green-500/15 text-zinc-600 transition hover:border-green-500/40 hover:bg-green-500/5 hover:text-green-400">
+                    className="flex h-12 w-12 items-center justify-center rounded-lg border border-green-500/15 text-zinc-400 transition hover:border-green-500/40 hover:bg-green-500/5 hover:text-green-400">
                     {icon}
                   </a>
                 ))}
@@ -493,17 +496,18 @@ export default function Home() {
       </section>
 
       {/* ── Footer ──────────────────────────────────── */}
-      <footer className="border-t border-green-500/10 bg-[#0a0a0a] px-6 py-8">
+      <footer className="border-t border-zinc-800 bg-[#0a0a0a] px-6 py-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 md:flex-row">
           <div className="flex items-center gap-2">
             <span className="font-mono text-xs text-green-500">$</span>
-            <span className="font-mono text-xs text-zinc-600">jazz --version 2026.1</span>
+            <span className="font-mono text-xs text-zinc-400">jazz --version 2026.1</span>
           </div>
           <p className="text-sm text-zinc-500">Technical Support Engineer… who also happens to code 😉</p>
-          <p className="font-mono text-xs text-zinc-600">© 2026</p>
+          <p className="font-mono text-xs text-zinc-400">© 2026</p>
         </div>
       </footer>
 
+      <MobileMenu />
     </main>
   );
 }

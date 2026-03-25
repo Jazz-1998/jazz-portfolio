@@ -229,10 +229,10 @@ export default function SupportConsole() {
       </div>
 
       {/* Terminal window */}
-      <div className="overflow-hidden rounded-xl border border-green-500/15 bg-black shadow-[0_0_40px_rgba(34,197,94,0.06)]">
+      <div className="overflow-hidden rounded-xl border border-zinc-800 bg-black shadow-[0_0_40px_rgba(34,197,94,0.06)]">
 
         {/* Chrome bar */}
-        <div className="flex items-center justify-between border-b border-green-500/10 bg-zinc-900/60 px-4 py-3">
+        <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-900 px-4 py-3">
           <div className="flex items-center gap-2">
             <span className="h-2.5 w-2.5 rounded-full bg-red-500/70" />
             <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/70" />
@@ -242,13 +242,15 @@ export default function SupportConsole() {
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
             <span className="font-mono text-xs text-green-500/80">SESSION ACTIVE</span>
           </div>
-          <span className="font-mono text-xs text-zinc-500">jazz@support-console:~</span>
+          <span className="hidden font-mono text-xs text-zinc-500 sm:block">jazz@support-console:~</span>
+          <span className="font-mono text-xs text-zinc-500 sm:hidden">console:~</span>
         </div>
 
         {/* Intro line */}
-        <div className="border-b border-green-500/10 px-5 py-3">
+        <div className="border-b border-zinc-800 px-5 py-3">
           <p className="font-mono text-xs text-zinc-500">
-            <span className="text-green-500/70">jazz@support-console</span>
+            <span className="hidden text-green-500/70 sm:inline">jazz@support-console</span>
+            <span className="text-green-500/70 sm:hidden">jazz</span>
             <span className="text-zinc-500">:~$ </span>
             <span className="text-zinc-300">run --scenario &quot;{scenario.title}&quot;</span>
           </p>
@@ -261,7 +263,7 @@ export default function SupportConsole() {
             {/* Revealed lines */}
             {scenario.lines.slice(0, revealed).map((line, i) => (
               <div key={i} className="flex items-start gap-2">
-                <span className="mt-px shrink-0 font-mono text-xs text-zinc-600">
+                <span className="mt-px shrink-0 font-mono text-xs text-zinc-400">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <p className={`font-mono text-sm leading-relaxed ${LINE_COLORS[line.type]}`}>
@@ -274,7 +276,7 @@ export default function SupportConsole() {
             {/* Currently typing line */}
             {isTyping && revealed < total && (
               <div className="flex items-start gap-2">
-                <span className="mt-px shrink-0 font-mono text-xs text-zinc-600">
+                <span className="mt-px shrink-0 font-mono text-xs text-zinc-400">
                   {String(revealed + 1).padStart(2, '0')}
                 </span>
                 <p className={`font-mono text-sm leading-relaxed ${LINE_COLORS[scenario.lines[revealed].type]}`}>
@@ -288,18 +290,21 @@ export default function SupportConsole() {
             {/* Idle cursor */}
             {!isTyping && !done && (
               <div className="flex items-center gap-2 pt-1">
-                <span className="font-mono text-xs text-zinc-600">
+                <span className="font-mono text-xs text-zinc-400">
                   {String(revealed + 1).padStart(2, '0')}
                 </span>
-                <span className="font-mono text-sm text-green-500/60">
+                <span className="hidden font-mono text-sm text-green-500/60 sm:inline">
                   jazz@support-console:~$ <span className="animate-pulse">▋</span>
+                </span>
+                <span className="font-mono text-sm text-green-500/60 sm:hidden">
+                  jazz:~$ <span className="animate-pulse">▋</span>
                 </span>
               </div>
             )}
 
             {/* Result */}
             {done && (
-              <div className="mt-4 rounded-lg border border-green-500/20 bg-green-500/5 px-4 py-3">
+              <div className="mt-4 rounded-lg border border-zinc-700 bg-green-500/5 px-4 py-3">
                 <p className="font-mono text-xs uppercase tracking-widest text-green-500/70">// resolution</p>
                 <p className="mt-1 font-mono text-base font-semibold text-green-400">{scenario.result}</p>
               </div>
@@ -316,7 +321,7 @@ export default function SupportConsole() {
         </div>
 
         {/* Controls */}
-        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-green-500/10 bg-zinc-900/40 px-4 py-3">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-zinc-800 bg-zinc-900 px-4 py-3">
           <div className="flex items-center gap-2">
             {/* Next */}
             <button

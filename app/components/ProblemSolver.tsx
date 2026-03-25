@@ -68,7 +68,7 @@ export default function ProblemSolver() {
   };
 
   return (
-    <section id="tryme" className="relative overflow-hidden border-t border-green-500/10 bg-[#0d0d0d] py-24 md:py-32">
+    <section id="tryme" className="relative overflow-hidden border-t border-zinc-800 bg-[#0d0d0d] py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
 
         <p className="mb-10 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">{'// decode.run()'}</p>
@@ -95,17 +95,18 @@ export default function ProblemSolver() {
           {/* right — terminal */}
           <div>
             {/* terminal window */}
-            <div className="overflow-hidden rounded-xl border border-green-500/15 bg-black shadow-[0_0_40px_rgba(34,197,94,0.06)]">
+            <div className="overflow-hidden rounded-xl border border-zinc-800 bg-black shadow-[0_0_40px_rgba(34,197,94,0.06)]">
 
               {/* chrome bar */}
-              <div className="flex items-center justify-between border-b border-green-500/10 bg-zinc-900/60 px-4 py-3">
+              <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-900 px-4 py-3">
+                {/* traffic lights */}
                 <div className="flex items-center gap-2">
                   <span className="h-2.5 w-2.5 rounded-full bg-red-500/70" />
                   <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/70" />
                   <span className="h-2.5 w-2.5 rounded-full bg-green-500/70" />
                 </div>
-                {/* mode tabs */}
-                <div className="flex gap-1">
+                {/* mode tabs — center */}
+                <div className="flex items-center gap-1">
                   {modes.map((m) => (
                     <button
                       key={m}
@@ -113,23 +114,24 @@ export default function ProblemSolver() {
                       className={`rounded px-3 py-1 font-mono text-xs font-semibold transition duration-150 ${
                         mode === m
                           ? 'bg-green-500/15 text-green-400'
-                          : 'text-zinc-600 hover:text-zinc-400'
+                          : 'text-zinc-500 hover:text-zinc-300'
                       }`}
                     >
                       {m}
                     </button>
                   ))}
                 </div>
-                <span className="font-mono text-xs text-zinc-700">jazz@ai:~</span>
+                {/* label — right */}
+                <span className="font-mono text-xs text-zinc-500">jazz@ai:~</span>
               </div>
 
               {/* console body */}
-              <div ref={chatContainerRef} className="max-h-96 min-h-[200px] overflow-y-auto px-5 py-4">
+              <div ref={chatContainerRef} className="max-h-96 min-h-[120px] overflow-y-auto px-5 py-4">
                 {messages.length === 0 && !loading && (
                   <div className="space-y-1">
                     <p className="font-mono text-xs text-green-500/60">$ jazz --mode {mode.toLowerCase()} --solve</p>
-                    <p className="font-mono text-xs text-zinc-600">Initializing diagnostic session...</p>
-                    <p className="font-mono text-xs text-zinc-600">Ready. Describe the problem below.</p>
+                    <p className="font-mono text-xs text-zinc-400">Initializing diagnostic session...</p>
+                    <p className="font-mono text-xs text-zinc-400">Ready. Describe the problem below.</p>
                     <span className="font-mono text-sm text-green-500/50 animate-pulse">▋</span>
                   </div>
                 )}
@@ -163,7 +165,7 @@ export default function ProblemSolver() {
                   )}
 
                   {breakdown && (
-                    <div className="mt-3 rounded-lg border border-green-500/20 bg-green-500/5 p-5">
+                    <div className="mt-3 rounded-lg border border-zinc-700 bg-green-500/5 p-5">
                       <p className="mb-1 font-mono text-xs text-green-500/60">{'// breakdown.output'}</p>
                       <p className="mb-4 font-mono text-xs text-zinc-500">Hello, this is Jazz. An AI trained to think like him.</p>
                       <div className="space-y-4">
@@ -181,7 +183,7 @@ export default function ProblemSolver() {
                       </div>
                       <button
                         onClick={reset}
-                        className="mt-5 font-mono text-xs text-zinc-600 transition hover:text-green-400"
+                        className="mt-5 font-mono text-xs text-zinc-400 transition hover:text-green-400"
                       >
                         $ reset --session
                       </button>
@@ -192,7 +194,7 @@ export default function ProblemSolver() {
 
               {/* input bar */}
               {!breakdown && (
-                <div className="border-t border-green-500/10 bg-zinc-900/30 px-4 py-3">
+                <div className="border-t border-zinc-800 bg-zinc-900/30 px-4 py-3">
                   <div className="flex items-center gap-3">
                     <span className="shrink-0 font-mono text-xs text-green-500/60">you:~$</span>
                     <input
@@ -219,6 +221,7 @@ export default function ProblemSolver() {
 
         </div>
       </div>
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-green-500/5" />
     </section>
   );
 }
