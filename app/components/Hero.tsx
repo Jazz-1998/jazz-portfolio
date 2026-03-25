@@ -471,8 +471,91 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* ── Main Grid ── */}
-        <div className="grid grid-cols-1 items-center gap-8 py-12 md:grid-cols-[1fr_auto_1fr]">
+        {/* ── Mobile Hero ── */}
+        <div className="md:hidden py-8 space-y-6">
+
+          {/* Photo */}
+          <div className="flex justify-center">
+            <div className="relative">
+              <div className="absolute -left-3 -top-3 z-30 h-6 w-6 border-l-2 border-t-2 border-green-500 shadow-[-2px_-2px_8px_rgba(34,197,94,0.4)]" />
+              <div className="absolute -right-3 -top-3 z-30 h-6 w-6 border-r-2 border-t-2 border-green-500 shadow-[2px_-2px_8px_rgba(34,197,94,0.4)]" />
+              <div className="absolute -bottom-3 -left-3 z-30 h-6 w-6 border-b-2 border-l-2 border-green-500 shadow-[-2px_2px_8px_rgba(34,197,94,0.4)]" />
+              <div className="absolute -bottom-3 -right-3 z-30 h-6 w-6 border-b-2 border-r-2 border-green-500 shadow-[2px_2px_8px_rgba(34,197,94,0.4)]" />
+              <div className="relative overflow-hidden rounded-2xl shadow-[0_0_50px_rgba(34,197,94,0.15)]">
+                <Image src="/IMG_3785.JPG" alt="Jazz Alhussein" width={1170} height={2142} quality={90}
+                  className="h-[340px] w-[240px] object-cover object-top" priority />
+                <div className="pointer-events-none absolute inset-0 z-10" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(34,197,94,0.03) 20px)' }} />
+                <div className="pointer-events-none absolute left-0 right-0 top-0 z-10" style={{ height: `${scanPos}%`, background: 'rgba(34,197,94,0.04)' }} />
+                <div className="pointer-events-none absolute left-0 right-0 z-20" style={{ top: `${scanPos}%`, height: '2px', background: 'linear-gradient(to right, transparent, rgba(34,197,94,0.6), rgba(34,197,94,1), rgba(34,197,94,0.6), transparent)', boxShadow: '0 0 8px rgba(34,197,94,0.9)' }} />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/80 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 z-30 flex items-center justify-between">
+                  <div>
+                    <p className="font-mono text-[9px] font-semibold tracking-widest text-green-500">{scanData.id}</p>
+                    <p className="text-sm font-bold text-white">Jazz Alhussein</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-mono text-[9px] text-green-500">{scanData.match}</p>
+                    <p className="font-mono text-[8px] text-green-400/60">VERIFIED</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Text content */}
+          <div className="space-y-4">
+            <div className="font-mono text-xs text-green-500/80">
+              <Typewriter options={{
+                strings: [
+                  '>> SUPPORT ENGINEER ONLINE',
+                  '>> SUPPORT ENGINEER OFFLINE — EATING DONUTS 🍩',
+                  '>> SUPPORT ENGINEER ONLINE',
+                  '>> SUPPORT ENGINEER OFFLINE — SKYDIVING 🪂',
+                ],
+                autoStart: true, loop: true, delay: 55, deleteSpeed: 30,
+              }} />
+            </div>
+
+            <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-white">
+              Every<br />problem<br />
+              <span className={`text-green-400 inline-block ${glitch ? 'glitch-active' : ''}`}>has a</span><br />
+              solution.
+            </h1>
+
+            <p className="text-base leading-relaxed text-zinc-400">
+              I work where things break, from simple problems to complex system failures. I step in, break it down, and find the solution.
+            </p>
+
+            <div className="space-y-1 font-mono text-sm text-green-500/70">
+              <p>Understand the problem.</p>
+              <p>Diagnose it.</p>
+              <p>Figure out why.</p>
+              <p>Solve it.</p>
+            </div>
+
+            <div className="flex gap-3 pt-1">
+              <a href="#contact" className="flex-1 rounded-full bg-green-500 py-3 text-center text-sm font-semibold text-black transition hover:bg-green-400">Say Hello</a>
+              <a href="#story" className="flex-1 rounded-full border border-zinc-800 py-3 text-center text-sm font-semibold text-zinc-400 transition hover:border-green-500/30 hover:text-white">My Story</a>
+            </div>
+          </div>
+
+          {/* Mini metrics card */}
+          <div className="grid grid-cols-3 rounded-xl border border-green-500/10 bg-black/60 divide-x divide-green-500/10">
+            {[
+              { label: 'TICKETS', value: ticketCount },
+              { label: 'CSAT',    value: `${csat}%` },
+              { label: 'SLA',     value: 'MET' },
+            ].map(({ label, value }) => (
+              <div key={label} className="py-3 text-center">
+                <p className="font-mono text-[10px] text-zinc-600">{label}</p>
+                <p className="font-mono text-sm font-bold text-green-500">{value}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Desktop Main Grid ── */}
+        <div className="hidden md:grid grid-cols-1 items-center gap-8 py-12 md:grid-cols-[1fr_auto_1fr]">
 
           {/* LEFT */}
           <div className="flex flex-col justify-center">
@@ -698,8 +781,8 @@ export default function Hero() {
 
         </div>
 
-        {/* ── Full-width Dashboard Row ── */}
-        <div className="grid grid-cols-1 gap-4 pb-10 md:grid-cols-2">
+        {/* ── Full-width Dashboard Row (desktop only) ── */}
+        <div className="hidden md:grid grid-cols-1 gap-4 pb-10 md:grid-cols-2">
 
           {/* Live Ticket Queue */}
           <div className="overflow-hidden rounded-xl border border-green-500/15 bg-black">
@@ -761,8 +844,8 @@ export default function Hero() {
 
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-green-500/10 py-3">
+        {/* Bottom bar (desktop only) */}
+        <div className="hidden md:block border-t border-green-500/10 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6 font-mono text-[9px] text-zinc-800">
               {['Technical Support', 'API Debugging', 'Root Cause Analysis', 'SaaS Support', 'Incident Response'].map((t, i) => (

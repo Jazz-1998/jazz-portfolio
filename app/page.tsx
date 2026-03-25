@@ -159,7 +159,7 @@ function LinkedinIcon() {
 
 export default function Home() {
   return (
-    <main className="bg-[#0a0a0a] text-zinc-100 selection:bg-green-500 selection:text-black">
+    <main className="bg-[#0a0a0a] text-zinc-100 selection:bg-green-500 selection:text-black pb-16 md:pb-0">
 
       {/* ── Header ──────────────────────────────────── */}
       <header className="sticky top-0 z-50 border-b border-green-500/10 bg-[#0a0a0a]/95 backdrop-blur-xl">
