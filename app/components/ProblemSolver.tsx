@@ -22,9 +22,13 @@ export default function ProblemSolver() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const bottomRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const container = chatContainerRef.current;
+    if (container) {
+      container.scrollTop = container.scrollHeight;
+    }
   }, [messages, breakdown, loading]);
 
   const reset = () => {
@@ -112,7 +116,7 @@ export default function ProblemSolver() {
 
             {/* chat history */}
             {messages.length > 0 && (
-              <div className="mb-6 space-y-4">
+              <div ref={chatContainerRef} className="mb-6 max-h-96 overflow-y-auto space-y-4 pr-1">
                 {messages.map((msg, i) => (
                   <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                     <div className={`max-w-[85%] rounded-2xl px-5 py-3.5 text-sm leading-7 ${

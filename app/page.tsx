@@ -4,32 +4,33 @@ import Hero from "./components/Hero";
 import ContactForm from "./components/ContactForm";
 import ProblemSolver from "./components/ProblemSolver";
 import TypewriterText from "./components/TypewriterText";
+import SupportConsole from "./components/SupportConsole";
 
 /* ── Data ──────────────────────────────────────────────────────── */
 
 const showcaseCards = [
   {
     id: "PROC_01",
-    icon: "⚙️",
+    icon: "🧠",
     title: "Technical Support Engineer",
-    description: "When something breaks, this is where I come in. I stay calm, dig deep, and don't quit until it's solved — for real.",
-    items: ["SaaS support", "Troubleshooting", "Customer experience"],
+    description: "I handle real-world issues where things don't work as expected. APIs fail, systems break, and users get stuck. I step in, investigate deeply, and resolve problems with clarity and precision under pressure.",
+    items: ["SaaS Support", "Production Incidents", "API Failures", "System Breakdowns", "User Impact Focus", "Incident Triage", "Live Troubleshooting"],
     status: "RUNNING",
   },
   {
     id: "PROC_02",
-    icon: "🧠",
-    title: "Problem Solver",
-    description: "I treat every issue like a puzzle. Not in a nerdy-obsessive way — okay, maybe a little. But I find the root cause every time.",
-    items: ["Root cause analysis", "Clarity", "Ownership"],
+    icon: "🔍",
+    title: "Root Cause Thinker",
+    description: "I don't stop at surface-level fixes. I break problems down, analyze logs, and follow patterns until I understand exactly why something failed. No guessing, just proof.",
+    items: ["Root Cause Analysis", "Log Investigation", "Pattern Recognition", "Failure Analysis", "Signal vs Noise", "Deep Debugging", "System Behavior"],
     status: "RUNNING",
   },
   {
     id: "PROC_03",
     icon: "🤖",
-    title: "AI Enthusiast",
-    description: "I genuinely love exploring how AI makes support smarter. Not to replace humans — just to make us ridiculously good at our jobs.",
-    items: ["AI tools", "Automation", "Smarter systems"],
+    title: "AI-Enhanced Problem Solver",
+    description: "I use AI to accelerate troubleshooting, generate insights, and validate solutions faster. Not to replace thinking, but to sharpen it and move faster with confidence.",
+    items: ["AI-Assisted Debugging", "Prompt Engineering", "Context-Aware Analysis", "AI Workflow Optimization", "LLM Validation", "Human-in-the-Loop AI", "Intelligent Troubleshooting"],
     status: "RUNNING",
   },
 ];
@@ -41,7 +42,7 @@ const systems = [
     label: 'SYSTEM: CORE',
     color: 'border-green-500/30 bg-green-500/5 text-green-400',
     skills: ['Technical Troubleshooting', 'Root Cause Analysis', 'API Debugging', 'Log Analysis', 'Data Validation'],
-    tools: ['SQL', 'REST APIs', 'Postman', 'cURL', 'JSON / Log Parsing'],
+    tools: ['SQL', 'REST APIs', 'Postman', 'cURL', 'JSON / Log Parsing', 'Microsoft Azure'],
   },
   {
     id: 'OPERATIONS',
@@ -49,7 +50,7 @@ const systems = [
     label: 'SYSTEM: OPERATIONS',
     color: 'border-sky-500/30 bg-sky-500/5 text-sky-400',
     skills: ['Incident Management', 'Production Support', 'System Monitoring', 'Support Operations'],
-    tools: ['Datadog', 'Sentry', 'AWS', 'Docker', 'Airflow', 'Astronomer'],
+    tools: ['Datadog', 'Sentry', 'AWS', 'Docker', 'Airflow', 'Astronomer', 'GitHub', 'Git', 'Linux'],
   },
   {
     id: 'HUMAN',
@@ -57,7 +58,7 @@ const systems = [
     label: 'SYSTEM: HUMAN',
     color: 'border-amber-500/30 bg-amber-500/5 text-amber-400',
     skills: ['Customer Issue Resolution', 'Cross-Functional Collaboration', 'Documentation', 'Empathy-Driven Communication', 'Expectation Management'],
-    tools: ['Jira', 'Freshdesk', 'Notion', 'Microsoft 365'],
+    tools: ['Jira', 'Freshdesk', 'Zendesk', 'Notion', 'Microsoft 365', 'Slack'],
   },
   {
     id: 'AI',
@@ -67,14 +68,6 @@ const systems = [
     color: 'border-violet-500/30 bg-violet-500/5 text-violet-400',
     skills: ['AI-Assisted Troubleshooting', 'Prompt Engineering', 'Context Engineering', 'LLM Output Validation', 'AI-Augmented Root Cause Analysis', 'AI-Powered Pattern Recognition', 'Intelligent Workflow Automation', 'Human-in-the-Loop AI Systems'],
     tools: ['ChatGPT / LLM Tools', 'Prompt Engineering Workflows', 'AI Debugging Assist'],
-  },
-  {
-    id: 'SOURCE',
-    emoji: '🗂️',
-    label: 'SYSTEM: SOURCE',
-    color: 'border-zinc-700/50 bg-zinc-800/30 text-zinc-400',
-    skills: [],
-    tools: ['GitHub', 'Git'],
   },
 ];
 
@@ -207,15 +200,15 @@ export default function Home() {
       <section id="story" className="border-t border-green-500/10 bg-[#0a0a0a] py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <ScrollReveal>
-            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-widest text-green-500">// my_story.log</p>
-            <h2 className="mb-16 text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl">
+            <p className="mb-3 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">// my_story.log</p>
+            <h2 className="mb-16 text-4xl font-bold leading-tight tracking-tight text-white md:text-6xl">
               Where it all <span className="text-green-400">started.</span>
             </h2>
           </ScrollReveal>
 
           <div className="grid gap-12 md:grid-cols-2 md:gap-20">
             <ScrollReveal delay={1}>
-              <div className="space-y-5 text-base leading-relaxed text-zinc-400">
+              <div className="space-y-5 text-lg leading-relaxed text-zinc-300">
                 <p>
                   &ldquo;Every problem has a solution.&rdquo; That&apos;s not something I read. That&apos;s something I lived.
                 </p>
@@ -247,19 +240,19 @@ export default function Home() {
                   <span className="ml-2 font-mono text-[10px] text-zinc-600">personal.log</span>
                 </div>
                 <div className="p-7">
-                  <p className="mb-5 font-mono text-[10px] text-green-500/60">$ cat personal.log</p>
-                  <blockquote className="space-y-3 text-lg font-bold leading-snug tracking-tight md:text-xl">
+                  <p className="mb-5 font-mono text-xs text-green-500/70">$ cat personal.log</p>
+                  <blockquote className="space-y-3 text-xl font-bold leading-snug tracking-tight md:text-2xl">
                     <p className="text-white">And honestly, I owe all of that to my dad.</p>
-                    <p className="text-zinc-500">He didn&apos;t just teach me how to fix things.</p>
-                    <p className="text-zinc-500">He taught me patience, persistence,</p>
-                    <p className="text-zinc-500">and not to leave until a problem</p>
+                    <p className="text-zinc-400">He didn&apos;t just teach me how to fix things.</p>
+                    <p className="text-zinc-400">He taught me patience, persistence,</p>
+                    <p className="text-zinc-400">and not to leave until a problem</p>
                     <p className="text-green-400">turns into a solution.</p>
                   </blockquote>
                   <div className="mt-7 border-t border-green-500/10 pt-6">
-                    <p className="text-sm leading-relaxed text-zinc-500">
+                    <p className="text-base leading-relaxed text-zinc-400">
                       I love him for that. What a hero.
                     </p>
-                    <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+                    <p className="mt-3 text-base leading-relaxed text-zinc-500">
                       That&apos;s something I carry with me every single day.
                     </p>
                   </div>
@@ -274,8 +267,8 @@ export default function Home() {
       <section id="about" className="border-t border-green-500/10 bg-[#0d0d0d] py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <ScrollReveal>
-            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-widest text-green-500">// about.active</p>
-            <h2 className="mb-14 text-4xl font-bold tracking-tight text-white md:text-5xl">
+            <p className="mb-3 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">// about.active</p>
+            <h2 className="mb-14 text-4xl font-bold tracking-tight text-white md:text-6xl">
               How I show up — every time.
             </h2>
           </ScrollReveal>
@@ -299,11 +292,11 @@ export default function Home() {
                   </div>
                   <div className="flex flex-1 flex-col p-6">
                     <span className="mb-4 text-2xl">{card.icon}</span>
-                    <h3 className="mb-3 text-base font-semibold text-white">{card.title}</h3>
-                    <p className="mb-5 flex-1 text-sm leading-relaxed text-zinc-500">{card.description}</p>
+                    <h3 className="mb-3 text-lg font-semibold text-white">{card.title}</h3>
+                    <p className="mb-5 flex-1 text-base leading-relaxed text-zinc-400">{card.description}</p>
                     <div className="flex flex-wrap gap-2">
                       {card.items.map((item) => (
-                        <span key={item} className="rounded border border-green-500/15 px-2.5 py-1 font-mono text-[10px] text-zinc-600 transition group-hover:border-green-500/30 group-hover:text-green-500/70">
+                        <span key={item} className="rounded border border-green-500/20 px-2.5 py-1 font-mono text-xs text-zinc-400 transition group-hover:border-green-500/40 group-hover:text-green-400">
                           {item}
                         </span>
                       ))}
@@ -313,6 +306,8 @@ export default function Home() {
               </ScrollReveal>
             ))}
           </div>
+
+          <SupportConsole />
         </div>
       </section>
 
@@ -320,40 +315,65 @@ export default function Home() {
       <section id="skills" className="border-t border-green-500/10 bg-[#0a0a0a] py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <ScrollReveal>
-            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-widest text-green-500">// skills.config</p>
-            <h2 className="mb-14 text-4xl font-bold tracking-tight text-white md:text-5xl">
-              My toolkit. Pretty solid, huh.
+            <p className="mb-3 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">// skills.config</p>
+            <h2 className="mb-14 text-4xl font-bold tracking-tight text-white md:text-6xl">
+              The systems behind how I solve problems
             </h2>
           </ScrollReveal>
 
+          {/* Programming Languages */}
           <ScrollReveal delay={1}>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-widest text-zinc-400">// languages</p>
+            <div className="mb-12 flex flex-wrap gap-3">
+              {programming.map((lang) => (
+                <div
+                  key={lang.name}
+                  className="flex items-center gap-2.5 rounded-lg border border-zinc-700/50 bg-zinc-800/40 px-4 py-2.5 transition duration-200 hover:border-zinc-600 hover:bg-zinc-800/70"
+                >
+                  <svg
+                    viewBox={lang.viewBox}
+                    fill={lang.color}
+                    className="h-5 w-5 shrink-0"
+                    aria-hidden="true"
+                  >
+                    <path d={lang.path} />
+                  </svg>
+                  <span className="text-sm font-medium text-zinc-300">{lang.name}</span>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+
+          {/* Systems / Skills Cards */}
+          <ScrollReveal delay={3}>
+            <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-widest text-zinc-400">// systems</p>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {systems.map((s) => (
                 <div key={s.id} className={`rounded-xl border p-5 ${s.color}`}>
                   <div className="mb-4">
                     <span className="mb-2 block text-2xl">{s.emoji}</span>
-                    <p className="font-mono text-[9px] font-bold uppercase tracking-widest leading-snug">{s.label}</p>
-                    {s.sublabel && <p className="mt-0.5 font-mono text-[8px] text-zinc-600">— {s.sublabel}</p>}
+                    <p className="font-mono text-xs font-bold uppercase tracking-widest leading-snug">{s.label}</p>
+                    {s.sublabel && <p className="mt-1 font-mono text-[11px] text-zinc-400">— {s.sublabel}</p>}
                   </div>
                   {s.skills.length > 0 && (
                     <>
-                      <p className="mb-1.5 font-mono text-[8px] uppercase tracking-widest opacity-40">Skills</p>
+                      <p className="mb-2 font-mono text-[11px] font-semibold uppercase tracking-widest opacity-60">Skills</p>
                       <ul className="mb-4 space-y-1.5">
                         {s.skills.map((item) => (
-                          <li key={item} className="flex items-center gap-2">
-                            <span className="font-mono text-[10px] opacity-40">›</span>
-                            <span className="text-xs text-zinc-300">{item}</span>
+                          <li key={item} className="flex items-start gap-2">
+                            <span className="mt-0.5 font-mono text-xs opacity-50">›</span>
+                            <span className="text-sm leading-relaxed text-zinc-300">{item}</span>
                           </li>
                         ))}
                       </ul>
                     </>
                   )}
-                  <p className="mb-1.5 font-mono text-[8px] uppercase tracking-widest opacity-40">Tools</p>
+                  <p className="mb-2 font-mono text-[11px] font-semibold uppercase tracking-widest opacity-60">Tools</p>
                   <ul className="space-y-1.5">
                     {s.tools.map((item) => (
-                      <li key={item} className="flex items-center gap-2">
-                        <span className="font-mono text-[10px] opacity-40">›</span>
-                        <span className="text-xs text-zinc-300">{item}</span>
+                      <li key={item} className="flex items-start gap-2">
+                        <span className="mt-0.5 font-mono text-xs opacity-50">›</span>
+                        <span className="text-sm leading-relaxed text-zinc-300">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -368,11 +388,11 @@ export default function Home() {
       <section id="human" className="border-t border-green-500/10 bg-[#0d0d0d] py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <ScrollReveal>
-            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-widest text-green-500">// life.exe</p>
-            <h2 className="mb-4 text-4xl font-bold tracking-tight text-white md:text-5xl">
+            <p className="mb-3 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">// life.exe</p>
+            <h2 className="mb-4 text-4xl font-bold tracking-tight text-white md:text-6xl">
               Outside of work.
             </h2>
-            <p className="mb-14 max-w-xl text-base leading-relaxed text-zinc-500">
+            <p className="mb-14 max-w-xl text-lg leading-relaxed text-zinc-400">
               The best technical people are still human. We have lives outside of work, like mine… and please tell me you do too 😄
             </p>
           </ScrollReveal>
@@ -382,8 +402,8 @@ export default function Home() {
               <ScrollReveal key={item.label} delay={((i % 3) + 1) as 1 | 2 | 3}>
                 <div className={`group rounded-xl border ${item.color} p-6 transition duration-300 hover:-translate-y-1`}>
                   <span className="mb-4 block text-3xl transition duration-300 group-hover:scale-110">{item.icon}</span>
-                  <p className={`mb-1 text-sm font-semibold ${item.accent}`}>{item.label}</p>
-                  <p className="text-xs leading-relaxed text-zinc-600">{item.tag}</p>
+                  <p className={`mb-1 text-base font-semibold ${item.accent}`}>{item.label}</p>
+                  <p className="text-sm leading-relaxed text-zinc-400">{item.tag}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -402,7 +422,7 @@ export default function Home() {
 
         <div className="relative mx-auto max-w-6xl px-6">
           <ScrollReveal>
-            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-widest text-green-500">// contact.init()</p>
+            <p className="mb-3 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">// contact.init()</p>
             <TypewriterText text="Don't be a stranger." className="mb-16 text-5xl font-bold text-white md:text-6xl" />
           </ScrollReveal>
 
@@ -416,7 +436,7 @@ export default function Home() {
                 <p className="font-medium text-green-400">
                   If you came from the moon, I&apos;d probably ask how the trip was and tell you to pull up a chair.
                 </p>
-                <p className="text-zinc-500">
+                <p className="text-zinc-400">
                   Life, opportunities, ideas, vision, projects, or anything random — I&apos;m here. 😉
                 </p>
               </div>
@@ -435,6 +455,7 @@ export default function Home() {
             </ScrollReveal>
 
             <ScrollReveal delay={2}>
+              <p className="mb-5 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">// contact me</p>
               <ContactForm />
             </ScrollReveal>
           </div>
@@ -448,8 +469,8 @@ export default function Home() {
             <span className="font-mono text-xs text-green-500">$</span>
             <span className="font-mono text-xs text-zinc-600">jazz --version 2026.1</span>
           </div>
-          <p className="text-sm text-zinc-700">Technical Support Engineer… who also happens to code 😉</p>
-          <p className="font-mono text-xs text-zinc-800">© 2026</p>
+          <p className="text-sm text-zinc-500">Technical Support Engineer… who also happens to code 😉</p>
+          <p className="font-mono text-xs text-zinc-600">© 2026</p>
         </div>
       </footer>
 

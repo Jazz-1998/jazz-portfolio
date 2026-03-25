@@ -486,7 +486,7 @@ export default function Hero() {
                   '>> SUPPORT ENGINEER ONLINE',
                   '>> SUPPORT ENGINEER OFFLINE — SKYDIVING 🪂',
                 ],
-                autoStart: true, loop: true, delay: 55, deleteSpeed: 30
+                autoStart: true, loop: true, delay: 55, deleteSpeed: 30, pauseFor: 2000,
               }} />
             </div>
 
@@ -497,9 +497,14 @@ export default function Hero() {
             </h1>
 
             <p className="mt-7 max-w-sm text-base leading-relaxed text-zinc-400">
-              I work where things break. APIs fail, systems crash, people get stuck.
-              I break it all down — root cause, why it happens, how to fix it.
+              I work where things break, from simple problems to complex system failures. APIs fail, software errors happen, users get stuck. I step in, break it down, and find the solution.
             </p>
+            <div className="mt-4 space-y-1 font-mono text-sm text-green-500/70">
+              <p>Understand the problem.</p>
+              <p>Diagnose it.</p>
+              <p>Figure out why.</p>
+              <p>Solve it.</p>
+            </div>
 
             <div className="mt-6 flex flex-wrap gap-2">
               {['API Debugging', 'Root Cause Analysis', 'SaaS Support', 'Incident Response'].map((tag) => (
@@ -521,22 +526,10 @@ export default function Hero() {
               <div className="absolute -bottom-4 -left-4 z-30 h-9 w-9 border-b-2 border-l-2 border-green-500 shadow-[-3px_3px_10px_rgba(34,197,94,0.4)]" />
               <div className="absolute -bottom-4 -right-4 z-30 h-9 w-9 border-b-2 border-r-2 border-green-500 shadow-[3px_3px_10px_rgba(34,197,94,0.4)]" />
 
-              {/* Left data panel */}
-              <div className="absolute -left-28 top-1/2 z-30 -translate-y-1/2 hidden xl:block">
-                <div className="space-y-3">
-                  {[{ label: 'ID', value: scanData.id }, { label: 'MATCH', value: scanData.match }, { label: 'ROLE', value: 'TSE' }, { label: 'LEVEL', value: '5' }].map(({ label, value }) => (
-                    <div key={label} className="flex items-center gap-1.5">
-                      <div className="h-px w-4 bg-green-500/40" />
-                      <div><p className="font-mono text-[8px] text-zinc-700">{label}</p><p className="font-mono text-[10px] text-green-500">{value}</p></div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
               {/* Right data panel */}
               <div className="absolute -right-28 top-1/2 z-30 -translate-y-1/2 hidden xl:block">
                 <div className="space-y-3">
-                  {[{ label: 'STATUS', value: scanData.status }, { label: 'TICKETS', value: `${ticketCount}` }, { label: 'CSAT', value: `${csat}%` }, { label: 'SLA', value: 'MET' }].map(({ label, value }) => (
+                  {[{ label: 'ID', value: scanData.id }, { label: 'MATCH', value: scanData.match }, { label: 'STATUS', value: scanData.status }, { label: 'TICKETS', value: `${ticketCount}` }, { label: 'CSAT', value: `${csat}%` }, { label: 'SLA', value: 'MET' }].map(({ label, value }) => (
                     <div key={label} className="flex items-center gap-1.5">
                       <div><p className="font-mono text-[8px] text-right text-zinc-700">{label}</p><p className="font-mono text-[10px] text-right text-green-500">{value}</p></div>
                       <div className="h-px w-4 bg-green-500/40" />
