@@ -196,16 +196,16 @@ export default function Home() {
       <Hero />
 
       {/* ── Story ───────────────────────────────────── */}
-      <section id="story" className="border-t border-green-500/10 bg-[#0a0a0a] py-24 md:py-32">
+      <section id="story" className="border-t border-green-500/10 bg-[#0a0a0a] py-16 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <ScrollReveal>
             <p className="mb-3 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">// my_story.log</p>
-            <h2 className="mb-16 text-4xl font-bold leading-tight tracking-tight text-white md:text-6xl">
+            <h2 className="mb-16 text-3xl font-bold leading-tight tracking-tight text-white md:text-6xl">
               Where it all <span className="text-green-400">started.</span>
             </h2>
           </ScrollReveal>
 
-          <div className="grid gap-12 md:grid-cols-2 md:gap-20">
+          <div className="grid gap-8 md:grid-cols-2 md:gap-20">
             <ScrollReveal delay={1}>
               <div className="overflow-hidden rounded-xl border border-green-500/15 bg-black shadow-[0_0_40px_rgba(34,197,94,0.05)]">
                 <div className="flex items-center justify-between border-b border-green-500/10 bg-zinc-900/50 px-4 py-3">
@@ -286,11 +286,11 @@ export default function Home() {
       </section>
 
       {/* ── What I Do ───────────────────────────────── */}
-      <section id="about" className="border-t border-green-500/10 bg-[#0d0d0d] py-24 md:py-32">
+      <section id="about" className="border-t border-green-500/10 bg-[#0d0d0d] py-16 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <ScrollReveal>
             <p className="mb-3 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">// about.active</p>
-            <h2 className="mb-14 text-4xl font-bold tracking-tight text-white md:text-6xl">
+            <h2 className="mb-14 text-3xl font-bold tracking-tight text-white md:text-6xl">
               How I show up — every time.
             </h2>
           </ScrollReveal>
@@ -334,11 +334,11 @@ export default function Home() {
       </section>
 
       {/* ── Skills & Tools ──────────────────────────── */}
-      <section id="skills" className="border-t border-green-500/10 bg-[#0a0a0a] py-24 md:py-32">
+      <section id="skills" className="border-t border-green-500/10 bg-[#0a0a0a] py-16 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <ScrollReveal>
             <p className="mb-3 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">// skills.config</p>
-            <h2 className="mb-14 text-4xl font-bold tracking-tight text-white md:text-6xl">
+            <h2 className="mb-14 text-3xl font-bold tracking-tight text-white md:text-6xl">
               The systems behind how I solve problems
             </h2>
           </ScrollReveal>
@@ -375,7 +375,6 @@ export default function Home() {
                   <div className="mb-4">
                     <span className="mb-2 block text-2xl">{s.emoji}</span>
                     <p className="font-mono text-xs font-bold uppercase tracking-widest leading-snug">{s.label}</p>
-                    {s.sublabel && <p className="mt-1 font-mono text-[11px] text-zinc-400">— {s.sublabel}</p>}
                   </div>
                   {s.skills.length > 0 && (
                     <>
@@ -407,11 +406,11 @@ export default function Home() {
       </section>
 
       {/* ── Life ────────────────────────────────────── */}
-      <section id="human" className="border-t border-green-500/10 bg-[#0d0d0d] py-24 md:py-32">
+      <section id="human" className="border-t border-green-500/10 bg-[#0d0d0d] py-16 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <ScrollReveal>
             <p className="mb-3 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">// life.exe</p>
-            <h2 className="mb-4 text-4xl font-bold tracking-tight text-white md:text-6xl">
+            <h2 className="mb-4 text-3xl font-bold tracking-tight text-white md:text-6xl">
               Outside of work.
             </h2>
             <p className="mb-14 max-w-xl text-lg leading-relaxed text-zinc-400">
@@ -446,7 +445,7 @@ export default function Home() {
       <ProblemSolver />
 
       {/* ── Contact ─────────────────────────────────── */}
-      <section id="contact" className="relative overflow-hidden border-t border-green-500/10 bg-[#0a0a0a] py-24 md:py-36">
+      <section id="contact" className="relative overflow-hidden border-t border-green-500/10 bg-[#0a0a0a] py-16 md:py-36">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-500/5 blur-[120px]" />
         </div>
@@ -454,7 +453,7 @@ export default function Home() {
         <div className="relative mx-auto max-w-6xl px-6">
           <ScrollReveal>
             <p className="mb-3 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">// contact.init()</p>
-            <TypewriterText text="Don't be a stranger." className="mb-16 text-5xl font-bold text-white md:text-6xl" />
+            <TypewriterText text="Don't be a stranger." className="mb-10 text-3xl font-bold text-white md:text-6xl" />
           </ScrollReveal>
 
           <div className="grid gap-16 md:grid-cols-2 md:gap-24">

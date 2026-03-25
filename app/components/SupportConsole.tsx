@@ -256,7 +256,7 @@ export default function SupportConsole() {
         </div>
 
         {/* Console output */}
-        <div ref={scrollBoxRef} className="h-72 overflow-y-auto px-5 py-4 md:h-80">
+        <div ref={scrollBoxRef} className="h-60 overflow-y-auto px-4 py-4 sm:h-72 md:h-80">
           <div className="space-y-1.5">
             {/* Revealed lines */}
             {scenario.lines.slice(0, revealed).map((line, i) => (
@@ -316,8 +316,8 @@ export default function SupportConsole() {
         </div>
 
         {/* Controls */}
-        <div className="flex items-center justify-between border-t border-green-500/10 bg-zinc-900/40 px-5 py-3">
-          <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-green-500/10 bg-zinc-900/40 px-4 py-3">
+          <div className="flex items-center gap-2">
             {/* Next */}
             <button
               onClick={advance}

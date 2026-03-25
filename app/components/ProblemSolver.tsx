@@ -73,11 +73,11 @@ export default function ProblemSolver() {
 
         <p className="mb-10 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">{'// decode.run()'}</p>
 
-        <div className="grid gap-16 md:grid-cols-2 md:gap-24">
+        <div className="grid gap-10 md:grid-cols-2 md:gap-24">
 
           {/* left — description */}
           <div>
-            <h2 className="mb-6 text-4xl font-bold text-white md:text-6xl">Let&apos;s Break It Down</h2>
+            <h2 className="mb-6 text-3xl font-bold text-white md:text-6xl">Let&apos;s Break It Down</h2>
             <div className="space-y-4 text-base leading-relaxed text-zinc-300">
               <p>An AI version of me. Not perfect (hehe), but trained to think like I do.</p>
               <p>Technical, career, life, or random. Go ahead, throw it at me.</p>

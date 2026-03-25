@@ -490,7 +490,7 @@ export default function Hero() {
               }} />
             </div>
 
-            <h1 className="text-5xl font-bold leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl">
+            <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
               Every<br />problem<br />
               <span className={`text-green-400 inline-block ${glitch ? 'glitch-active' : ''}`}>has a</span><br />
               solution.
@@ -541,7 +541,7 @@ export default function Hero() {
               {/* Photo */}
               <div className="relative overflow-hidden rounded-2xl shadow-[0_0_60px_rgba(34,197,94,0.12)]">
                 <Image src="/IMG_3785.JPG" alt="Jazz Alhussein" width={1170} height={2142} quality={100}
-                  className="h-[480px] w-[320px] object-cover object-top md:h-[540px] md:w-[360px]" priority />
+                  className="h-[420px] w-[280px] object-cover object-top sm:h-[480px] sm:w-[320px] md:h-[540px] md:w-[360px]" priority />
                 <div className="pointer-events-none absolute inset-0 z-10" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(34,197,94,0.03) 20px), repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(34,197,94,0.02) 20px)' }} />
                 <div className="pointer-events-none absolute left-0 right-0 top-0 z-10" style={{ height: `${scanPos}%`, background: 'rgba(34,197,94,0.04)' }} />
                 <div className="pointer-events-none absolute left-0 right-0 z-10" style={{ top: `${scanPos}%`, height: '80px', transform: 'translateY(-40px)', background: 'linear-gradient(to bottom, transparent, rgba(34,197,94,0.08), rgba(34,197,94,0.18), rgba(34,197,94,0.08), transparent)' }} />
@@ -578,7 +578,7 @@ export default function Hero() {
           </div>
 
           {/* RIGHT — diagnostic panel */}
-          <div className="flex flex-col items-end justify-between gap-4 pt-0">
+          <div className="hidden md:flex flex-col items-end justify-between gap-4 pt-0">
             <div className="w-full max-w-[240px] overflow-hidden rounded-xl border border-green-500/15 bg-black shadow-[0_0_30px_rgba(34,197,94,0.06)]">
 
               <div className="flex items-center justify-between border-b border-green-500/10 bg-zinc-900/40 px-4 py-2.5">

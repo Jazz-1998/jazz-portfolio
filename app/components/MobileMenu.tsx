@@ -18,7 +18,7 @@ export default function MobileMenu() {
       <button
         onClick={() => setOpen(!open)}
         aria-label="Toggle menu"
-        className="rounded-lg p-2 text-zinc-500 transition hover:bg-zinc-100 hover:text-green-600"
+        className="rounded-lg p-2 text-zinc-500 transition hover:bg-green-500/10 hover:text-green-400"
       >
         {open ? (
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
@@ -32,14 +32,14 @@ export default function MobileMenu() {
       </button>
 
       {open && (
-        <div className="absolute left-0 top-full w-full border-t border-zinc-200 bg-white/95 py-5 backdrop-blur-xl shadow-lg">
-          <nav className="flex flex-col items-center gap-5 text-sm font-medium text-zinc-600">
+        <div className="absolute left-0 top-full w-full border-t border-green-500/10 bg-[#0a0a0a]/98 py-6 backdrop-blur-xl shadow-lg">
+          <nav className="flex flex-col items-center gap-6 font-mono text-sm font-medium text-zinc-400">
             {navLinks.map(({ label, href }) => (
               <a
                 key={label}
                 href={href}
                 onClick={() => setOpen(false)}
-                className="transition hover:text-green-600"
+                className="transition hover:text-green-400"
               >
                 {label}
               </a>
