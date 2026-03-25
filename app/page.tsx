@@ -64,7 +64,6 @@ const systems = [
     id: 'AI',
     emoji: '🤖',
     label: 'SYSTEM: AI',
-    sublabel: 'differentiator',
     color: 'border-violet-500/30 bg-violet-500/5 text-violet-400',
     skills: ['AI-Assisted Troubleshooting', 'Prompt Engineering', 'Context Engineering', 'LLM Output Validation', 'AI-Augmented Root Cause Analysis', 'AI-Powered Pattern Recognition', 'Intelligent Workflow Automation', 'Human-in-the-Loop AI Systems'],
     tools: ['ChatGPT / LLM Tools', 'Prompt Engineering Workflows', 'AI Debugging Assist'],
