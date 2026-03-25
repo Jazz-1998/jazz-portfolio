@@ -258,7 +258,7 @@ export default function SupportConsole() {
         </div>
 
         {/* Console output */}
-        <div ref={scrollBoxRef} className="h-60 overflow-y-auto px-4 py-4 sm:h-72 md:h-80">
+        <div ref={scrollBoxRef} className="h-60 overflow-y-auto px-4 py-4 sm:h-72 md:h-80 lg:h-96">
           <div className="space-y-1.5">
             {/* Revealed lines */}
             {scenario.lines.slice(0, revealed).map((line, i) => (

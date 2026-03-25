@@ -69,11 +69,11 @@ export default function ProblemSolver() {
 
   return (
     <section id="tryme" className="relative overflow-hidden border-t border-zinc-800 bg-[#0d0d0d] py-24 md:py-32">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-6xl px-6 xl:max-w-7xl">
 
         <p className="mb-10 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">{'// decode.run()'}</p>
 
-        <div className="grid gap-10 md:grid-cols-2 md:gap-24">
+        <div className="grid gap-8 md:grid-cols-2 md:gap-16 lg:gap-24">
 
           {/* left — description */}
           <div>

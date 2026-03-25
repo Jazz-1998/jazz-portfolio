@@ -159,7 +159,7 @@ function LinkedinIcon() {
 
 export default function Home() {
   return (
-    <main className="bg-[#0a0a0a] text-zinc-100 selection:bg-green-500 selection:text-black pb-16 md:pb-0 overflow-x-hidden">
+    <main className="bg-[#0a0a0a] text-zinc-100 selection:bg-green-500 selection:text-black pb-16 md:pb-0">
 
       {/* ── Header ──────────────────────────────────── */}
       <header className="sticky top-0 z-50 border-b border-zinc-800 bg-[#0a0a0a]/95 backdrop-blur-xl">
@@ -191,20 +191,23 @@ export default function Home() {
         </div>
       </header>
 
+      {/* ── Page content (overflow-x-hidden kept away from header so sticky works) */}
+      <div className="overflow-x-hidden">
+
       {/* ── Hero ────────────────────────────────────── */}
       <Hero />
 
       {/* ── Story ───────────────────────────────────── */}
       <section id="story" className="relative overflow-hidden border-t border-zinc-800 bg-[#0a0a0a] py-16 md:py-32">
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-6xl px-6 xl:max-w-7xl">
           <ScrollReveal>
             <p className="mb-3 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">// my_story.log</p>
-            <h2 className="mb-16 text-3xl font-bold leading-tight tracking-tight text-white md:text-6xl">
+            <h2 className="mb-16 text-3xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:text-6xl xl:text-7xl">
               Where it all <span className="text-green-400">started.</span>
             </h2>
           </ScrollReveal>
 
-          <div className="grid gap-8 md:grid-cols-2 md:gap-20">
+          <div className="grid gap-6 md:grid-cols-2 md:gap-12 lg:gap-20">
             <ScrollReveal delay={1}>
               <div className="overflow-hidden rounded-xl border border-zinc-800 bg-black shadow-[0_0_40px_rgba(34,197,94,0.05)]">
                 <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-900 px-4 py-3">
@@ -287,15 +290,15 @@ export default function Home() {
 
       {/* ── What I Do ───────────────────────────────── */}
       <section id="about" className="relative overflow-hidden border-t border-zinc-800 bg-[#111111] py-16 md:py-32">
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-6xl px-6 xl:max-w-7xl">
           <ScrollReveal>
             <p className="mb-3 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">// about.active</p>
-            <h2 className="mb-14 text-3xl font-bold tracking-tight text-white md:text-6xl">
-              How I show up — every time.
+            <h2 className="mb-14 text-3xl font-bold tracking-tight text-white md:text-5xl lg:text-6xl xl:text-7xl">
+              How I solve problems
             </h2>
           </ScrollReveal>
 
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {showcaseCards.map((card, i) => (
               <ScrollReveal key={card.title} delay={((i + 1) as 1 | 2 | 3)}>
                 <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-zinc-800 bg-black transition duration-300 hover:border-green-500/30 hover:shadow-[0_0_30px_rgba(34,197,94,0.08)]">
@@ -336,11 +339,11 @@ export default function Home() {
 
       {/* ── Skills & Tools ──────────────────────────── */}
       <section id="skills" className="relative overflow-hidden border-t border-zinc-800 bg-[#0a0a0a] py-16 md:py-32">
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-6xl px-6 xl:max-w-7xl">
           <ScrollReveal>
             <p className="mb-3 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">// skills.config</p>
-            <h2 className="mb-14 text-3xl font-bold tracking-tight text-white md:text-6xl">
-              The systems behind how I solve problems
+            <h2 className="mb-14 text-3xl font-bold tracking-tight text-white md:text-5xl lg:text-6xl xl:text-7xl">
+              The systems behind my work
             </h2>
           </ScrollReveal>
 
@@ -370,7 +373,7 @@ export default function Home() {
           {/* Systems / Skills Cards */}
           <ScrollReveal delay={3}>
             <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-widest text-zinc-400">// systems</p>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {systems.map((s) => (
                 <div key={s.id} className={`rounded-xl border p-5 ${s.color}`}>
                   <div className="mb-4">
@@ -409,10 +412,10 @@ export default function Home() {
 
       {/* ── Life ────────────────────────────────────── */}
       <section id="human" className="relative overflow-hidden border-t border-zinc-800 bg-[#111111] py-16 md:py-32">
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-6xl px-6 xl:max-w-7xl">
           <ScrollReveal>
             <p className="mb-3 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">// life.exe</p>
-            <h2 className="mb-4 text-3xl font-bold tracking-tight text-white md:text-6xl">
+            <h2 className="mb-4 text-3xl font-bold tracking-tight text-white md:text-5xl lg:text-6xl xl:text-7xl">
               Outside of work.
             </h2>
             <p className="mb-14 max-w-xl text-lg leading-relaxed text-zinc-400">
@@ -420,7 +423,7 @@ export default function Home() {
             </p>
           </ScrollReveal>
 
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
             {funItems.map((item, i) => (
               <ScrollReveal key={item.label} delay={((i % 3) + 1) as 1 | 2 | 3}>
                 <div className="group flex flex-col overflow-hidden rounded-xl border border-zinc-800 bg-black transition duration-300 hover:border-green-500/25 hover:shadow-[0_0_20px_rgba(34,197,94,0.06)]">
@@ -453,13 +456,13 @@ export default function Home() {
           <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-500/5 blur-[120px]" />
         </div>
 
-        <div className="relative mx-auto max-w-6xl px-6">
+        <div className="relative mx-auto max-w-6xl px-6 xl:max-w-7xl">
           <ScrollReveal>
             <p className="mb-3 font-mono text-sm font-semibold uppercase tracking-widest text-green-500">// contact.init()</p>
             <TypewriterText text="Don't be a stranger." className="mb-10 text-3xl font-bold text-white md:text-6xl" />
           </ScrollReveal>
 
-          <div className="grid gap-16 md:grid-cols-2 md:gap-24">
+          <div className="grid gap-12 md:grid-cols-2 md:gap-16 lg:gap-24">
             <ScrollReveal delay={1}>
               <div className="space-y-5 text-base leading-relaxed">
                 <p className="text-zinc-300">
@@ -508,6 +511,7 @@ export default function Home() {
       </footer>
 
       <MobileMenu />
+      </div>
     </main>
   );
 }

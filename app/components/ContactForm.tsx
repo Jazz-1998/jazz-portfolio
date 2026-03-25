@@ -12,13 +12,18 @@ export default function ContactForm() {
     e.preventDefault();
     setBtnState('sending');
     const data = new FormData(e.currentTarget);
-    await fetch('https://formspree.io/f/xkoqdwyy', {
-      method: 'POST',
-      body: data,
-      headers: { Accept: 'application/json' },
-    });
-    setBtnState('sent');
-    setTimeout(() => { setBtnState('idle'); formRef.current?.reset(); }, 4000);
+    try {
+      const res = await fetch('https://formspree.io/f/xkoqdwyy', {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+      if (!res.ok) throw new Error('Failed');
+      setBtnState('sent');
+      setTimeout(() => { setBtnState('idle'); formRef.current?.reset(); }, 4000);
+    } catch {
+      setBtnState('idle');
+    }
   };
 
   const inputClass =

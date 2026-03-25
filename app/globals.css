@@ -73,6 +73,11 @@ body {
   width: max-content;
   animation: marquee 38s linear infinite reverse;
 }
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
 
 /* ── Background blob pulse ─────────────────────── */
 @keyframes pulse-glow {
@@ -82,6 +87,13 @@ body {
 .animate-pulse-glow {
   animation: pulse-glow 5s ease-in-out infinite;
 }
+
+/* ── Custom scrollbar (terminal style) ────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(34,197,94,0.2); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(34,197,94,0.4); }
+* { scrollbar-width: thin; scrollbar-color: rgba(34,197,94,0.2) transparent; }
 
 /* ── Dot grid hero bg ──────────────────────────── */
 .dot-grid {

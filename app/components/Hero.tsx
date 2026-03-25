@@ -304,13 +304,13 @@ export default function Hero() {
     window.addEventListener('resize', resize);
     const CHARS = 'アイウエオカキクケコサシスセソ01ABCDEFβ@#$';
     const COL_W = 20;
+    ctx.font = '12px monospace';
     let cols = Math.floor(canvas.width / COL_W);
     let drops: number[] = Array(cols).fill(0).map(() => Math.random() * -80);
     let raf: number;
     const draw = () => {
       ctx.fillStyle = 'rgba(10,10,10,0.18)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.font = `12px monospace`;
       for (let i = 0; i < cols; i++) {
         const y = drops[i] * 16;
         const alpha = 0.04 + Math.random() * 0.06;
@@ -450,16 +450,6 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/95 via-[#0a0a0a]/80 to-[#0a0a0a]/40" style={{ zIndex: 3 }} />
 
       {/* Section HUD corners — desktop only */}
-      <div className="pointer-events-none absolute inset-6 z-10 hidden md:block">
-        <div className="absolute left-0 top-0 h-12 w-12 border-l-2 border-t-2 border-green-500/50" />
-        <div className="absolute right-0 top-0 h-12 w-12 border-r-2 border-t-2 border-green-500/50" />
-        <div className="absolute bottom-0 left-0 h-12 w-12 border-b-2 border-l-2 border-green-500/50" />
-        <div className="absolute bottom-0 right-0 h-12 w-12 border-b-2 border-r-2 border-green-500/50" />
-        <span className="absolute left-14 top-1 font-mono text-xs text-green-500/60">SYS:ACTIVE</span>
-        <span className="absolute right-14 top-1 font-mono text-xs text-green-500/60">v2026.1.0</span>
-        <span className="absolute bottom-1 left-14 font-mono text-xs text-green-500/60">jazz.support</span>
-        <span className="absolute bottom-1 right-14 font-mono text-xs text-green-500/60">ENC:AES-256</span>
-      </div>
 
       <div className="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-green-500/60 to-transparent" style={{ zIndex: 10 }} />
 
@@ -468,8 +458,8 @@ export default function Hero() {
         {/* ── Status Bar — desktop only ── */}
         <div className="hidden md:flex items-center justify-between border-b border-zinc-700 py-4">
           <div className="flex items-center gap-6">
-            <div className="relative flex items-center justify-center">
-              <div className="h-2.5 w-2.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.9)]" />
+            <div className="relative flex h-6 w-6 items-center justify-center overflow-hidden">
+              <div className="h-2.5 w-2.5 shrink-0 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.9)]" />
               <div className="absolute rounded-full border border-green-500/40" style={{ width: `${pingSize * 8}px`, height: `${pingSize * 8}px`, opacity: 1 / pingSize }} />
             </div>
             <span className="font-mono text-xs text-zinc-200">TICKET #{ticketCount}</span>
@@ -512,7 +502,13 @@ export default function Hero() {
 
                 {/* Top-left ID */}
                 <div className="absolute left-3 top-3 z-30">
-                  <span className="font-mono text-[10px] font-bold tracking-widest text-green-400">{scanData.id}</span>
+                  <span className="font-mono text-xs font-bold tracking-widest text-green-400">ENG-001</span>
+                </div>
+
+                {/* Top-right match */}
+                <div className="absolute right-3 top-3 z-30 text-right">
+                  <p className="font-mono text-xs font-bold text-green-400">99.2%</p>
+                  <p className="font-mono text-[9px] text-green-500/60">MATCH</p>
                 </div>
 
                 {/* Scan tag */}
@@ -525,17 +521,17 @@ export default function Hero() {
 
                 {/* Bottom bar */}
                 <div className="absolute bottom-0 left-0 right-0 z-30 px-3 pb-3">
-                  <div className="rounded-lg border border-green-500/20 bg-black/80 p-2.5 backdrop-blur-sm">
-                    <div className="flex items-start justify-between">
+                  <div className="rounded-lg border border-green-500/20 bg-black/80 p-3 backdrop-blur-sm">
+                    <p className="font-mono text-[9px] tracking-widest text-green-500/60 mb-1">// subject.verified</p>
+                    <div className="flex items-center justify-between gap-2">
                       <div>
-                        <p className="font-mono text-[8px] tracking-widest text-green-500/70">// subject.verified</p>
-                        <p className="mt-0.5 text-sm font-bold text-white">Jazz Alhussein</p>
-                        <p className="font-mono text-[9px] text-zinc-400">Technical Support Engineer</p>
+                        <p className="text-base font-bold text-white leading-tight">Jazz Alhussein</p>
+                        <p className="font-mono text-[11px] font-semibold text-zinc-200 whitespace-nowrap">Technical Support Engineer</p>
                       </div>
-                      <div className="text-right space-y-0.5">
-                        <p className="font-mono text-[8px] text-green-400">✓ VERY CHILL</p>
-                        <p className="font-mono text-[8px] text-green-400">✓ LIKES FOOD 🍕🍔🌮</p>
-                        <p className="font-mono text-[8px] text-green-400">✓ SUPER FUNNY</p>
+                      <div className="text-right shrink-0 space-y-0.5">
+                        <p className="font-mono text-[9px] text-green-400 whitespace-nowrap">✓ VERY CHILL</p>
+                        <p className="font-mono text-[9px] text-green-400 whitespace-nowrap">✓ LIKES FOOD 🍕</p>
+                        <p className="font-mono text-[9px] text-green-400 whitespace-nowrap">✓ SUPER FUNNY</p>
                       </div>
                     </div>
                   </div>
@@ -631,12 +627,6 @@ export default function Hero() {
               <p>Solve it.</p>
             </div>
 
-            <div className="mt-6 flex flex-wrap gap-2">
-              {['Cool TSE 😎', 'Chill & Funny', 'Customer Translator', 'Human-Friendly Tech', 'Calm Under Pressure', 'I Like Food 🍕'].map((tag) => (
-                <span key={tag} className="rounded-full border border-green-500/40 bg-green-500/10 px-4 py-1.5 font-mono text-sm font-medium text-green-300">{tag}</span>
-              ))}
-            </div>
-
             <div className="mt-6 flex gap-3">
               <a href="#contact" className="rounded-full bg-green-500 px-6 py-3 text-sm font-semibold text-black transition hover:bg-green-400 hover:shadow-[0_0_20px_rgba(34,197,94,0.4)]">Say Hello</a>
               <a href="#story" className="rounded-full border border-zinc-800 px-6 py-3 text-sm font-semibold text-zinc-400 transition hover:border-green-500/30 hover:text-white">My Story</a>
@@ -652,7 +642,7 @@ export default function Hero() {
               <div className="absolute -bottom-4 -right-4 z-30 h-9 w-9 border-b-2 border-r-2 border-green-500 shadow-[3px_3px_10px_rgba(34,197,94,0.4)]" />
 
               {/* Right data panel */}
-              <div className="absolute -right-36 top-1/2 z-30 -translate-y-1/2 hidden xl:flex flex-col gap-4">
+              <div className="absolute -right-36 top-1/2 z-30 -translate-y-1/2 hidden lg:flex flex-col gap-4">
                 {[
                   { label: 'ID',      value: scanData.id },
                   { label: 'MATCH',   value: scanData.match },
@@ -696,36 +686,36 @@ export default function Hero() {
 
                 {/* Top-left ID badge */}
                 <div className="absolute left-4 top-4 z-30">
-                  <span className="font-mono text-[10px] font-bold tracking-widest text-green-400">{scanData.id}</span>
+                  <span className="font-mono text-sm font-bold tracking-widest text-green-400">ENG-001</span>
                 </div>
 
                 {/* Top-right match */}
                 <div className="absolute right-4 top-4 z-30 text-right">
-                  <p className="font-mono text-[10px] text-green-500">{scanData.match}</p>
-                  <p className="font-mono text-[9px] text-green-400/50">MATCH</p>
+                  <p className="font-mono text-sm font-bold text-green-400">99.2%</p>
+                  <p className="font-mono text-[10px] text-green-500/60">MATCH</p>
                 </div>
 
-                {/* Fun scan tags — middle overlay */}
-                <div className="absolute left-0 right-0 z-30 flex flex-col items-center gap-1" style={{ top: '52%' }}>
-                  <div className="flex items-center gap-1.5 rounded border border-green-500/40 bg-black/70 px-3 py-1 backdrop-blur-sm">
+                {/* Scan tag */}
+                <div className="absolute left-0 right-0 z-30 flex justify-center" style={{ top: '52%' }}>
+                  <div className="flex items-center gap-1.5 rounded border border-green-500/40 bg-black/70 px-4 py-1.5 backdrop-blur-sm">
                     <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
-                    <span className="font-mono text-[10px] font-bold tracking-widest text-green-400">SCANNING... 100% THAT GUY ✓</span>
+                    <span className="font-mono text-xs font-bold tracking-widest text-green-400">SCANNING... 100% THAT GUY ✓</span>
                   </div>
                 </div>
 
                 {/* Bottom info bar */}
                 <div className="absolute bottom-0 left-0 right-0 z-30 px-4 pb-4">
                   <div className="rounded-lg border border-green-500/20 bg-black/80 p-3 backdrop-blur-sm">
-                    <div className="flex items-start justify-between">
+                    <p className="font-mono text-[9px] tracking-widest text-green-500/60 mb-1.5">// subject.verified</p>
+                    <div className="flex items-center justify-between gap-3">
                       <div>
-                        <p className="font-mono text-[9px] tracking-widest text-green-500/70">// subject.verified</p>
-                        <p className="mt-0.5 text-base font-bold text-white">Jazz Alhussein</p>
-                        <p className="font-mono text-[10px] text-zinc-400">Technical Support Engineer</p>
+                        <p className="text-lg font-bold text-white leading-tight">Jazz Alhussein</p>
+                        <p className="font-mono text-xs font-semibold text-zinc-200 whitespace-nowrap">Technical Support Engineer</p>
                       </div>
-                      <div className="text-right space-y-0.5">
-                        <p className="font-mono text-[9px] text-green-400">✓ VERY CHILL</p>
-                        <p className="font-mono text-[9px] text-green-400">✓ LIKES FOOD 🍕🍔🌮</p>
-                        <p className="font-mono text-[9px] text-green-400">✓ SUPER FUNNY</p>
+                      <div className="text-right shrink-0 space-y-0.5">
+                        <p className="font-mono text-[10px] text-green-400 whitespace-nowrap">✓ VERY CHILL</p>
+                        <p className="font-mono text-[10px] text-green-400 whitespace-nowrap">✓ LIKES FOOD 🍕</p>
+                        <p className="font-mono text-[10px] text-green-400 whitespace-nowrap">✓ SUPER FUNNY</p>
                       </div>
                     </div>
                   </div>
@@ -735,7 +725,7 @@ export default function Hero() {
           </div>
 
           {/* RIGHT — diagnostic panel */}
-          <div className="hidden md:flex flex-col items-end justify-between gap-4 pt-0">
+          <div className="hidden lg:flex flex-col items-end justify-between gap-4 pt-0">
             <div className="w-full max-w-[240px] overflow-hidden rounded-xl border border-green-500/15 bg-black shadow-[0_0_30px_rgba(34,197,94,0.06)]">
 
               <div className="flex items-center justify-between border-b border-green-500/10 bg-zinc-900/40 px-4 py-2.5">
@@ -856,7 +846,7 @@ export default function Hero() {
         </div>
 
         {/* ── Full-width Dashboard Row (desktop only) ── */}
-        <div className="hidden md:grid grid-cols-1 gap-4 pb-10 md:grid-cols-2">
+        <div className="hidden lg:grid grid-cols-1 gap-4 pb-10 lg:grid-cols-2">
 
           {/* Live Ticket Queue */}
           <div className="overflow-hidden rounded-xl border border-green-500/15 bg-black">
@@ -918,18 +908,18 @@ export default function Hero() {
 
         </div>
 
-        {/* Bottom bar (desktop only) */}
-        <div className="hidden md:block border-t border-zinc-800 py-3">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-6 font-mono text-xs text-zinc-400">
-              {['Cool TSE 😎', 'Chill & Funny', 'Customer Translator', 'Human-Friendly Tech', 'Calm Under Pressure', 'I Like Food 🍕'].map((t, i) => (
-                <span key={i} className="hidden shrink-0 md:block">{t} <span className="text-green-500/50">·</span></span>
-              ))}
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
-              <span className="font-mono text-xs text-green-400 font-medium">ALL SYSTEMS OPERATIONAL</span>
-            </div>
+        {/* Bottom bar — scrolling marquee (desktop only) */}
+        <div className="hidden md:block border-t border-zinc-800 py-3 overflow-hidden">
+          <div style={{ display: 'flex', width: 'max-content', animation: 'marquee 35s linear infinite' }}>
+            {[0, 1].map((pass) => (
+              <div key={pass} style={{ display: 'flex', alignItems: 'center', gap: '2.5rem', paddingRight: '2.5rem' }}>
+                {['Root Cause Thinker', 'Technical Support Engineer', 'Web Developer', 'QA Engineer', 'Multiple Hats 🎩', 'Chill & Funny', 'Customer Translator', 'Human-Friendly Tech', 'Calm Under Pressure', 'AI-Focused', 'I Like Food 🍕'].map((t, i) => (
+                  <span key={i} className="font-mono text-xs text-zinc-400 whitespace-nowrap">
+                    {t} <span className="text-green-500/40 ml-2">·</span>
+                  </span>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
 
