@@ -208,25 +208,48 @@ export default function Home() {
 
           <div className="grid gap-12 md:grid-cols-2 md:gap-20">
             <ScrollReveal delay={1}>
-              <div className="space-y-5 text-lg leading-relaxed text-zinc-300">
-                <p>
-                  &ldquo;Every problem has a solution.&rdquo; That&apos;s not something I read. That&apos;s something I lived.
-                </p>
-                <p>
-                  Growing up, my dad didn&apos;t just tell me how things worked. He pulled me into it. Painting, cutting the grass, fixing whatever needed fixing. It wasn&apos;t optional. It was just how life was.
-                </p>
-                <p>
-                  And things went wrong all the time. But walking away was never part of the process. We stayed with it. We figured it out. Every single time. That&apos;s where it all started.
-                </p>
-                <p>
-                  Somewhere in those moments, something stuck with me. Not just how to fix things, but how to face them.
-                </p>
-                <p>
-                  That mindset became who I am.
-                </p>
-                <p>
-                  Today, support isn&apos;t just a role I play. It&apos;s how I think, how I move, and how I show up. I don&apos;t sit comfortably with problems. I lean into them, break them down, and stay with them until they finally make sense.
-                </p>
+              <div className="overflow-hidden rounded-xl border border-green-500/15 bg-black shadow-[0_0_40px_rgba(34,197,94,0.05)]">
+                <div className="flex items-center justify-between border-b border-green-500/10 bg-zinc-900/50 px-4 py-3">
+                  <div className="flex items-center gap-2">
+                    <span className="h-2.5 w-2.5 rounded-full bg-red-500/70" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/70" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-500/70" />
+                    <span className="ml-2 font-mono text-xs text-zinc-600">story.log</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
+                    <span className="font-mono text-xs text-green-600">READING</span>
+                  </div>
+                </div>
+                <div className="p-7">
+                  <p className="mb-6 font-mono text-xs text-green-500/60">$ cat story.log</p>
+                  <div className="space-y-5 text-base leading-relaxed text-zinc-300">
+                    <p>
+                      <span className="mr-2 font-mono text-xs text-zinc-700">01</span>
+                      &ldquo;Every problem has a solution.&rdquo; That&apos;s not something I read. That&apos;s something I lived.
+                    </p>
+                    <p>
+                      <span className="mr-2 font-mono text-xs text-zinc-700">02</span>
+                      Growing up, my dad didn&apos;t just tell me how things worked. He pulled me into it. Painting, cutting the grass, fixing whatever needed fixing. It wasn&apos;t optional. It was just how life was.
+                    </p>
+                    <p>
+                      <span className="mr-2 font-mono text-xs text-zinc-700">03</span>
+                      And things went wrong all the time. But walking away was never part of the process. We stayed with it. We figured it out. Every single time. That&apos;s where it all started.
+                    </p>
+                    <p>
+                      <span className="mr-2 font-mono text-xs text-zinc-700">04</span>
+                      Somewhere in those moments, something stuck with me. Not just how to fix things, but how to face them.
+                    </p>
+                    <p>
+                      <span className="mr-2 font-mono text-xs text-zinc-700">05</span>
+                      That mindset became who I am.
+                    </p>
+                    <p>
+                      <span className="mr-2 font-mono text-xs text-zinc-700">06</span>
+                      Today, support isn&apos;t just a role I play. It&apos;s how I think, how I move, and how I show up. I don&apos;t sit comfortably with problems. I lean into them, break them down, and stay with them until they finally make sense.
+                    </p>
+                  </div>
+                </div>
               </div>
             </ScrollReveal>
 
@@ -400,10 +423,19 @@ export default function Home() {
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {funItems.map((item, i) => (
               <ScrollReveal key={item.label} delay={((i % 3) + 1) as 1 | 2 | 3}>
-                <div className={`group rounded-xl border ${item.color} p-6 transition duration-300 hover:-translate-y-1`}>
-                  <span className="mb-4 block text-3xl transition duration-300 group-hover:scale-110">{item.icon}</span>
-                  <p className={`mb-1 text-base font-semibold ${item.accent}`}>{item.label}</p>
-                  <p className="text-sm leading-relaxed text-zinc-400">{item.tag}</p>
+                <div className="group flex flex-col overflow-hidden rounded-xl border border-green-500/10 bg-black transition duration-300 hover:border-green-500/25 hover:shadow-[0_0_20px_rgba(34,197,94,0.06)]">
+                  <div className="flex items-center justify-between border-b border-green-500/10 bg-zinc-900/40 px-4 py-2">
+                    <span className="font-mono text-[10px] text-zinc-700">PROC_{String(i + 1).padStart(2, '0')}</span>
+                    <div className="flex items-center gap-1">
+                      <span className="h-1 w-1 rounded-full bg-green-500/60 animate-pulse" />
+                      <span className="font-mono text-[10px] text-green-700">ACTIVE</span>
+                    </div>
+                  </div>
+                  <div className="p-5">
+                    <span className="mb-3 block text-2xl transition duration-300 group-hover:scale-110">{item.icon}</span>
+                    <p className="mb-1 font-mono text-sm font-semibold text-green-400">{item.label}</p>
+                    <p className="text-sm leading-relaxed text-zinc-500">{item.tag}</p>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
